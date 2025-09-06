@@ -1,0 +1,1652 @@
+/* ========================================
+   CERFAOS DARK GOLD THEME - PROFESSIONAL ELEGANT
+   Thème sombre et or élégant pour l'administration
+   ======================================== */
+
+/* ===== IMPORTS TYPOGRAPHIE MODERNE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+/* ===== VARIABLES THÈME DARK GOLD PROFESSIONNEL ===== */
+:root {
+  /* PALETTE CERFAOS DARK GOLD - Design moderne et élégant */
+  
+  /* Sombres principaux */
+  --cerfaos-charcoal: #2c2c2c;          /* Charcoal principal */
+  --cerfaos-charcoal-light: #363636;    /* Charcoal éclairci */
+  --cerfaos-charcoal-dark: #1f1f1f;     /* Charcoal foncé */
+  --cerfaos-slate: #4a4a4a;             /* Slate principal */
+  --cerfaos-slate-light: #5a5a5a;       /* Slate éclairci */
+  --cerfaos-slate-dark: #3a3a3a;        /* Slate foncé */
+  
+  /* Or et bronze */
+  --cerfaos-gold: #ffd700;              /* Gold/Or principal */
+  --cerfaos-gold-light: #ffdf00;        /* Gold éclairci */
+  --cerfaos-gold-dark: #b8860b;         /* Gold foncé */
+  --cerfaos-bronze: #cd7f32;            /* Bronze principal */
+  --cerfaos-bronze-light: #dd8f42;      /* Bronze éclairci */
+  --cerfaos-bronze-dark: #bd6f22;       /* Bronze foncé */
+  
+  /* Couleurs complémentaires */
+  --cerfaos-white: #ffffff;             /* Blanc pur */
+  --cerfaos-light-gray: #f8f9fa;        /* Gris très clair */
+  --cerfaos-gray: #e9ecef;              /* Gris clair */
+  --cerfaos-dark-gray: #6c757d;         /* Gris sombre */
+  --cerfaos-black: #000000;             /* Noir */
+  
+  /* États et alertes */
+  --cerfaos-success: #28a745;           /* Vert succès */
+  --cerfaos-warning: #ffc107;           /* Jaune attention */
+  --cerfaos-danger: #dc3545;            /* Rouge danger */
+  --cerfaos-info: #17a2b8;              /* Bleu info */
+  
+  /* TYPOGRAPHIE MODERNE */
+  --font-display: 'Playfair Display', Georgia, serif;     /* Titres élégants */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Corps moderne */
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;  /* Code/interface */
+  
+  /* Tailles typographiques */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  
+  /* Poids typographiques */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+  
+  /* ESPACEMENTS MODERNES */
+  --space-xs: 0.25rem;     /* 4px */
+  --space-sm: 0.5rem;      /* 8px */
+  --space-md: 0.75rem;     /* 12px */
+  --space-lg: 1rem;        /* 16px */
+  --space-xl: 1.5rem;      /* 24px */
+  --space-2xl: 2rem;       /* 32px */
+  --space-3xl: 2.5rem;     /* 40px */
+  --space-4xl: 3rem;       /* 48px */
+  --space-5xl: 4rem;       /* 64px */
+  
+  /* RAYONS MODERNES */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;   /* Cercle complet */
+  
+  /* OMBRES ÉLÉGANTES */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-natural: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-deep: 0 20px 25px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.25), 0 12px 20px rgba(0, 0, 0, 0.1);
+  
+  /* Ombres spécifiques au thème gold */
+  --shadow-gold: 0 4px 12px rgba(255, 215, 0, 0.2), 0 2px 4px rgba(255, 215, 0, 0.1);
+  --shadow-bronze: 0 4px 12px rgba(205, 127, 50, 0.2), 0 2px 4px rgba(205, 127, 50, 0.1);
+  --shadow-charcoal: 0 4px 12px rgba(44, 44, 44, 0.4), 0 2px 4px rgba(44, 44, 44, 0.2);
+  
+  /* TRANSITIONS FLUIDES */
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-elegant: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Z-INDEX SYSTÈME */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  --z-toast: 80;
+  --z-max: 9999;
+}
+
+/* ===== RESET ET BASE DARK GOLD ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: var(--text-base) !important;
+  line-height: 1.6 !important;
+  color: var(--cerfaos-white) !important;
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+  background-attachment: fixed !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Texture de fond subtile moderne */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(74, 243, 55, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(205, 127, 50, 0.02) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.01) 50%, transparent 60%);
+  pointer-events: none;
+  z-index: var(--z-base);
+}
+
+/* ===== LAYOUT PRINCIPAL DARK GOLD ===== */
+.cerfaos-app-layout {
+  min-height: 100vh !important;
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+}
+
+.cerfaos-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 280px !important;
+  height: 100vh !important;
+  z-index: var(--z-fixed) !important;
+  overflow-y: auto !important;
+  transition: transform var(--transition-smooth) !important;
+  background: linear-gradient(180deg, var(--cerfaos-charcoal-dark) 0%, var(--cerfaos-charcoal) 100%) !important;
+  border-right: 2px solid rgba(255, 215, 0, 0.1) !important;
+  box-shadow: var(--shadow-dramatic) !important;
+}
+
+.cerfaos-topbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 280px !important;
+  right: 0 !important;
+  height: 70px !important;
+  z-index: var(--z-sticky) !important;
+  background: linear-gradient(135deg, var(--cerfaos-charcoal-dark), var(--cerfaos-slate-dark)) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.2) !important;
+  padding: 0 var(--space-lg) !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: var(--shadow-natural) !important;
+}
+
+.cerfaos-content-page {
+  margin-left: 280px !important;
+  margin-top: 70px !important;
+  background: transparent !important;
+  padding: var(--space-lg) !important;
+  min-height: calc(100vh - 70px) !important;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.content-page {
+  margin-left: 280px !important;
+  margin-top: 70px !important;
+  background: transparent !important;
+  padding: var(--space-lg) !important;
+  min-height: calc(100vh - 70px) !important;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.container-xxl {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .cerfaos-sidebar {
+    transform: translateX(-100%) !important;
+    transition: transform var(--transition-smooth) !important;
+  }
+  
+  .cerfaos-sidebar.show {
+    transform: translateX(0) !important;
+  }
+  
+  .cerfaos-topbar {
+    left: 0 !important;
+    height: 60px !important;
+  }
+  
+  .cerfaos-content-page,
+  .content-page {
+    margin-left: 0 !important;
+    margin-top: 60px !important;
+    padding: var(--space-md) !important;
+  }
+  
+  .container-xxl {
+    padding: 0 var(--space-sm) !important;
+  }
+}
+
+/* ===== HEADER ÉLÉGANT DARK GOLD ===== */
+.cerfaos-header {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-charcoal-dark) 0%, 
+    var(--cerfaos-slate) 40%, 
+    var(--cerfaos-charcoal) 80%,
+    var(--cerfaos-slate-light) 100%) !important;
+  border-radius: var(--radius-3xl) !important;
+  padding: var(--space-xl) var(--space-2xl) !important;
+  margin-bottom: var(--space-xl) !important;
+  box-shadow: 
+    var(--shadow-dramatic),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 215, 0, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Effet de lueur dorée moderne */
+.cerfaos-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(205, 127, 50, 0.08) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.03) 50%, transparent 60%);
+  opacity: 1;
+  pointer-events: none;
+  animation: cerfaosHeaderGlow 8s ease-in-out infinite alternate;
+}
+
+/* Effet de relief moderne */
+.cerfaos-header::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 110%;
+  height: 120%;
+  background: 
+    conic-gradient(from 45deg, transparent, rgba(255, 215, 0, 0.05), transparent, rgba(205, 127, 50, 0.03), transparent);
+  transform: rotate(-5deg);
+  pointer-events: none;
+  animation: cerfaosHeaderShine 12s linear infinite;
+}
+
+/* Animations header */
+@keyframes cerfaosHeaderGlow {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+@keyframes cerfaosHeaderShine {
+  0% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(-7deg) scale(1.01); }
+  100% { transform: rotate(-5deg) scale(1); }
+}
+
+.cerfaos-header h2 {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-display) !important;
+  font-size: var(--text-2xl) !important;
+  font-weight: var(--weight-bold) !important;
+  margin: 0 !important;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.2) !important;
+  letter-spacing: 0.02em !important;
+  position: relative;
+  z-index: 3;
+  background: linear-gradient(135deg, var(--cerfaos-white) 0%, rgba(74, 243, 55, 0.8) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  line-height: 1.2 !important;
+}
+
+.cerfaos-header p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: var(--text-base) !important;
+  margin: var(--space-sm) 0 0 0 !important;
+  font-style: italic !important;
+  position: relative;
+  z-index: 3;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) !important;
+  font-weight: var(--weight-medium) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(205, 127, 50, 0.7) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+  line-height: 1.4 !important;
+}
+
+.cerfaos-status-badge {
+  background: linear-gradient(135deg, 
+    rgba(74, 243, 55, 0.9) 0%, 
+    rgba(205, 127, 50, 0.8) 50%,
+    rgba(74, 243, 55, 0.7) 100%) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  font-weight: var(--weight-bold) !important;
+  padding: var(--space-sm) var(--space-lg) !important;
+  border-radius: var(--radius-2xl) !important;
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.8rem !important;
+  box-shadow: 
+    var(--shadow-gold),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  z-index: 3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+  transition: all var(--transition-elegant) !important;
+  overflow: hidden;
+  white-space: nowrap !important;
+}
+
+.cerfaos-status-badge::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 25%,
+    var(--cerfaos-gold) 50%,
+    var(--cerfaos-bronze) 75%,
+    var(--cerfaos-gold) 100%);
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  animation: cerfaosStatusGlow 4s ease-in-out infinite;
+}
+
+@keyframes cerfaosStatusGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.cerfaos-status-badge:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 
+    var(--shadow-dramatic),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ===== CARTES STATISTIQUES ELEGANTES ===== */
+.cerfaos-stat-card {
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+  border: 2px solid rgba(255, 215, 0, 0.2) !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: var(--shadow-natural) !important;
+  transition: var(--transition-elegant) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Bordure dorée élégante */
+.cerfaos-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cerfaos-gold), var(--cerfaos-bronze), var(--cerfaos-gold)) !important;
+  animation: cerfaosGoldFlow 3s ease-in-out infinite;
+}
+
+@keyframes cerfaosGoldFlow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Texture de fond subtile */
+.cerfaos-stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(74, 243, 55, 0.03) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(205, 127, 50, 0.02) 0%, transparent 60%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cerfaos-stat-card:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  box-shadow: var(--shadow-dramatic) !important;
+  border-color: rgba(255, 215, 0, 0.4) !important;
+}
+
+.cerfaos-stat-card .card-body {
+  padding: var(--space-3xl) var(--space-xl) !important;
+  text-align: center !important;
+  position: relative;
+  z-index: 2;
+}
+
+.cerfaos-stat-icon {
+  font-size: var(--text-5xl) !important;
+  margin-bottom: var(--space-lg) !important;
+  display: block !important;
+  color: var(--cerfaos-gold) !important;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.cerfaos-stat-number {
+  font-family: var(--font-display) !important;
+  font-size: var(--text-4xl) !important;
+  font-weight: var(--weight-black) !important;
+  color: var(--cerfaos-white) !important;
+  margin-bottom: var(--space-sm) !important;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cerfaos-stat-label {
+  font-size: var(--text-sm) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: var(--weight-medium) !important;
+  margin-bottom: var(--space-lg) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-family: var(--font-mono) !important;
+}
+
+.cerfaos-trend-badge {
+  background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: var(--weight-bold) !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  border-radius: var(--radius-xl) !important;
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: var(--shadow-gold) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.cerfaos-trend-badge.trend-up {
+  background: linear-gradient(135deg, var(--cerfaos-success), var(--cerfaos-gold)) !important;
+  color: var(--cerfaos-white) !important;
+}
+
+.cerfaos-trend-badge.trend-down {
+  background: linear-gradient(135deg, var(--cerfaos-danger), var(--cerfaos-bronze-dark)) !important;
+  color: var(--cerfaos-white) !important;
+}
+
+/* ===== ACTIONS RAPIDES ELEGANTES ===== */
+.cerfaos-actions-card {
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+  border: 2px solid rgba(205, 127, 50, 0.2) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-natural) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.cerfaos-actions-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cerfaos-bronze), var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+}
+
+.cerfaos-actions-title {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-display) !important;
+  font-size: var(--text-2xl) !important;
+  font-weight: var(--weight-bold) !important;
+  margin-bottom: var(--space-xl) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--space-md) !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cerfaos-action-btn {
+  background: linear-gradient(135deg, var(--cerfaos-slate), var(--cerfaos-charcoal)) !important;
+  border: 2px solid rgba(255, 215, 0, 0.3) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-xl) !important;
+  text-decoration: none !important;
+  color: var(--cerfaos-white) !important;
+  font-weight: var(--weight-medium) !important;
+  transition: var(--transition-bounce) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 140px !important;
+  box-shadow: var(--shadow-natural) !important;
+  font-family: var(--font-body) !important;
+}
+
+.cerfaos-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.cerfaos-action-btn:hover::before {
+  left: 100%;
+}
+
+.cerfaos-action-btn:hover {
+  border-color: var(--cerfaos-gold) !important;
+  transform: translateY(-6px) rotate(1deg) !important;
+  box-shadow: var(--shadow-dramatic) !important;
+  color: var(--cerfaos-white) !important;
+  background: linear-gradient(135deg, var(--cerfaos-slate-light), var(--cerfaos-charcoal-light)) !important;
+}
+
+.cerfaos-action-btn .action-icon {
+  font-size: var(--text-5xl) !important;
+  margin-bottom: var(--space-lg) !important;
+  display: block !important;
+  color: var(--cerfaos-gold) !important;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.cerfaos-action-btn .action-text {
+  font-size: var(--text-base) !important;
+  font-weight: var(--weight-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ===== CARTES PRINCIPALES ELEGANTES ===== */
+.cerfaos-main-card {
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+  border: 2px solid rgba(205, 127, 50, 0.2) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-natural) !important;
+  transition: var(--transition-elegant) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.cerfaos-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(74, 243, 55, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(205, 127, 50, 0.02) 0%, transparent 50%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cerfaos-main-card:hover {
+  box-shadow: var(--shadow-dramatic) !important;
+  transform: translateY(-4px) !important;
+  border-color: rgba(255, 215, 0, 0.4) !important;
+}
+
+.cerfaos-card-header {
+  background: linear-gradient(135deg, var(--cerfaos-slate-dark), var(--cerfaos-charcoal-dark)) !important;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
+  padding: var(--space-xl) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--space-lg) !important;
+  position: relative !important;
+  z-index: 2;
+}
+
+.cerfaos-card-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+}
+
+.cerfaos-card-icon {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: var(--radius-xl) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  box-shadow: var(--shadow-gold) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.cerfaos-card-icon svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.cerfaos-card-title {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-display) !important;
+  font-size: var(--text-xl) !important;
+  font-weight: var(--weight-bold) !important;
+  margin: 0 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cerfaos-card-body {
+  padding: var(--space-xl) !important;
+  position: relative !important;
+  z-index: 2;
+}
+
+/* ===== STYLES POUR LES TABLEAUX ELEGANT ===== */
+.table-cerfaos {
+    font-family: var(--font-body) !important;
+    color: var(--cerfaos-white) !important;
+    background: transparent !important;
+}
+
+.table-cerfaos thead th {
+    background: linear-gradient(135deg, var(--cerfaos-charcoal-dark), var(--cerfaos-slate-dark)) !important;
+    color: var(--cerfaos-gold) !important;
+    border: none !important;
+    padding: 1rem 1.5rem !important;
+    font-weight: var(--weight-bold) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    position: relative !important;
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.table-cerfaos thead th::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cerfaos-gold), var(--cerfaos-bronze), var(--cerfaos-gold));
+}
+
+.table-cerfaos tbody tr {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1) !important;
+    transition: all var(--transition-smooth) !important;
+    background: rgba(44, 44, 44, 0.3) !important;
+    position: relative !important;
+}
+
+.table-cerfaos tbody tr:hover {
+    background: rgba(255, 215, 0, 0.05) !important;
+    transform: translateX(4px) !important;
+    box-shadow: var(--shadow-gold) !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.table-cerfaos td {
+    padding: 1rem 1.5rem !important;
+    vertical-align: middle !important;
+    border: none !important;
+    color: var(--cerfaos-white) !important;
+}
+
+/* Lignes de tableau avec effet premium */
+.cerfaos-table-row {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cerfaos-table-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--cerfaos-gold), var(--cerfaos-bronze));
+    transition: width var(--transition-smooth);
+    opacity: 0;
+}
+
+.cerfaos-table-row:hover::before {
+    width: 6px;
+    opacity: 1;
+}
+
+/* ===== COMPOSANTS UI DARK GOLD ===== */
+
+/* Labels de champ élégants */
+.cerfaos-field-label {
+    display: flex !important;
+    align-items: center !important;
+    font-family: var(--font-mono) !important;
+    font-weight: var(--weight-semibold) !important;
+    color: var(--cerfaos-gold) !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 0.85rem !important;
+}
+
+.cerfaos-field-label span {
+    margin-right: 8px !important;
+    font-size: 1.1em !important;
+    color: var(--cerfaos-bronze) !important;
+}
+
+/* Contrôles de formulaire élégants */
+.cerfaos-form-control {
+    font-family: var(--font-body) !important;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    border-radius: var(--radius-lg) !important;
+    background: rgba(44, 44, 44, 0.8) !important;
+    color: var(--cerfaos-white) !important;
+    transition: all var(--transition-smooth) !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.cerfaos-form-control:focus {
+    border-color: var(--cerfaos-gold) !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1), inset 0 2px 4px rgba(0,0,0,0.1) !important;
+    outline: none !important;
+    transform: translateY(-1px) !important;
+    background: rgba(44, 44, 44, 0.9) !important;
+}
+
+.cerfaos-form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1 !important;
+    font-style: italic !important;
+}
+
+/* États d'erreur pour les formulaires */
+.cerfaos-form-error {
+    border-color: var(--cerfaos-danger) !important;
+    background: rgba(220, 53, 69, 0.1) !important;
+}
+
+.cerfaos-form-error:focus {
+    border-color: var(--cerfaos-danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+}
+
+.cerfaos-error-message {
+    display: flex !important;
+    align-items: center !important;
+    color: var(--cerfaos-danger) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    margin-top: 0.5rem !important;
+}
+
+.cerfaos-error-message i {
+    margin-right: 4px !important;
+}
+
+/* Messages d'aide et info */
+.cerfaos-help-text {
+    display: flex !important;
+    align-items: center !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.75rem !important;
+    margin-top: 0.25rem !important;
+}
+
+.cerfaos-help-text i {
+    margin-right: 4px !important;
+    color: var(--cerfaos-bronze) !important;
+}
+
+/* ===== STYLES TOPBAR DARK GOLD ===== */
+.cerfaos-topnav-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.cerfaos-topnav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.cerfaos-menu-toggle {
+    background: rgba(255, 215, 0, 0.1) !important;
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    color: var(--cerfaos-gold) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 0.5rem !important;
+    transition: all var(--transition-smooth) !important;
+}
+
+.cerfaos-menu-toggle:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-color: var(--cerfaos-gold) !important;
+    transform: scale(1.05) !important;
+}
+
+.cerfaos-menu-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.cerfaos-search-container {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.cerfaos-search-input {
+    background: rgba(44, 44, 44, 0.5) !important;
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-2xl) !important;
+    padding: 0.5rem 2.5rem 0.5rem 1rem !important;
+    font-family: var(--font-body) !important;
+    width: 280px !important;
+    font-size: 0.9rem !important;
+    transition: all var(--transition-smooth) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.cerfaos-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.cerfaos-search-input:focus {
+    outline: none !important;
+    background: rgba(44, 44, 44, 0.7) !important;
+    border-color: var(--cerfaos-gold) !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1) !important;
+}
+
+.cerfaos-search-icon {
+    position: absolute !important;
+    right: 1rem !important;
+    color: var(--cerfaos-bronze) !important;
+}
+
+.cerfaos-brand-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.cerfaos-brand-icon {
+    font-size: 2rem !important;
+    color: var(--cerfaos-gold) !important;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+.cerfaos-brand-text {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.cerfaos-brand-main {
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-display) !important;
+    font-weight: var(--weight-bold) !important;
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+.cerfaos-brand-sub {
+    color: var(--cerfaos-bronze) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+}
+
+.cerfaos-nav-btn {
+    background: rgba(255, 215, 0, 0.1) !important;
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    color: var(--cerfaos-gold) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 0.5rem !important;
+    transition: all var(--transition-smooth) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+.cerfaos-nav-btn:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-color: var(--cerfaos-gold) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-gold) !important;
+}
+
+.cerfaos-nav-icon {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* ===== STYLES SIDEBAR DARK GOLD ===== */
+.app-sidebar-menu {
+    background: linear-gradient(180deg, var(--cerfaos-charcoal-dark) 0%, var(--cerfaos-charcoal) 50%, var(--cerfaos-slate) 100%) !important;
+    border-right: 2px solid rgba(255, 215, 0, 0.2) !important;
+    box-shadow: var(--shadow-dramatic) !important;
+}
+
+.cerfaos-logo-box {
+    padding: 1.5rem !important;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.2) !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+}
+
+.cerfaos-logo-box::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cerfaos-gold), transparent);
+}
+
+.cerfaos-logo-icon {
+    font-size: 2.5rem !important;
+    color: var(--cerfaos-gold) !important;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+.cerfaos-logo-text {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-left: 1rem !important;
+}
+
+.logo-main {
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-display) !important;
+    font-weight: var(--weight-bold) !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+.logo-sub {
+    color: var(--cerfaos-bronze) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    margin-top: 0.25rem !important;
+}
+
+.cerfaos-menu {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.cerfaos-menu-title {
+    color: var(--cerfaos-bronze) !important;
+    font-family: var(--font-mono) !important;
+    font-weight: var(--weight-bold) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    padding: 1rem 1.5rem 0.5rem 1.5rem !important;
+    margin-top: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.cerfaos-sidebar-item {
+    margin-bottom: 0.25rem !important;
+}
+
+.cerfaos-sidebar-link {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.75rem 1.5rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
+    font-family: var(--font-body) !important;
+    font-weight: var(--weight-medium) !important;
+    transition: all var(--transition-smooth) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cerfaos-sidebar-link::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 4px !important;
+    background: linear-gradient(to bottom, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+    transform: scaleX(0) !important;
+    transition: transform var(--transition-smooth) !important;
+    transform-origin: bottom !important;
+}
+
+.cerfaos-sidebar-link:hover::before,
+.cerfaos-sidebar-link.active::before {
+    transform: scaleX(1) !important;
+}
+
+.cerfaos-sidebar-link:hover {
+    background: rgba(255, 215, 0, 0.1) !important;
+    color: var(--cerfaos-white) !important;
+    transform: translateX(6px) !important;
+}
+
+.cerfaos-sidebar-link.active {
+    background: rgba(74, 243, 55, 0.15) !important;
+    color: var(--cerfaos-white) !important;
+    font-weight: var(--weight-bold) !important;
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1) !important;
+}
+
+.cerfaos-sidebar-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--cerfaos-gold) !important;
+}
+
+.cerfaos-sidebar-text {
+    flex-grow: 1 !important;
+}
+
+.cerfaos-trail-marker {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: var(--cerfaos-bronze) !important;
+    opacity: 0 !important;
+    transition: opacity var(--transition-smooth) !important;
+}
+
+.cerfaos-sidebar-link:hover .cerfaos-trail-marker,
+.cerfaos-sidebar-link.active .cerfaos-trail-marker {
+    opacity: 1 !important;
+}
+
+/* ===== STYLES DROPDOWN UTILISATEUR ===== */
+.cerfaos-user-nav {
+    background: rgba(255, 215, 0, 0.1) !important;
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    border-radius: var(--radius-2xl) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+    display: flex !important;
+    align-items: center !important;
+    min-width: 160px !important;
+    text-decoration: none !important;
+    color: var(--cerfaos-white) !important;
+    transition: all var(--transition-smooth) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.cerfaos-user-nav:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-color: var(--cerfaos-gold) !important;
+    transform: translateY(-1px) !important;
+    color: var(--cerfaos-white) !important;
+    box-shadow: var(--shadow-gold) !important;
+}
+
+.cerfaos-user-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    border: 2px solid var(--cerfaos-gold) !important;
+    box-shadow: var(--shadow-gold) !important;
+    flex-shrink: 0 !important;
+}
+
+.cerfaos-user-avatar img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.cerfaos-user-name {
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    font-weight: var(--weight-semibold) !important;
+    color: var(--cerfaos-white) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-xs) !important;
+    white-space: nowrap !important;
+}
+
+/* Notification Badge */
+.cerfaos-notification-badge {
+    position: absolute !important;
+    top: -6px !important;
+    right: -6px !important;
+    background: linear-gradient(135deg, var(--cerfaos-danger), var(--cerfaos-bronze-dark)) !important;
+    color: var(--cerfaos-white) !important;
+    font-size: 0.7rem !important;
+    font-weight: var(--weight-bold) !important;
+    font-family: var(--font-mono) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid var(--cerfaos-charcoal-dark) !important;
+    box-shadow: var(--shadow-gold) !important;
+    animation: cerfaosPulse 2s infinite;
+}
+
+@keyframes cerfaosPulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.1); 
+    }
+}
+
+/* ===== STYLES GLOBAUX POUR BOOTSTRAP ===== */
+/* Override des composants Bootstrap avec le thème dark-gold */
+body {
+    font-family: var(--font-body) !important;
+    background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+/* Cartes Bootstrap */
+.card {
+    background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate) 100%) !important;
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    border-radius: var(--radius-2xl) !important;
+    box-shadow: var(--shadow-natural) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--cerfaos-slate-dark), var(--cerfaos-charcoal-dark)) !important;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
+    color: var(--cerfaos-gold) !important;
+    font-weight: var(--weight-semibold) !important;
+}
+
+/* Boutons Bootstrap */
+.btn-primary {
+    background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+    border-color: var(--cerfaos-gold) !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+    font-weight: var(--weight-semibold) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-gold) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--cerfaos-gold-light), var(--cerfaos-bronze-light)) !important;
+    border-color: var(--cerfaos-gold-light) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-dramatic) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--cerfaos-success), var(--cerfaos-gold-dark)) !important;
+    border-color: var(--cerfaos-success) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--cerfaos-danger), var(--cerfaos-bronze-dark)) !important;
+    border-color: var(--cerfaos-danger) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--cerfaos-warning), var(--cerfaos-bronze)) !important;
+    border-color: var(--cerfaos-warning) !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--cerfaos-slate), var(--cerfaos-charcoal-light)) !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+/* Formulaires Bootstrap */
+.form-control {
+    background: rgba(44, 44, 44, 0.8) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-body) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.form-control:focus {
+    background: rgba(44, 44, 44, 0.9) !important;
+    border-color: var(--cerfaos-gold) !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1) !important;
+    color: var(--cerfaos-white) !important;
+    transform: translateY(-1px) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.form-label {
+    color: var(--cerfaos-gold) !important;
+    font-family: var(--font-mono) !important;
+    font-weight: var(--weight-semibold) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 0.85rem !important;
+}
+
+/* Tables Bootstrap */
+.table {
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-body) !important;
+}
+
+.table thead th {
+    background: linear-gradient(135deg, var(--cerfaos-charcoal-dark), var(--cerfaos-slate-dark)) !important;
+    color: var(--cerfaos-gold) !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+    font-weight: var(--weight-bold) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-family: var(--font-mono) !important;
+    position: relative !important;
+}
+
+.table thead th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cerfaos-gold), var(--cerfaos-bronze));
+}
+
+.table tbody tr {
+    background: rgba(44, 44, 44, 0.3) !important;
+    border-color: rgba(255, 215, 0, 0.1) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.table tbody tr:hover {
+    background: rgba(255, 215, 0, 0.1) !important;
+    transform: translateX(4px) !important;
+    box-shadow: var(--shadow-gold) !important;
+}
+
+/* Alertes Bootstrap */
+.alert-success {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(255, 215, 0, 0.05)) !important;
+    border-color: var(--cerfaos-success) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(205, 127, 50, 0.05)) !important;
+    border-color: var(--cerfaos-danger) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(205, 127, 50, 0.05)) !important;
+    border-color: var(--cerfaos-warning) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(23, 162, 184, 0.1), rgba(255, 215, 0, 0.05)) !important;
+    border-color: var(--cerfaos-info) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-xl) !important;
+}
+
+/* Modal Bootstrap */
+.modal-content {
+    background: linear-gradient(135deg, var(--cerfaos-charcoal), var(--cerfaos-slate)) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    border-radius: var(--radius-2xl) !important;
+    box-shadow: var(--shadow-dramatic) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+.modal-header {
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
+    background: linear-gradient(135deg, var(--cerfaos-slate-dark), var(--cerfaos-charcoal-dark)) !important;
+}
+
+.modal-footer {
+    border-top: 2px solid rgba(255, 215, 0, 0.3) !important;
+    background: linear-gradient(135deg, var(--cerfaos-slate-dark), var(--cerfaos-charcoal-dark)) !important;
+}
+
+/* Toastr avec thème dark-gold */
+.toast-success {
+    background: linear-gradient(135deg, var(--cerfaos-success), var(--cerfaos-gold-dark)) !important;
+}
+
+.toast-error {
+    background: linear-gradient(135deg, var(--cerfaos-danger), var(--cerfaos-bronze-dark)) !important;
+}
+
+.toast-warning {
+    background: linear-gradient(135deg, var(--cerfaos-warning), var(--cerfaos-bronze)) !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+}
+
+.toast-info {
+    background: linear-gradient(135deg, var(--cerfaos-info), var(--cerfaos-gold)) !important;
+}
+
+/* DataTables avec thème dark-gold */
+.dataTables_wrapper {
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-body) !important;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    background: rgba(44, 44, 44, 0.8) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-body) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus,
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--cerfaos-gold) !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background: linear-gradient(135deg, var(--cerfaos-slate), var(--cerfaos-charcoal)) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    color: var(--cerfaos-white) !important;
+    border-radius: var(--radius-lg) !important;
+    margin: 0 2px !important;
+    transition: var(--transition-smooth) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+    border-color: var(--cerfaos-gold) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-gold) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+    border-color: var(--cerfaos-gold) !important;
+    box-shadow: var(--shadow-gold) !important;
+}
+
+/* SweetAlert avec thème dark-gold */
+.swal2-popup {
+    border-radius: var(--radius-3xl) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow: var(--shadow-dramatic) !important;
+    background: linear-gradient(135deg, var(--cerfaos-charcoal), var(--cerfaos-slate)) !important;
+    color: var(--cerfaos-white) !important;
+}
+
+.swal2-title {
+    color: var(--cerfaos-white) !important;
+    font-family: var(--font-display) !important;
+}
+
+.swal2-content {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-family: var(--font-body) !important;
+}
+
+.swal2-confirm {
+    background: linear-gradient(135deg, var(--cerfaos-gold), var(--cerfaos-bronze)) !important;
+    border-radius: var(--radius-lg) !important;
+    font-family: var(--font-body) !important;
+    font-weight: var(--weight-semibold) !important;
+    border: none !important;
+    color: var(--cerfaos-charcoal-dark) !important;
+}
+
+.swal2-cancel {
+    background: linear-gradient(135deg, var(--cerfaos-slate), var(--cerfaos-charcoal-light)) !important;
+    border-radius: var(--radius-lg) !important;
+    font-family: var(--font-body) !important;
+    font-weight: var(--weight-semibold) !important;
+    border: none !important;
+    color: var(--cerfaos-white) !important;
+}
+
+/* ===== SCROLLBAR DARK GOLD ===== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cerfaos-charcoal-dark);
+    border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--cerfaos-gold), var(--cerfaos-bronze));
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--cerfaos-charcoal-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--cerfaos-gold-light), var(--cerfaos-bronze-light));
+}
+
+/* ===== CLASSES UTILITAIRES DARK GOLD ===== */
+.text-gold { color: var(--cerfaos-gold) !important; }
+.text-bronze { color: var(--cerfaos-bronze) !important; }
+.text-charcoal { color: var(--cerfaos-charcoal) !important; }
+.text-slate { color: var(--cerfaos-slate) !important; }
+
+.bg-gold { background-color: var(--cerfaos-gold) !important; }
+.bg-bronze { background-color: var(--cerfaos-bronze) !important; }
+.bg-charcoal { background-color: var(--cerfaos-charcoal) !important; }
+.bg-slate { background-color: var(--cerfaos-slate) !important; }
+
+.font-display { font-family: var(--font-display) !important; }
+.font-mono { font-family: var(--font-mono) !important; }
+.font-body { font-family: var(--font-body) !important; }
+
+/* ===== ÉTATS DE CHARGEMENT DARK GOLD ===== */
+.loading-dark-gold {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading-dark-gold::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    border: 3px solid rgba(255, 215, 0, 0.3);
+    border-top: 3px solid var(--cerfaos-gold);
+    border-radius: 50%;
+    animation: darkGoldSpin 1.2s linear infinite;
+}
+
+@keyframes darkGoldSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== ANIMATIONS ET EFFETS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes goldShimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.cerfaos-animate-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.cerfaos-gold-shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--cerfaos-gold) 0%,
+        var(--cerfaos-bronze) 25%,
+        var(--cerfaos-gold-light) 50%,
+        var(--cerfaos-bronze) 75%,
+        var(--cerfaos-gold) 100%
+    );
+    background-size: 200% 100%;
+    animation: goldShimmer 2s linear infinite;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .cerfaos-search-input {
+        width: 220px !important;
+    }
+    
+    .cerfaos-brand-main {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .cerfaos-search-input {
+        width: 180px !important;
+    }
+    
+    .cerfaos-brand-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .cerfaos-search-container {
+        display: none !important;
+    }
+    
+    .cerfaos-topbar {
+        padding: 0 var(--space-md) !important;
+    }
+    
+    .cerfaos-header {
+        padding: var(--space-lg) !important;
+        margin-bottom: var(--space-lg) !important;
+    }
+    
+    .cerfaos-header h2 {
+        font-size: var(--text-xl) !important;
+    }
+    
+    .cerfaos-stat-card .card-body {
+        padding: var(--space-xl) var(--space-lg) !important;
+    }
+    
+    .cerfaos-action-btn {
+        min-height: 120px !important;
+        padding: var(--space-lg) !important;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .cerfaos-sidebar,
+    .cerfaos-topbar {
+        display: none !important;
+    }
+    
+    .cerfaos-content-page,
+    .content-page {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}

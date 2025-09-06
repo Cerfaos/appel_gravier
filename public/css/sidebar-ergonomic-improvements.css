@@ -1,0 +1,506 @@
+/* ================================================================
+ * 🎯 SIDEBAR ERGONOMIC IMPROVEMENTS
+ * Optimisations ergonomiques pour le sidebar avec états collapsed/expanded
+ * ================================================================ */
+
+/* ==================== SIDEBAR COLLAPSED STATE ERGONOMICS ==================== */
+
+/* Brand adaptations for collapsed state */
+.layout.sidebar-collapsed .sidebar-brand-text {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-brand-compact {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--cerfaos-gold);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout.sidebar-collapsed .sidebar-brand-compact {
+    opacity: 1;
+    visibility: visible;
+}
+
+.layout.sidebar-collapsed .sidebar-brand-icon {
+    display: none;
+}
+
+/* Navigation text hiding in collapsed state */
+.layout.sidebar-collapsed .nav-text,
+.layout.sidebar-collapsed .nav-section-title,
+.layout.sidebar-collapsed .nav-badge-text,
+.layout.sidebar-collapsed .nav-arrow {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation icons centering in collapsed state */
+.layout.sidebar-collapsed .nav-link {
+    justify-content: center;
+    padding: 12px;
+}
+
+.layout.sidebar-collapsed .nav-icon {
+    margin-right: 0;
+}
+
+/* Tooltips for collapsed navigation items */
+.layout.sidebar-collapsed .nav-link {
+    position: relative;
+}
+
+.layout.sidebar-collapsed .nav-link:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cerfaos-dark-tertiary);
+    color: var(--cerfaos-text-primary);
+    padding: 8px 12px;
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-left: 8px;
+    box-shadow: var(--cerfaos-shadow-lg);
+    border: 1px solid var(--cerfaos-border);
+    opacity: 0;
+    animation: tooltip-fade-in 0.2s ease-out forwards;
+}
+
+@keyframes tooltip-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* ==================== SIDEBAR EXPANDED STATE ERGONOMICS ==================== */
+
+/* Smooth transitions for expanding elements */
+.sidebar-brand-text,
+.nav-text,
+.nav-section-title,
+.nav-badge-text,
+.nav-arrow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced nav item ergonomics */
+.nav-link {
+    min-height: 48px; /* Touch-friendly minimum */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+/* Navigation icon improvements */
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--cerfaos-text-secondary);
+    transition: var(--transition);
+}
+
+.nav-link:hover .nav-icon,
+.nav-link.active .nav-icon {
+    color: var(--cerfaos-gold);
+    transform: scale(1.1);
+}
+
+/* Navigation text improvements */
+.nav-text {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: var(--cerfaos-text-secondary);
+    transition: var(--transition);
+    flex: 1;
+    min-width: 0;
+}
+
+.nav-link:hover .nav-text,
+.nav-link.active .nav-text {
+    color: var(--cerfaos-text-primary);
+}
+
+/* ==================== SECTION ERGONOMICS ==================== */
+
+.nav-section {
+    margin-bottom: 24px;
+}
+
+.nav-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cerfaos-text-muted);
+    padding: 0 16px 8px 16px;
+    margin-bottom: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== BADGE ERGONOMICS ==================== */
+
+.nav-badge {
+    background: var(--cerfaos-warning);
+    color: var(--cerfaos-dark-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout.sidebar-collapsed .nav-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    min-width: 16px;
+    height: 16px;
+    padding: 2px 4px;
+    font-size: 0.625rem;
+}
+
+/* ==================== SUBMENU ERGONOMICS ==================== */
+
+.nav-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-lg);
+    margin: 4px 0;
+}
+
+.nav-item.show .nav-submenu {
+    max-height: 400px; /* Adjust based on content */
+    padding: 8px 0;
+}
+
+.nav-submenu .nav-link {
+    padding-left: 48px; /* Indentation for sub-items */
+    min-height: 40px; /* Slightly smaller for sub-items */
+    font-size: 0.875rem;
+}
+
+.layout.sidebar-collapsed .nav-submenu {
+    display: none; /* Hide submenus when collapsed */
+}
+
+/* ==================== SCROLL ERGONOMICS ==================== */
+
+.sidebar-nav {
+    height: calc(100vh - 80px); /* Account for header */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cerfaos-border) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: var(--cerfaos-border);
+    border-radius: var(--radius-full);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--cerfaos-border-light);
+}
+
+/* ==================== FOOTER ERGONOMICS ==================== */
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    border-top: 1px solid var(--cerfaos-border);
+    background: var(--cerfaos-dark-secondary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout.sidebar-collapsed .sidebar-footer {
+    padding: 8px;
+    text-align: center;
+}
+
+.sidebar-footer-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.layout.sidebar-collapsed .sidebar-footer-content {
+    justify-content: center;
+}
+
+.layout.sidebar-collapsed .sidebar-footer-text {
+    display: none;
+}
+
+/* ==================== MOBILE ERGONOMICS ==================== */
+
+@media (max-width: 1024px) {
+    .layout__sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 200;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--cerfaos-shadow-xl);
+    }
+    
+    .layout__sidebar.active,
+    .layout__sidebar.open {
+        left: 0;
+    }
+    
+    /* Always show full sidebar on mobile when open */
+    .layout.sidebar-collapsed .sidebar-brand-text,
+    .layout.sidebar-collapsed .nav-text,
+    .layout.sidebar-collapsed .nav-section-title {
+        opacity: 1;
+        visibility: visible;
+        width: auto;
+        transform: translateX(0);
+    }
+    
+    .layout.sidebar-collapsed .sidebar-brand-compact {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .layout.sidebar-collapsed .sidebar-brand-icon {
+        display: block;
+    }
+    
+    /* Mobile overlay */
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 199;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ==================== HIGH CONTRAST ERGONOMICS ==================== */
+
+@media (prefers-contrast: high) {
+    .nav-link {
+        border: 1px solid transparent;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        border-color: currentColor;
+    }
+    
+    .nav-badge {
+        border: 2px solid var(--cerfaos-dark-primary);
+    }
+}
+
+/* ==================== REDUCED MOTION ERGONOMICS ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-brand-text,
+    .nav-text,
+    .nav-section-title,
+    .nav-badge-text,
+    .nav-arrow,
+    .nav-link::before,
+    .nav-submenu {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .layout.sidebar-collapsed .nav-link:hover::after {
+        animation: none !important;
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* ==================== INTELLIGENT AUTO-COLLAPSE ==================== */
+
+/* Auto-collapse on medium screens (1024px - 1200px) */
+@media (max-width: 1200px) and (min-width: 1024px) {
+    .layout.auto-collapse {
+        grid-template-columns: var(--sidebar-width-collapsed) 1fr;
+    }
+    
+    .layout.auto-collapse .layout__sidebar {
+        width: var(--sidebar-width-collapsed);
+        min-width: var(--sidebar-width-collapsed);
+        max-width: var(--sidebar-width-collapsed);
+    }
+    
+    .layout.auto-collapse .sidebar-brand-text,
+    .layout.auto-collapse .nav-text,
+    .layout.auto-collapse .nav-section-title,
+    .layout.auto-collapse .nav-badge-text,
+    .layout.auto-collapse .nav-arrow {
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        transform: translateX(-20px);
+    }
+    
+    .layout.auto-collapse .sidebar-brand-compact {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .layout.auto-collapse .nav-link {
+        justify-content: center;
+        padding: 12px;
+    }
+    
+    .layout.auto-collapse .nav-icon {
+        margin-right: 0;
+    }
+}
+
+/* Enhanced tooltip positioning and styling */
+.layout.sidebar-collapsed .nav-link:hover::after,
+.layout.auto-collapse .nav-link:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cerfaos-dark-tertiary);
+    color: var(--cerfaos-text-primary);
+    padding: 10px 14px;
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: var(--cerfaos-shadow-lg);
+    border: 1px solid var(--cerfaos-border);
+    opacity: 0;
+    animation: tooltip-slide-in 0.2s ease-out forwards;
+    pointer-events: none;
+    max-width: 200px;
+}
+
+/* Tooltip arrow */
+.layout.sidebar-collapsed .nav-link:hover::before,
+.layout.auto-collapse .nav-link:hover::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid var(--cerfaos-dark-tertiary);
+    z-index: 1001;
+    opacity: 0;
+    animation: tooltip-slide-in 0.2s ease-out forwards;
+}
+
+@keyframes tooltip-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+/* Quick ergonomic utilities for navigation */
+.nav-item-compact { min-height: 40px; } /* For less important items */
+.nav-item-prominent { min-height: 56px; } /* For important items */
+.nav-item-dense { margin-bottom: 2px; } /* Tighter spacing */
+.nav-item-spaced { margin-bottom: 8px; } /* Looser spacing */
+
+/* Sidebar width presets */
+.sidebar-narrow { --sidebar-width-optimal: 240px; }
+.sidebar-wide { --sidebar-width-optimal: 320px; }
+.sidebar-extra-narrow { --sidebar-width-collapsed: 60px; }
+
+/* Smart ergonomic classes */
+.sidebar-auto-hide { transition: opacity 0.3s ease; }
+.sidebar-context-aware { position: relative; }
+.nav-priority-high { order: -1; }
+.nav-priority-low { order: 1; }

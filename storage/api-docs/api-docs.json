@@ -1,0 +1,1020 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cerfaos API",
+        "description": "API complète pour la plateforme Cerfaos - Itinéraires de gravel bike",
+        "termsOfService": "https://cerfaos.fr/terms",
+        "contact": {
+            "name": "Équipe Cerfaos",
+            "email": "contact@cerfaos.fr"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.cerfaos.fr",
+            "description": "Production API Server"
+        },
+        {
+            "url": "https://staging-api.cerfaos.fr",
+            "description": "Staging API Server"
+        },
+        {
+            "url": "http://localhost:8000",
+            "description": "Development API Server"
+        }
+    ],
+    "paths": {
+        "/api/v1/search": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Recherche unifiée multi-modèles",
+                "description": "Effectue une recherche dans tous les types de contenu (itinéraires, sorties, utilisateurs)",
+                "operationId": "18ec40df621a02dda808ae0960328f56",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "Terme de recherche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 255,
+                            "minLength": 2,
+                            "example": "gravel pyrenees"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type de contenu à rechercher",
+                        "schema": {
+                            "type": "string",
+                            "default": "all",
+                            "enum": [
+                                "all",
+                                "itineraries",
+                                "sorties",
+                                "users"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "difficulty[]",
+                        "in": "query",
+                        "description": "Niveaux de difficulté",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "facile",
+                                    "moyen",
+                                    "difficile",
+                                    "expert"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "min_distance",
+                        "in": "query",
+                        "description": "Distance minimale en km",
+                        "schema": {
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    },
+                    {
+                        "name": "max_distance",
+                        "in": "query",
+                        "description": "Distance maximale en km",
+                        "schema": {
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    },
+                    {
+                        "name": "near_lat",
+                        "in": "query",
+                        "description": "Latitude pour recherche géographique",
+                        "schema": {
+                            "type": "number",
+                            "maximum": 90,
+                            "minimum": -90
+                        }
+                    },
+                    {
+                        "name": "near_lng",
+                        "in": "query",
+                        "description": "Longitude pour recherche géographique",
+                        "schema": {
+                            "type": "number",
+                            "maximum": 180,
+                            "minimum": -180
+                        }
+                    },
+                    {
+                        "name": "radius_km",
+                        "in": "query",
+                        "description": "Rayon de recherche en km",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100,
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Nombre maximum de résultats",
+                        "schema": {
+                            "type": "integer",
+                            "default": 20,
+                            "maximum": 50,
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Résultats de recherche",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/SearchResult"
+                                        },
+                                        "meta": {
+                                            "properties": {
+                                                "query": {
+                                                    "type": "string"
+                                                },
+                                                "total_results": {
+                                                    "type": "integer"
+                                                },
+                                                "search_time_ms": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    },
+                    "429": {
+                        "description": "Trop de requêtes"
+                    }
+                }
+            }
+        },
+        "/api/v1/search/nearby": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Recherche géographique de proximité",
+                "description": "Recherche des itinéraires dans un rayon géographique donné",
+                "operationId": "dd323f204314eeb56a99d4070c0cfa0c",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude du point central",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "maximum": 90,
+                            "minimum": -90,
+                            "example": 45.764
+                        }
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude du point central",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "maximum": 180,
+                            "minimum": -180,
+                            "example": 4.8357
+                        }
+                    },
+                    {
+                        "name": "radius_km",
+                        "in": "query",
+                        "description": "Rayon de recherche en kilomètres",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100,
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "difficulty[]",
+                        "in": "query",
+                        "description": "Niveaux de difficulté à inclure",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "facile",
+                                    "moyen",
+                                    "difficile",
+                                    "expert"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Nombre maximum de résultats",
+                        "schema": {
+                            "type": "integer",
+                            "default": 20,
+                            "maximum": 50,
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Itinéraires trouvés à proximité",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Itinerary"
+                                            }
+                                        },
+                                        "meta": {
+                                            "properties": {
+                                                "search_center": {
+                                                    "properties": {
+                                                        "latitude": {
+                                                            "type": "number"
+                                                        },
+                                                        "longitude": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "radius_km": {
+                                                    "type": "integer"
+                                                },
+                                                "count": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    },
+                    "429": {
+                        "description": "Trop de requêtes"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SearchResult": {
+                "properties": {
+                    "itineraries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Itinerary"
+                        }
+                    },
+                    "sorties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Sortie"
+                        }
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "total_results": {
+                        "type": "integer",
+                        "example": 42
+                    },
+                    "search_time_ms": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 15.6
+                    }
+                },
+                "type": "object"
+            },
+            "GeographicSearchResult": {
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Itinerary"
+                        }
+                    },
+                    "center": {
+                        "properties": {
+                            "latitude": {
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "longitude": {
+                                "type": "number",
+                                "format": "float"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "radius_km": {
+                        "type": "integer"
+                    },
+                    "total_found": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Image": {
+                "title": "Image",
+                "description": "Image associée à un contenu",
+                "required": [
+                    "id",
+                    "url"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Identifiant unique de l'image",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "url": {
+                        "description": "URL de l'image",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/images/photo.jpg"
+                    },
+                    "caption": {
+                        "description": "Légende de l'image",
+                        "type": "string",
+                        "example": "Vue panoramique du Mont Ventoux",
+                        "nullable": true
+                    },
+                    "alt_text": {
+                        "description": "Texte alternatif pour l'accessibilité",
+                        "type": "string",
+                        "example": "Cycliste sur chemin de gravel avec Mont Ventoux en arrière-plan",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Itinerary": {
+                "title": "Itinéraire",
+                "description": "Un itinéraire de gravel bike avec toutes ses informations",
+                "required": [
+                    "id",
+                    "title",
+                    "slug",
+                    "status",
+                    "created_at",
+                    "updated_at"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Identifiant unique de l'itinéraire",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Titre de l'itinéraire",
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "Tour du Mont Ventoux - Gravel Epic"
+                    },
+                    "slug": {
+                        "description": "Slug URL-friendly",
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "tour-mont-ventoux-gravel-epic"
+                    },
+                    "description": {
+                        "description": "Description détaillée de l'itinéraire",
+                        "type": "string",
+                        "example": "Un parcours gravel exceptionnel autour du mythique Mont Ventoux..."
+                    },
+                    "personal_comment": {
+                        "description": "Commentaire personnel de l'auteur",
+                        "type": "string",
+                        "example": "Parcours très technique, à réserver aux gravélistes expérimentés",
+                        "nullable": true
+                    },
+                    "location": {
+                        "description": "Informations de localisation",
+                        "properties": {
+                            "departement": {
+                                "type": "string",
+                                "example": "Vaucluse",
+                                "nullable": true
+                            },
+                            "pays": {
+                                "type": "string",
+                                "example": "France",
+                                "nullable": true
+                            },
+                            "bounds": {
+                                "description": "Coordonnées de délimitation",
+                                "properties": {
+                                    "min_latitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 44.1234
+                                    },
+                                    "max_latitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 44.2567
+                                    },
+                                    "min_longitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 5.1234
+                                    },
+                                    "max_longitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 5.2567
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "stats": {
+                        "description": "Statistiques de l'itinéraire",
+                        "properties": {
+                            "distance_km": {
+                                "type": "number",
+                                "format": "float",
+                                "example": 85.5
+                            },
+                            "elevation_gain_m": {
+                                "type": "integer",
+                                "example": 1650,
+                                "nullable": true
+                            },
+                            "elevation_loss_m": {
+                                "type": "integer",
+                                "example": 1650,
+                                "nullable": true
+                            },
+                            "difficulty_level": {
+                                "type": "string",
+                                "enum": [
+                                    "facile",
+                                    "moyen",
+                                    "difficile",
+                                    "expert"
+                                ],
+                                "example": "difficile"
+                            },
+                            "estimated_duration_minutes": {
+                                "type": "integer",
+                                "example": 360,
+                                "nullable": true
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "media": {
+                        "description": "Médias associés",
+                        "properties": {
+                            "featured_image": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "caption": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            },
+                            "images_count": {
+                                "type": "integer",
+                                "example": 12
+                            },
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Image"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "meta": {
+                        "description": "Métadonnées",
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "draft",
+                                    "published",
+                                    "archived"
+                                ],
+                                "example": "published"
+                            },
+                            "published_at": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                            },
+                            "meta_title": {
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "meta_description": {
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "og_image": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "gpx": {
+                        "description": "Informations GPX",
+                        "properties": {
+                            "file_path": {
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "download_url": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true
+                            },
+                            "points_count": {
+                                "type": "integer",
+                                "example": 1247
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "description": "Date de création",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-01-15T10:30:00Z"
+                    },
+                    "updated_at": {
+                        "description": "Date de dernière modification",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-01-20T14:45:00Z"
+                    },
+                    "links": {
+                        "description": "Liens HATEOAS",
+                        "properties": {
+                            "self": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "public": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "gpx_points": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "images": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "author": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true
+                            },
+                            "nearby": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "similar": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "actions": {
+                        "description": "Actions disponibles selon l'utilisateur",
+                        "properties": {
+                            "view": {
+                                "properties": {
+                                    "method": {
+                                        "type": "string",
+                                        "example": "GET"
+                                    },
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "edit": {
+                                "properties": {
+                                    "method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    },
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            },
+                            "delete": {
+                                "properties": {
+                                    "method": {
+                                        "type": "string",
+                                        "example": "DELETE"
+                                    },
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            },
+                            "add_favorite": {
+                                "properties": {
+                                    "method": {
+                                        "type": "string",
+                                        "example": "POST"
+                                    },
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            },
+                            "download_gpx": {
+                                "properties": {
+                                    "method": {
+                                        "type": "string",
+                                        "example": "GET"
+                                    },
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "Sortie": {
+                "title": "Sortie de groupe",
+                "description": "Une sortie de groupe organisée",
+                "required": [
+                    "id",
+                    "title",
+                    "date_sortie",
+                    "organizer_id",
+                    "created_at"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Identifiant unique de la sortie",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Titre de la sortie",
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "Gravel Matinal - Luberon"
+                    },
+                    "description": {
+                        "description": "Description de la sortie",
+                        "type": "string",
+                        "example": "Une belle sortie matinale dans le Luberon avec petit déjeuner au sommet"
+                    },
+                    "date_sortie": {
+                        "description": "Date et heure de la sortie",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-15T08:00:00Z"
+                    },
+                    "duration_minutes": {
+                        "description": "Durée estimée en minutes",
+                        "type": "integer",
+                        "example": 180,
+                        "nullable": true
+                    },
+                    "meeting_point": {
+                        "description": "Point de rendez-vous",
+                        "type": "string",
+                        "example": "Parking de la Mairie de Bonnieux",
+                        "nullable": true
+                    },
+                    "max_participants": {
+                        "description": "Nombre maximum de participants",
+                        "type": "integer",
+                        "example": 12,
+                        "nullable": true
+                    },
+                    "difficulty_level": {
+                        "type": "string",
+                        "enum": [
+                            "facile",
+                            "moyen",
+                            "difficile",
+                            "expert"
+                        ],
+                        "example": "moyen"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "planned",
+                            "confirmed",
+                            "cancelled",
+                            "completed"
+                        ],
+                        "example": "confirmed"
+                    },
+                    "distance_km": {
+                        "description": "Distance approximative en kilomètres",
+                        "type": "number",
+                        "format": "float",
+                        "example": 45.5,
+                        "nullable": true
+                    },
+                    "elevation_gain_m": {
+                        "description": "Dénivelé positif en mètres",
+                        "type": "integer",
+                        "example": 850,
+                        "nullable": true
+                    },
+                    "organizer": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "itinerary": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Itinerary"
+                            }
+                        ],
+                        "nullable": true,
+                        "description": "Itinéraire associé si disponible"
+                    },
+                    "participants": {
+                        "description": "Liste des participants",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "participants_count": {
+                        "description": "Nombre de participants inscrits",
+                        "type": "integer",
+                        "example": 8
+                    },
+                    "created_at": {
+                        "description": "Date de création",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Date de dernière modification",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "links": {
+                        "description": "Liens HATEOAS",
+                        "properties": {
+                            "self": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "join": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true
+                            },
+                            "leave": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true
+                            },
+                            "participants": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "Utilisateur",
+                "description": "Utilisateur de la plateforme Cerfaos",
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "created_at"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Identifiant unique de l'utilisateur",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "Nom complet de l'utilisateur",
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "Jean Dupont"
+                    },
+                    "email": {
+                        "description": "Adresse email",
+                        "type": "string",
+                        "format": "email",
+                        "example": "jean.dupont@example.com"
+                    },
+                    "bio": {
+                        "description": "Biographie de l'utilisateur",
+                        "type": "string",
+                        "example": "Passionné de gravel depuis 10 ans, j'explore les chemins de France",
+                        "nullable": true
+                    },
+                    "avatar_url": {
+                        "description": "URL de l'avatar",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/avatars/jean.jpg",
+                        "nullable": true
+                    },
+                    "location": {
+                        "properties": {
+                            "city": {
+                                "type": "string",
+                                "example": "Lyon"
+                            },
+                            "country": {
+                                "type": "string",
+                                "example": "France"
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "stats": {
+                        "description": "Statistiques de l'utilisateur",
+                        "properties": {
+                            "itineraries_count": {
+                                "type": "integer",
+                                "example": 24
+                            },
+                            "sorties_count": {
+                                "type": "integer",
+                                "example": 8
+                            },
+                            "total_distance_km": {
+                                "type": "number",
+                                "format": "float",
+                                "example": 1248.5
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "role": {
+                        "type": "string",
+                        "default": "user",
+                        "enum": [
+                            "user",
+                            "moderator",
+                            "admin",
+                            "super_admin"
+                        ],
+                        "example": "user"
+                    },
+                    "email_verified_at": {
+                        "description": "Date de vérification de l'email",
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Date de création du compte",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Date de dernière modification",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            },
+            "api_key": {
+                "type": "apiKey",
+                "description": "API Key for external integrations",
+                "name": "X-API-Key",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Search",
+            "description": "Recherche avancée et géolocalisée"
+        }
+    ]
+}

@@ -1,0 +1,404 @@
+/* ============================================
+   CERFAOS DESIGN SYSTEM
+   Modern CSS architecture with design tokens
+   ============================================ */
+
+@layer base {
+  /* Design Tokens - CSS Custom Properties */
+  :root {
+    /* Spacing Scale (8pt grid system) */
+    --space-0: 0;
+    --space-1: 0.25rem;    /* 4px */
+    --space-2: 0.5rem;     /* 8px */
+    --space-3: 0.75rem;    /* 12px */
+    --space-4: 1rem;       /* 16px */
+    --space-5: 1.25rem;    /* 20px */
+    --space-6: 1.5rem;     /* 24px */
+    --space-8: 2rem;       /* 32px */
+    --space-10: 2.5rem;    /* 40px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+    --space-20: 5rem;      /* 80px */
+    --space-24: 6rem;      /* 96px */
+    
+    /* Typography Scale */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    
+    /* Line Heights */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+    
+    /* Border Radius Scale */
+    --radius-none: 0;
+    --radius-sm: 0.125rem;   /* 2px */
+    --radius-base: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem;   /* 6px */
+    --radius-lg: 0.5rem;     /* 8px */
+    --radius-xl: 0.75rem;    /* 12px */
+    --radius-2xl: 1rem;      /* 16px */
+    --radius-3xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;
+    
+    /* Shadow Scale */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Transition Durations */
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+    
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-toast: 1080;
+  }
+  
+  /* Base Reset & Typography */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: var(--leading-normal);
+    color: theme('colors.outdoor.forest.500');
+    background-color: theme('colors.outdoor.cream.50');
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Heading Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', 'Montserrat', system-ui, sans-serif;
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    color: theme('colors.outdoor.forest.600');
+    margin: 0;
+  }
+  
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+  h4 { font-size: var(--text-xl); }
+  h5 { font-size: var(--text-lg); }
+  h6 { font-size: var(--text-base); }
+  
+  /* Focus Management */
+  *:focus {
+    outline: 2px solid theme('colors.outdoor.olive.500');
+    outline-offset: 2px;
+  }
+  
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* ============================================
+     BUTTON SYSTEM
+     ============================================ */
+  
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply font-medium text-sm leading-none;
+    @apply border border-transparent;
+    @apply cursor-pointer select-none;
+    @apply transition-all duration-200 ease-in-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    
+    /* Size Variants */
+    &--sm {
+      @apply px-3 py-2 text-xs;
+      border-radius: var(--radius-md);
+    }
+    
+    &--md {
+      @apply px-4 py-2.5 text-sm;
+      border-radius: var(--radius-lg);
+    }
+    
+    &--lg {
+      @apply px-6 py-3 text-base;
+      border-radius: var(--radius-xl);
+    }
+    
+    &--xl {
+      @apply px-8 py-4 text-lg;
+      border-radius: var(--radius-2xl);
+    }
+    
+    /* Style Variants */
+    &--primary {
+      @apply bg-outdoor-olive-500 text-white;
+      @apply hover:bg-outdoor-olive-600 active:bg-outdoor-olive-700;
+      @apply focus:ring-outdoor-olive-500/50;
+      box-shadow: var(--shadow-sm);
+      
+      &:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+    }
+    
+    &--secondary {
+      @apply bg-outdoor-earth-500 text-white;
+      @apply hover:bg-outdoor-earth-600 active:bg-outdoor-earth-700;
+      @apply focus:ring-outdoor-earth-500/50;
+      box-shadow: var(--shadow-sm);
+      
+      &:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+    }
+    
+    &--outline {
+      @apply bg-transparent border-2 border-outdoor-olive-500;
+      @apply text-outdoor-olive-600;
+      @apply hover:bg-outdoor-olive-50 hover:border-outdoor-olive-600;
+      @apply focus:ring-outdoor-olive-500/50;
+    }
+    
+    &--ghost {
+      @apply bg-transparent text-outdoor-forest-600;
+      @apply hover:bg-outdoor-cream-100 hover:text-outdoor-forest-700;
+      @apply focus:ring-outdoor-forest-500/50;
+    }
+    
+    &--danger {
+      @apply bg-red-500 text-white;
+      @apply hover:bg-red-600 active:bg-red-700;
+      @apply focus:ring-red-500/50;
+    }
+    
+    /* Full Width */
+    &--block {
+      @apply w-full;
+    }
+  }
+  
+  /* ============================================
+     CARD SYSTEM
+     ============================================ */
+  
+  .card {
+    @apply bg-white border border-outdoor-cream-200;
+    @apply transition-all duration-200;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-sm);
+    
+    &:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    &__header {
+      @apply p-6 border-b border-outdoor-cream-200;
+    }
+    
+    &__title {
+      @apply text-lg font-semibold text-outdoor-forest-600;
+    }
+    
+    &__subtitle {
+      @apply text-sm text-outdoor-forest-400 mt-1;
+    }
+    
+    &__content {
+      @apply p-6;
+    }
+    
+    &__footer {
+      @apply px-6 py-4 border-t border-outdoor-cream-200;
+      @apply bg-outdoor-cream-50/50;
+    }
+    
+    /* Card Variants */
+    &--elevated {
+      box-shadow: var(--shadow-lg);
+      
+      &:hover {
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-2px);
+      }
+    }
+    
+    &--interactive {
+      @apply cursor-pointer;
+      
+      &:hover {
+        @apply border-outdoor-olive-300;
+        transform: translateY(-1px);
+      }
+    }
+  }
+  
+  /* ============================================
+     FORM SYSTEM
+     ============================================ */
+  
+  .form-field {
+    @apply space-y-2;
+    
+    &__label {
+      @apply block text-sm font-medium text-outdoor-forest-600;
+      @apply flex items-center gap-2;
+    }
+    
+    &__input {
+      @apply relative;
+    }
+    
+    &__help {
+      @apply text-xs text-outdoor-forest-400;
+    }
+    
+    &__error {
+      @apply text-xs text-red-600 flex items-center gap-1;
+    }
+  }
+  
+  .input {
+    @apply block w-full px-3 py-2;
+    @apply bg-white border border-outdoor-cream-300;
+    @apply text-outdoor-forest-600 placeholder-outdoor-forest-300;
+    @apply transition-colors duration-200;
+    @apply focus:border-outdoor-olive-500 focus:ring-1 focus:ring-outdoor-olive-500;
+    border-radius: var(--radius-lg);
+    
+    &--sm {
+      @apply px-2.5 py-1.5 text-sm;
+      border-radius: var(--radius-md);
+    }
+    
+    &--lg {
+      @apply px-4 py-3 text-lg;
+      border-radius: var(--radius-xl);
+    }
+    
+    &--error {
+      @apply border-red-300 focus:border-red-500 focus:ring-red-500;
+    }
+  }
+  
+  .select {
+    @extend .input;
+    @apply appearance-none bg-no-repeat bg-right;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+  
+  .textarea {
+    @extend .input;
+    @apply resize-y;
+    min-height: 80px;
+  }
+  
+  /* ============================================
+     BADGE SYSTEM
+     ============================================ */
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5;
+    @apply text-xs font-medium;
+    border-radius: var(--radius-full);
+    
+    &--primary {
+      @apply bg-outdoor-olive-100 text-outdoor-olive-700;
+    }
+    
+    &--secondary {
+      @apply bg-outdoor-earth-100 text-outdoor-earth-700;
+    }
+    
+    &--success {
+      @apply bg-green-100 text-green-700;
+    }
+    
+    &--warning {
+      @apply bg-yellow-100 text-yellow-700;
+    }
+    
+    &--danger {
+      @apply bg-red-100 text-red-700;
+    }
+    
+    &--info {
+      @apply bg-blue-100 text-blue-700;
+    }
+  }
+  
+  /* ============================================
+     UTILITY CLASSES
+     ============================================ */
+  
+  .u-grid {
+    display: grid;
+  }
+  
+  .u-flex {
+    display: flex;
+  }
+  
+  .u-items-center {
+    align-items: center;
+  }
+  
+  .u-justify-between {
+    justify-content: space-between;
+  }
+  
+  .u-gap-2 { gap: var(--space-2); }
+  .u-gap-3 { gap: var(--space-3); }
+  .u-gap-4 { gap: var(--space-4); }
+  .u-gap-6 { gap: var(--space-6); }
+  .u-gap-8 { gap: var(--space-8); }
+  
+  .u-space-y-2 > * + * { margin-top: var(--space-2); }
+  .u-space-y-3 > * + * { margin-top: var(--space-3); }
+  .u-space-y-4 > * + * { margin-top: var(--space-4); }
+  .u-space-y-6 > * + * { margin-top: var(--space-6); }
+  .u-space-y-8 > * + * { margin-top: var(--space-8); }
+  
+  .u-text-xs { font-size: var(--text-xs); }
+  .u-text-sm { font-size: var(--text-sm); }
+  .u-text-lg { font-size: var(--text-lg); }
+  
+  .u-text-muted {
+    color: theme('colors.outdoor.forest.400');
+  }
+  
+  .u-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

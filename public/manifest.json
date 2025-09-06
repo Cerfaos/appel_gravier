@@ -1,0 +1,40 @@
+{
+    "name": "CERFAOS - Ultra Admin Dashboard",
+    "short_name": "CERFAOS Admin",
+    "description": "Dashboard d'administration ultra-moderne pour passionnés d'aventure et de montagne",
+    "theme_color": "#1F2937",
+    "background_color": "#0F172A",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "start_url": "/dashboard",
+    "icons": [
+        {
+            "src": "backend/assets/images/favicon.ico",
+            "sizes": "16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "backend/assets/images/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "backend/assets/images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "backend/assets/images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["business", "productivity", "utilities"],
+    "lang": "fr",
+    "dir": "ltr",
+    "prefer_related_applications": false
+}

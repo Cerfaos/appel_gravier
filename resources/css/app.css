@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Import design system and components */
+@import './design-system.css';
+@import './components/itineraries.css';
+@import './animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Legacy support - will be gradually migrated to design-system.css */
+@layer base {
+  /* Custom scrollbar for outdoor theme */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-outdoor-cream-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-outdoor-olive-300 rounded-lg;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-outdoor-olive-400;
+  }
+}
+
+/* Legacy component styles - TODO: migrate to design-system.css */
+@layer components {
+  /* Legacy button styles - use new btn classes instead */
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 bg-outdoor-olive-500 border border-transparent rounded-xl2 font-medium text-white shadow-outdoor-sm transition-all duration-200 hover:bg-outdoor-olive-600 hover:shadow-outdoor-md focus:outline-none focus:ring-2 focus:ring-outdoor-olive-500 focus:ring-offset-2 active:bg-outdoor-olive-700;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center px-6 py-3 bg-outdoor-earth-500 border border-transparent rounded-xl2 font-medium text-white shadow-outdoor-sm transition-all duration-200 hover:bg-outdoor-earth-600 hover:shadow-outdoor-md focus:outline-none focus:ring-2 focus:ring-outdoor-earth-500 focus:ring-offset-2 active:bg-outdoor-earth-700;
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center px-6 py-3 bg-transparent border-2 border-outdoor-olive-500 rounded-xl2 font-medium text-outdoor-olive-600 transition-all duration-200 hover:bg-outdoor-olive-50 hover:border-outdoor-olive-600 focus:outline-none focus:ring-2 focus:ring-outdoor-olive-500 focus:ring-offset-2;
+  }
+  
+  /* Legacy card styles - use new card classes instead */
+  .card-outdoor {
+    @apply bg-white border border-outdoor-cream-200 rounded-3xl shadow-outdoor-sm p-6 transition-all duration-200 hover:shadow-outdoor-lg;
+  }
+  
+  /* Legacy input styles - use new input classes instead */
+  .input-outdoor {
+    @apply block w-full px-4 py-3 border border-outdoor-cream-300 rounded-xl2 bg-white text-outdoor-forest-600 placeholder-outdoor-forest-300 transition-colors duration-200 focus:border-outdoor-olive-500 focus:ring-outdoor-olive-500 focus:ring-opacity-50;
+  }
+  
+  /* Link Component */
+  .link-outdoor {
+    @apply text-outdoor-ochre-400 font-medium transition-colors duration-200 hover:text-outdoor-ochre-600 underline decoration-outdoor-ochre-200 hover:decoration-outdoor-ochre-400 underline-offset-2;
+  }
+  
+  /* Navigation Link */
+  .nav-link {
+    @apply text-outdoor-forest-600 font-medium transition-all duration-200 hover:text-outdoor-olive-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-outdoor-olive-500 after:transition-all after:duration-300 hover:after:w-full;
+  }
+  
+  /* Legacy badge styles - use new badge classes instead */
+  .badge-outdoor {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-outdoor-olive-100 text-outdoor-olive-700;
+  }
+}
