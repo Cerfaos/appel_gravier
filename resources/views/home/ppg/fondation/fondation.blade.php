@@ -3,7 +3,7 @@
 @section('home')
 
 <!-- Nouvelle section -->
-<div class="bg-outdoor-cream-50 min-h-screen">
+<div class="bg-outdoor-cream-50 min-h-screen ppg-fondation-page">
 
 <!-- Hero Section Préparation -->
 <section class="relative bg-gradient-to-r from-outdoor-forest-500 to-outdoor-forest-800 text-white py-20" >
@@ -92,12 +92,12 @@
 
 <style>
   /* ===== Thème Outdoor Unifié ===== */
-  :root {
+  .ppg-fondation-page {
     --bg: #fefae0;
     --bg2: #f7f5e8;
     --panel: rgba(40, 54, 24, 0.06);
-    --text: #283618;
-    --muted: #606c38;
+    --text: #1a2410;
+    --muted: #2d3d1a;
     --stroke: rgba(40, 54, 24, 0.14);
     --g1: #dda15e;
     --g2: #bc6c25;
@@ -109,7 +109,7 @@
     --shadow: 0 14px 40px rgba(40, 54, 24, 0.15);
   }
   @media (prefers-color-scheme: light) {
-    :root {
+    .ppg-fondation-page {
       --bg: #fefae0;
       --bg2: #f7f5e8;
       --panel: rgba(40, 54, 24, 0.04);
@@ -119,7 +119,7 @@
       --shadow: 0 14px 36px rgba(40, 54, 24, 0.16);
     }
   }
-  :root[data-theme="dark"] {
+  .ppg-fondation-page[data-theme="dark"] {
     --bg: #283618;
     --bg2: #1f2a13;
     --panel: rgba(254, 250, 224, 0.06);
@@ -127,12 +127,12 @@
     --muted: #dda15e;
     --stroke: rgba(254, 250, 224, 0.14);
   }
-  :root[data-theme="light"] {
+  .ppg-fondation-page[data-theme="light"] {
     --bg: #fefae0;
     --bg2: #f7f5e8;
     --panel: rgba(40, 54, 24, 0.04);
-    --text: #283618;
-    --muted: #606c38;
+    --text: #1a2410;
+    --muted: #2d3d1a;
     --stroke: rgba(40, 54, 24, 0.12);
     --shadow: 0 14px 36px rgba(40, 54, 24, 0.16);
   }

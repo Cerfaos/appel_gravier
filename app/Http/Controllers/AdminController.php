@@ -723,7 +723,7 @@ class AdminController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('upload/user_images'), $filename);
+            $file->move(base_path('upload/user_images'), $filename);
             $data->photo = $filename;
 
             if ($oldPhotoPath && $oldPhotoPath !== $filename) {

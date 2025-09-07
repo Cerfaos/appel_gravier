@@ -536,7 +536,7 @@ class SortieController extends Controller
             }
             
             // Créer le répertoire s'il n'existe pas
-            $uploadDir = public_path('upload/sortie');
+            $uploadDir = base_path('upload/sortie');
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }

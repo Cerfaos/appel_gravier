@@ -42,7 +42,7 @@ class ReviewController extends Controller
                 $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                 
                 $image = $manager->read($image);
-                $image->resize(60, 60)->save(public_path('upload/review/'.$name_gen));
+                $image->resize(60, 60)->save(base_path('upload/review/'.$name_gen));
                 $save_url = 'upload/review/'.$name_gen;
             } catch (\Exception $e) {
                 $notification = array(
@@ -106,7 +106,7 @@ class ReviewController extends Controller
                 $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                 
                 $image = $manager->read($image);
-                $image->resize(60, 60)->save(public_path('upload/review/'.$name_gen));
+                $image->resize(60, 60)->save(base_path('upload/review/'.$name_gen));
                 $save_url = 'upload/review/'.$name_gen;
             } catch (\Exception $e) {
                 $notification = array(

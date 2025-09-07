@@ -51,7 +51,7 @@ it('peut redimensionner et sauvegarder une image d\'itinéraire', function () {
 
 it('crée le dossier upload/itinerary s\'il n\'existe pas', function () {
     // Supprimer le dossier s'il existe
-    $uploadDir = public_path('upload/itinerary');
+    $uploadDir = base_path('upload/itinerary');
     if (is_dir($uploadDir)) {
         // Supprimer tous les fichiers d'abord
         $files = glob($uploadDir . '/*');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\HomeContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AboutContentController extends Controller
 {
@@ -48,13 +47,23 @@ class AboutContentController extends Controller
             if ($content->content && 
                 $content->content !== 'frontend/assets/images/img_cerfaos/hero_about.png' && 
                 !str_contains($content->content, 'frontend/assets/')) {
-                if (Storage::disk('public')->exists($content->content)) {
-                    Storage::disk('public')->delete($content->content);
+                $oldImagePath = base_path($content->content);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
                 }
             }
 
+            // Create upload directory if it doesn't exist
+            $uploadDir = base_path('upload/about');
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
             // Store new image
-            $imagePath = $request->file('image_file')->store('about', 'public');
+            $file = $request->file('image_file');
+            $imageName = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move($uploadDir, $imageName);
+            $imagePath = 'upload/about/' . $imageName;
             $content->update(['content' => $imagePath]);
             
             session()->flash('success', 'Image mise à jour avec succès !');

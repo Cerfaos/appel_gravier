@@ -56,15 +56,6 @@ class ItineraryController extends Controller
     // Enregistrer un nouvel itinéraire
     public function store(Request $request)
     {
-        // EMERGENCY DEBUG - Log EVERYTHING that reaches this method
-        Log::emergency('ItineraryController::store - REACHED!', [
-            'all_data' => $request->all(),
-            'method' => $request->method(),
-            'url' => $request->url(),
-            'user_id' => auth()->id(),
-            'has_files' => !empty($request->allFiles()),
-            'csrf_token' => $request->input('_token')
-        ]);
         
         Log::info('ItineraryController::store - Début de la création', [
             'user_id' => auth()->id(),
@@ -144,8 +135,10 @@ class ItineraryController extends Controller
             
             // Gérer les images si présentes
             $imageErrors = [];
+            
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $index => $image) {
+                    
                     if ($image->isValid()) {
                         try {
                             $imagePath = $this->uploadItineraryImage($image);
@@ -158,9 +151,10 @@ class ItineraryController extends Controller
                                 'is_featured' => $request->featured_image_index == $index,
                                 'order_position' => $index
                             ]);
+                            
                         } catch (\Exception $e) {
                             // Log l'erreur et l'ajouter à la notification
-                            Log::error('Erreur upload image itinéraire: ' . $e->getMessage());
+                            Log::error('Erreur upload image: ' . $e->getMessage());
                             $imageErrors[] = "Image {$index}: " . $e->getMessage();
                         }
                     }
@@ -476,16 +470,6 @@ class ItineraryController extends Controller
     private function uploadItineraryImage($file)
     {
         try {
-            // Log détaillé pour le débogage
-            Log::info('uploadItineraryImage appelée avec:', [
-                'file_exists' => $file ? 'oui' : 'non',
-                'file_class' => $file ? get_class($file) : 'null',
-                'is_valid' => $file ? ($file->isValid() ? 'oui' : 'non') : 'n/a',
-                'original_name' => $file ? $file->getClientOriginalName() : 'n/a',
-                'mime_type' => $file ? $file->getMimeType() : 'n/a',
-                'size' => $file ? $file->getSize() : 'n/a',
-                'error' => $file ? $file->getError() : 'n/a'
-            ]);
             
             // Vérifier que le fichier est valide
             if (!$file) {
@@ -499,7 +483,7 @@ class ItineraryController extends Controller
             }
             
             // Créer le répertoire s'il n'existe pas
-            $uploadDir = public_path('upload/itinerary');
+            $uploadDir = base_path('upload/itinerary');
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }
@@ -536,17 +520,10 @@ class ItineraryController extends Controller
                 throw new \Exception('Erreur lors de la sauvegarde de la vignette');
             }
             
-            Log::info('Image traitée avec succès:', [
-                'main_path' => $mainImagePath,
-                'thumb_path' => $thumbPath,
-                'return_path' => 'upload/itinerary/' . $name_gen
-            ]);
-            
             // Retourner le chemin relatif pour la base de données
             return 'upload/itinerary/' . $name_gen;
             
         } catch (\Exception $e) {
-            // Log l'erreur pour le débogage
             Log::error('Erreur uploadItineraryImage: ' . $e->getMessage());
             throw new \Exception('Erreur lors du traitement de l\'image: ' . $e->getMessage());
         }

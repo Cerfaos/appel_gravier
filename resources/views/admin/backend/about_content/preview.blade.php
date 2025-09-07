@@ -82,7 +82,7 @@
           @if(isset($aboutData['about_image']) && $aboutData['about_image']->content)
             <div class="image-section" style="margin-top: 4rem; text-align: center;">
               <div style="max-width: 600px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
-                <img src="{{ str_contains($aboutData['about_image']->content, 'frontend/') ? asset($aboutData['about_image']->content) : asset('storage/' . $aboutData['about_image']->content) }}" 
+                <img src="{{ asset($aboutData['about_image']->content) }}" 
                      alt="About Image" 
                      style="width: 100%; height: auto; display: block;">
               </div>

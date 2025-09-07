@@ -36,7 +36,7 @@
               $imagePath = \App\Models\HomeContent::getValue('about_image', 'content', 'frontend/assets/images/img_cerfaos/vertical_rouge.png');
             @endphp
             <img 
-              src="{{ str_contains($imagePath, 'frontend/') ? asset($imagePath) : asset('storage/' . $imagePath) }}" 
+              src="{{ asset($imagePath) }}" 
               alt="Équipe Cerfaos en montagne"
               class="w-full h-auto rounded-3xl"
             />
