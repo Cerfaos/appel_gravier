@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SortieController;
 use Illuminate\Support\Facades\Route;
 
+// Route principale
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {

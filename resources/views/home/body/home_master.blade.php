@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
 
   <!-- Forest Premium Design System -->
-  <link rel="stylesheet" href="{{ asset('css/archive/forest-premium-design-system.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('css/archive/forest-premium-design-system.css') }}"> --}}
   
   <!-- Vite Assets with Outdoor Tailwind Theme -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])

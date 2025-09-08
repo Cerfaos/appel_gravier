@@ -3,10 +3,6 @@ import './bootstrap';
 // Import core utilities
 import { animations, dom, eventBus, forms, http, storage, utils } from './modules/core-utilities';
 
-// Import feature modules
-import './modules/enhanced-forms';
-import './modules/gpx-uploader';
-
 // Import Alpine.js
 import Alpine from 'alpinejs';
 
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Global error handling
 window.addEventListener('error', (event) => {
   console.error('Global error:', event.error);
-  // You can add error reporting here
 });
 
 // Performance monitoring
