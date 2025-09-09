@@ -16,8 +16,7 @@
   <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.3"%3E%3Cpath d="M40 0c22.091 0 40 17.909 40 40s-17.909 40-40 40S0 62.091 0 40 17.909 0 40 0zm0 20c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20z"/%3E%3C/g%3E%3C/svg%3E')]"></div>
   
   <!-- Refined Decorative Elements -->
-  <div class="absolute top-20 right-16 text-4xl opacity-15 animate-sway">🏔️</div>
-  <div class="absolute bottom-32 left-16 text-3xl opacity-15 animate-gentle-bounce">🌲</div>
+ 
   <div class="absolute top-2/3 right-1/4 text-2xl opacity-10 animate-sway" style="animation-delay: 1s">🍃</div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,8 +46,8 @@
             <div class="absolute -top-4 -right-4 bg-white rounded-2xl p-3 shadow-xl border border-outdoor-olive-100 transform rotate-6 hover:rotate-3 transition-transform duration-300">
               <div class="text-center">
                 <span class="text-2xl">🏔️</span>
-                <div class="text-xs font-bold text-outdoor-forest-600 mt-1">15 Ans</div>
-                <div class="text-xs text-outdoor-forest-400">Expérience</div>
+                <div class="text-xs font-bold text-outdoor-forest-600 mt-1">Aucunes</div>
+                <div class="text-xs text-outdoor-forest-400">Expériences</div>
               </div>
             </div>
             
@@ -56,7 +55,7 @@
               <div class="text-center">
                 <span class="text-2xl">🚴‍♂️</span>
                 <div class="text-xs font-bold text-outdoor-forest-600 mt-1">Gravel</div>
-                <div class="text-xs text-outdoor-forest-400">Spécialiste</div>
+                <div class="text-xs text-outdoor-forest-400">Débutant</div>
               </div>
             </div>
           

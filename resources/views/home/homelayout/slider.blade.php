@@ -20,9 +20,9 @@
   </div>
 
   <!-- Decorative Elements -->
-  <div class="absolute top-20 left-10 text-6xl opacity-20 animate-sway">🌲</div>
-  <div class="absolute bottom-40 right-20 text-4xl opacity-30 animate-gentle-bounce" style="animation-delay: 0.5s">🏔️</div>
-  <div class="absolute top-1/3 right-10 text-3xl opacity-25 animate-sway" style="animation-delay: 1s">🍃</div>
+ 
+ 
+ 
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -57,7 +57,7 @@
                 <span class="text-sm">🏔️</span>
               </div>
               <div>
-                <div class="font-bold text-outdoor-forest-600 text-lg">15+</div>
+                <div class="font-bold text-outdoor-forest-600 text-lg">25+</div>
                 <div class="text-xs text-outdoor-forest-400">Années d'expérience</div>
               </div>
             </div>
@@ -68,8 +68,8 @@
                 <span class="text-sm">🥾</span>
               </div>
               <div>
-                <div class="font-bold text-outdoor-forest-600 text-lg">500+</div>
-                <div class="text-xs text-outdoor-forest-400">Aventuriers guidés</div>
+                <div class="font-bold text-outdoor-forest-600 text-lg">5000+</div>
+                <div class="text-xs text-outdoor-forest-400">De Km découverts</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
               </div>
               <div>
                 <div class="font-bold text-outdoor-forest-600 text-lg">50+</div>
-                <div class="text-xs text-outdoor-forest-400">Itinéraires uniques</div>
+                <div class="text-xs text-outdoor-forest-400">Itinéraires uniques futurs</div>
               </div>
             </div>
           </div>
@@ -123,8 +123,8 @@
               <div class="flex items-center space-x-2">
                 <span class="text-2xl">🏆</span>
                 <div>
-                  <div class="text-sm font-bold text-outdoor-forest-600">Guide Certifié</div>
-                  <div class="text-xs text-outdoor-forest-400">FFME & UIAGM</div>
+                  <div class="text-sm font-bold text-outdoor-forest-600">Débutant Certifié</div>
+                  <div class="text-xs text-outdoor-forest-400">En éternel formation</div>
                 </div>
               </div>
             </div>
@@ -133,8 +133,8 @@
               <div class="flex items-center space-x-2">
                 <span class="text-2xl">⭐</span>
                 <div>
-                  <div class="text-sm font-bold text-outdoor-forest-600">4.9/5</div>
-                  <div class="text-xs text-outdoor-forest-400">150+ Avis</div>
+                  <div class="text-sm font-bold text-outdoor-forest-600">Les avis</div>
+                  <div class="text-xs text-outdoor-forest-400">M'en fou</div>
                 </div>
               </div>
             </div>

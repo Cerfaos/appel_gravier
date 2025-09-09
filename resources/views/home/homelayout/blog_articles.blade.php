@@ -16,9 +16,7 @@
   <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23d2691e" fill-opacity="0.3"%3E%3Cpath d="M25 0L50 25L25 50L0 25z"/%3E%3C/g%3E%3C/svg%3E')]"></div>
   
   <!-- Themed Decorative Elements -->
-  <div class="absolute top-10 right-10 text-6xl opacity-10 animate-sway">📝</div>
-  <div class="absolute bottom-20 left-20 text-4xl opacity-10 animate-gentle-bounce">📖</div>
-  <div class="absolute top-1/3 left-1/6 text-3xl opacity-8 animate-sway" style="animation-delay: 1.5s">✍️</div>
+  
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     

@@ -13,11 +13,11 @@
                     <div>
                         <h1 class="text-5xl md:text-6xl font-bold mb-6">
                             <span class="text-outdoor-cream-50">Mon</span><br>
-                            <span class="text-outdoor-ochre-400">Histoire</span>
+                            <span class="text-outdoor-ochre-400">Histoire Sportive</span>
                         </h1>
                         
                         <p class="text-xl md:text-2xl mb-8 text-outdoor-cream-50/90 leading-relaxed">
-                            Découvrez le parcours qui m'a mené vers l'aventure gravel et la passion du vélo outdoor.
+                            Découvrez mon parcours qui m'a mené vers l'aventure gravel et la passion du vélo.
                         </p>
                         
                         <div class="flex flex-wrap gap-6 text-outdoor-cream-50/90 mb-8">
@@ -89,8 +89,10 @@
                         Découvrez mon <span class="text-outdoor-ochre-400">parcours</span>
                     </h2>
                     <p class="text-xl text-outdoor-forest-400 max-w-4xl mx-auto leading-relaxed">
-                        Une vidéo qui retrace mon parcours, mes motivations et ma passion pour l'aventure outdoor. 
-                        Plongez dans l'univers qui m'a inspiré à créer Cerfaos.
+                        J'ai créé cette vidéo avec Midjourney. Je suis passionné par la création d'images et de vidéos,
+                        utilisant tous les outils à ma disposition. 
+                        Que ce soit avec une tablette graphique ou un simple crayon, je donne vie à mes idées puis les peaufine dans Photoshop, 
+                        qui constitue mon environnement créatif de référence.un ordinateur accompagnent mes créations.
                     </p>
                 </div>
 
@@ -140,7 +142,7 @@
                         Moments <span class="text-outdoor-ochre-400">Clés</span>
                     </h2>
                     <p class="text-xl md:text-2xl text-outdoor-forest-400 max-w-4xl mx-auto leading-relaxed">
-                        Les étapes marquantes qui ont forgé ma passion pour l'outdoor et la création de CERFAOS.
+                        Les étapes marquantes qui ont forgé ma passion du sport et des défis.
                     </p>
                 </div>
 
@@ -156,7 +158,7 @@
                                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-forest-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     
                                     <div class="relative z-10">
-                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/aube_foret.png') }}" alt="Première randonnée" class="aspect-video object-contain rounded-lg w-full mb-4">
+                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/judo_enfant.png') }}" alt="Première randonnée" class="aspect-video object-contain rounded-lg w-full mb-4">
                                     </div>
                                 </div>
                             </div>
@@ -167,19 +169,19 @@
                                     </div>
                                     <div>
                                         <h3 class="text-2xl font-black text-outdoor-forest-500 group-hover:text-outdoor-forest-600 transition-colors duration-300">
-                                            Ma Première Randonnée
+                                            Le Judo
                                         </h3>
-                                        <span class="text-outdoor-ochre-500 font-semibold text-sm uppercase tracking-wider">Le Déclic</span>
+                                        <span class="text-outdoor-ochre-500 font-semibold text-sm uppercase tracking-wider">Mon ADN</span>
                                     </div>
                                 </div>
                                 
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    Cette première expérience en montagne m'a appris que la nature était bien plus qu'un simple décor. 
-                                    Chaque pas révélait une nouvelle perspective, chaque respiration me connectait davantage à l'environnement.
+                                    De 6 ans à 20 ans, j'ai léché du tatami, j'ai connu mes plus grandes joies et mes plus grandes épreuves.
+                                    Ceinture noir à 15 ans, la 2° Dan à 18 ans, j'ai grandi et je suis devenu un adulte avec la philosophie de l'abnégation.
                                 </p>
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    C'est à ce moment que j'ai compris que l'aventure outdoor n'était pas qu'un hobby, 
-                                    mais un <strong class="text-outdoor-ochre-500">mode de vie</strong> qui m'apportait équilibre et sérénité.
+                                    Le judo m'a appris à m'affronter, à m'élever, à m'évoluer, à m'améliorer.
+                                    mais aussi un <strong class="text-outdoor-ochre-500">mode de vie</strong> qui m'apportait équilibre et sérénité.
                                 </p>
                             </div>
                         </div>
@@ -195,19 +197,18 @@
                                     </div>
                                     <div>
                                         <h3 class="text-2xl font-black text-outdoor-forest-500 group-hover:text-outdoor-forest-600 transition-colors duration-300">
-                                            La Découverte du Vélo
+                                            La Découverte du Kayak
                                         </h3>
-                                        <span class="text-outdoor-ochre-500 font-semibold text-sm uppercase tracking-wider">Évolution</span>
+                                        <span class="text-outdoor-ochre-500 font-semibold text-sm uppercase tracking-wider">Évasion</span>
                                     </div>
                                 </div>
                                 
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    Le vélo est devenu mon compagnon de route, me permettant d'explorer des territoires 
-                                    inaccessibles à pied et de ressentir la <strong class="text-outdoor-ochre-500">liberté de rouler</strong> sur des chemins sauvages.
+                                    Après l'armée,  j'ai eu la chance de vivre ma plus belle réalisation : fonder une famille avec mes deux fils, mes amours éternels. C'est ensuite, à 40 ans, que j'ai découvert le kayak en eaux vives puis le kayak de mer. 
+                                    Quel défi c'était à cet âge, <strong>   </strong> class="text-outdoor-ochre-500">mais quelle période extraordinaire et quelle ivresse !</strong>
                                 </p>
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    Chaque sortie à vélo est une nouvelle aventure, une occasion de découvrir des paysages 
-                                    époustouflants et de partager ces moments avec d'autres passionnés.
+                                    Chaque sortie en kayak est une nouvelle aventure, une occasion de découvrir des paysages époustouflants et de partager ces moments avec d'autres passionnés et amis.
                                 </p>
                             </div>
                             <div>
@@ -216,7 +217,7 @@
                                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-ochre-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     
                                     <div class="relative z-10">
-                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/moi_crevaison.png') }}" alt="Première sortie vélo" class="aspect-video object-contain rounded-lg w-full mb-4">
+                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/moi_kmer.png') }}" alt="Première sortie vélo" class="aspect-video object-contain rounded-lg w-full mb-4">
                                        
                                     </div>
                                 </div>
@@ -233,7 +234,7 @@
                                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-earth-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     
                                     <div class="relative z-10">
-                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/moi_bureau.png') }}" alt="Communauté outdoor" class="aspect-video object-contain rounded-lg w-full mb-4">
+                                        <img src="{{ asset('frontend/assets/images/img_cerfaos/moi_descente02.png') }}" alt="Communauté outdoor" class="aspect-video object-contain rounded-lg w-full mb-4">
                                     </div>
                                 </div>
                             </div>
@@ -246,17 +247,19 @@
                                         <h3 class="text-2xl font-black text-outdoor-forest-500 group-hover:text-outdoor-forest-600 transition-colors duration-300">
                                             La Création de Cerfaos
                                         </h3>
-                                        <span class="text-outdoor-earth-500 font-semibold text-sm uppercase tracking-wider">Accomplissement</span>
+                                        <span class="text-outdoor-earth-500 font-semibold text-sm uppercase tracking-wider">Nouveau Défi</span>
                                     </div>
                                 </div>
                                 
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    Fort de ces expériences, j'ai créé <strong class="text-outdoor-earth-500">Cerfaos</strong> pour partager ma passion et aider d'autres 
-                                    aventuriers à découvrir les merveilles de l'outdoor.
+                                    Entre temps, j'ai fait de la boxe française et anglaise afin de retrouver l'esprit du combat. Seulement, je me suis lassé, cela ne me corresdait plus, envie d'autres sensations. <br>
+                                    Fort de ces expériences, je réalise <strong class="text-outdoor-earth-500"> Cerfaos</strong>
+                                    pour m’accompagner dans deux nouveaux défis : un projet web en Laravel/PHP, épaulé par Claude Code, et la découverte du gravel. 
+                                    Concevoir une plateforme, c’est le plaisir du cerveau en ébullition ; enfourcher un vélo, c’est le langage des jambes.                                     
                                 </p>
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
-                                    Cette plateforme est le fruit de mon engagement envers la communauté outdoor et ma volonté 
-                                    de rendre l'aventure accessible à tous.
+                                    Au fond, c’est un clin d’œil à feu mon père, passionné de deux-roues. Dans mon enfance, le vélo ne m’a pas séduit — trop contraignant, pensais-je.
+                                    Mais je me souviens, attendri, des longues balades sur mon petit Gitane ocre.
                                 </p>
                             </div>
                         </div>
