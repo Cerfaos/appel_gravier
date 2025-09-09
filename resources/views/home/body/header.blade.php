@@ -73,12 +73,13 @@
         <!-- CTA Button -->
        
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Button - Accessible et responsive -->
         <button 
-          class="lg:hidden p-3 bg-white border border-gray-200 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl shadow-md transition-all duration-200" 
+          class="lg:hidden p-2 min-w-[44px] min-h-[44px] bg-outdoor-ochre-500/10 border border-outdoor-ochre-200 text-outdoor-forest-600 hover:text-outdoor-ochre-600 hover:bg-outdoor-ochre-500/20 rounded-xl shadow-md transition-all duration-200 flex items-center justify-center" 
           id="hamburger-btn"
+          aria-label="Menu de navigation"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
@@ -86,33 +87,33 @@
     </div>
   </div>
 
-  <!-- Menu Mobile Harmonie Charcoal/Gold -->
-  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-80 bg-gradient-to-br from-slate-50 to-stone-100 transform translate-x-full transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600">
+  <!-- Menu Mobile Responsive - Largeur adaptative -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-slate-50 to-stone-100 transform translate-x-full transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600">
     
-    <!-- Header Menu Mobile Charcoal/Gold -->
-    <div class="bg-gradient-to-r from-slate-800 to-stone-800 px-6 py-5 border-b-2 border-amber-500">
+    <!-- Header Menu Mobile Responsive -->
+    <div class="bg-gradient-to-r from-slate-800 to-stone-800 px-4 sm:px-6 py-4 border-b-2 border-amber-500">
       <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-amber-500/20 backdrop-blur rounded-xl flex items-center justify-center ring-1 ring-amber-400/30">
-            <img src="{{ asset('frontend/assets/images/img_cerfaos/logo-vintage.png') }}" alt="Cerfaos" class="h-6 w-auto filter brightness-0 invert">
+        <div class="flex items-center space-x-2 sm:space-x-3 min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-amber-500/20 backdrop-blur rounded-xl flex items-center justify-center ring-1 ring-amber-400/30 flex-shrink-0">
+            <img src="{{ asset('frontend/assets/images/img_cerfaos/logo-vintage.png') }}" alt="Cerfaos" class="h-4 sm:h-6 w-auto filter brightness-0 invert">
           </div>
-          <div>
-            <div class="font-bold text-xl text-amber-100">Cerfaos</div>
-            <div class="text-sm text-amber-200/80 font-medium">L'appel du gravier</div>
+          <div class="min-w-0">
+            <div class="font-bold text-lg sm:text-xl text-amber-100 truncate">Cerfaos</div>
+            <div class="text-xs sm:text-sm text-amber-200/80 font-medium truncate">L'appel du gravier</div>
           </div>
         </div>
-        <button onclick="toggleMobileMenu()" class="p-2 bg-amber-500/20 backdrop-blur rounded-xl hover:bg-amber-500/30 text-amber-100 hover:text-amber-50 transition-all duration-200 ring-1 ring-amber-400/20">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button onclick="toggleMobileMenu()" class="p-2 min-w-[44px] min-h-[44px] bg-amber-500/20 backdrop-blur rounded-xl hover:bg-amber-500/30 text-amber-100 hover:text-amber-50 transition-all duration-200 ring-1 ring-amber-400/20 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
     </div>
 
-    <!-- Navigation Mobile - Harmonie Charcoal/Gold -->
+    <!-- Navigation Mobile Responsive -->
     <div class="flex-1 bg-gradient-to-b from-slate-50 to-stone-100 overflow-y-auto">
-      <div class="p-6">
-        <nav class="space-y-3">
+      <div class="p-4 sm:p-6">
+        <nav class="space-y-2 sm:space-y-3">
           
           <!-- Accueil -->
           <a href="{{ url('/') }}" onclick="toggleMobileMenu()" class="mobile-nav-item-charcoal group">
@@ -303,12 +304,12 @@ document.getElementById('hamburger-btn').addEventListener('click', toggleMobileM
 </script>
 
 <style>
-/* Menu Mobile Harmonie Charcoal/Gold */
+/* Menu Mobile Responsive - Harmonie Charcoal/Gold */
 .mobile-nav-item-charcoal {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 14px 16px;
   color: #1e293b;
   font-weight: 700;
   border-radius: 16px;
@@ -319,6 +320,23 @@ document.getElementById('hamburger-btn').addEventListener('click', toggleMobileM
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(8px);
+  font-size: 16px;
+  min-height: 56px;
+}
+
+/* Responsive mobile item */
+@media (max-width: 480px) {
+  .mobile-nav-item-charcoal {
+    gap: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    min-height: 52px;
+  }
+  
+  .mobile-nav-item-charcoal .w-12 {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .mobile-nav-item-charcoal:hover {

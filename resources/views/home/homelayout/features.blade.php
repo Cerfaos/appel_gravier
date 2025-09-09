@@ -25,13 +25,13 @@
     <div class="text-center mb-16" data-aos="fade-up">
       <div class="inline-flex items-center space-x-2 bg-outdoor-olive-100 text-outdoor-olive-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
         <span class="text-lg">🎯</span>
-        <span>Nos Activités</span>
+        <span>Mes Activités</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-display font-bold text-outdoor-forest-600 mb-6">
-        Aventures qui transforment
+        Aventures qui me transforment
       </h2>
       <p class="text-xl text-outdoor-forest-400 max-w-3xl mx-auto">
-        Découvrez notre gamme complète d'activités outdoor, conçues pour tous les niveaux et toutes les envies d'aventure
+        Découvrez ma gamme complète d'activités plein air, conçues pour mon niveau et mes envies d'évasion
       </p>
     </div>
 

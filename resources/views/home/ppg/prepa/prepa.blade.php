@@ -4,41 +4,42 @@
 <div class="bg-outdoor-cream-50 min-h-screen">
 
     <!-- Hero Section Calendrier Vélo -->
-    <section class="relative bg-gradient-to-r from-outdoor-ochre-500 to-outdoor-ochre-600 text-white py-20">
+    <section class="relative bg-gradient-to-r from-outdoor-ochre-500 to-outdoor-ochre-600 text-white py-12 sm:py-16 md:py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                     
-                    <!-- Content Side -->
-                    <div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                            <span class="text-outdoor-cream-50">Calendrier</span><br>
-                            <span class="text-outdoor-ochre-200">Préparation Vélo</span>
+                    <!-- Content Side Responsive -->
+                    <div class="text-center md:text-left">
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
+                            <span class="text-outdoor-cream-50 block">Calendrier</span>
+                            <span class="text-outdoor-ochre-200 block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-1">Préparation Vélo</span>
                         </h1>
                         
-                        <p class="text-xl md:text-2xl mb-8 text-outdoor-cream-50/90 leading-relaxed">
+                        <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-outdoor-cream-50/90 leading-relaxed max-w-lg mx-auto md:mx-0">
                             Planifiez votre entraînement cycliste avec séances détaillées selon les saisons
                         </p>
                         
-                        <div class="bg-outdoor-cream-50/20 backdrop-blur-sm rounded-xl p-6 mb-8">
-                            <p class="text-lg font-medium">
-                                Vélo • PPG • Renforcement • Récupération - Tout programmé intelligemment
+                        <div class="bg-outdoor-cream-50/20 backdrop-blur-sm rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                            <p class="text-sm sm:text-base lg:text-lg font-medium">
+                                <span class="block sm:inline">Vélo • PPG • Renforcement</span>
+                                <span class="block sm:inline sm:ml-2">Tout programmé intelligemment</span>
                             </p>
                         </div>
 
-                        <!-- Stats or Features -->
-                        <div class="flex flex-wrap gap-6 text-outdoor-cream-50/90">
-                            <div class="flex items-center">
-                                <span class="w-3 h-3 bg-outdoor-ochre-300 rounded-full mr-3"></span>
-                                <span>Séances détaillées</span>
+                        <!-- Features Responsive -->
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-outdoor-cream-50/90 justify-center md:justify-start">
+                            <div class="flex items-center justify-center md:justify-start">
+                                <span class="w-2 h-2 sm:w-3 sm:h-3 bg-outdoor-ochre-300 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                                <span class="text-sm sm:text-base">Séances détaillées</span>
                             </div>
-                            <div class="flex items-center">
-                                <span class="w-3 h-3 bg-outdoor-ochre-300 rounded-full mr-3"></span>
-                                <span>Planification automatique</span>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <span class="w-2 h-2 sm:w-3 sm:h-3 bg-outdoor-ochre-300 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                                <span class="text-sm sm:text-base">Planification automatique</span>
                             </div>
-                            <div class="flex items-center">
-                                <span class="w-3 h-3 bg-outdoor-ochre-300 rounded-full mr-3"></span>
-                                <span>Récupération intégrée</span>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <span class="w-2 h-2 sm:w-3 sm:h-3 bg-outdoor-ochre-300 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                                <span class="text-sm sm:text-base">Récupération intégrée</span>
                             </div>
                         </div>
                     </div>
@@ -90,14 +91,14 @@
         </div>
     </section>
 
-    <!-- Section Contenu -->
-    <section class="py-20">
+    <!-- Section Contenu Responsive -->
+    <section class="py-12 sm:py-16 md:py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 
-                <!-- Introduction -->
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-outdoor-forest-500 mb-6">Périodisation Intelligente</h2>
+                <!-- Introduction Responsive -->
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-outdoor-forest-500 mb-4 sm:mb-6">Périodisation Intelligente</h2>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="card-outdoor">
                             <div class="w-16 h-16 bg-outdoor-ochre-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -192,18 +193,18 @@
                             Séances automatiques • Récupération intégrée • Adaptation saisonnière
                         </p>
                         
-                        <!-- Contrôles -->
-                        <div class="flex flex-wrap gap-4 items-center text-sm mb-4 text-outdoor-cream-50/90">
-                            <div class="flex items-center gap-2">
-                                <label class="font-semibold">Année de départ :</label>
+                        <!-- Contrôles Responsive -->
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-start sm:items-center text-sm mb-4 text-outdoor-cream-50/90">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <label class="font-semibold text-xs sm:text-sm">Année :</label>
                                 <input type="number" id="start-year" min="2020" max="2040" value="2025" 
-                                       class="text-outdoor-forest-500 px-3 py-1 rounded-lg border-0 text-sm" 
+                                       class="text-outdoor-forest-500 px-2 py-1 rounded-lg border-0 text-xs sm:text-sm w-20" 
                                        onchange="updateCalendar()">
                             </div>
-                            <span class="text-outdoor-cream-50/60">|</span>
-                            <div class="flex items-center gap-2">
-                                <label class="font-semibold">Mois :</label>
-                                <select id="month-select" class="text-outdoor-forest-500 px-3 py-1 rounded-lg border-0 text-sm" onchange="updateCalendar()">
+                            <span class="hidden sm:inline text-outdoor-cream-50/60">|</span>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <label class="font-semibold text-xs sm:text-sm">Mois :</label>
+                                <select id="month-select" class="text-outdoor-forest-500 px-2 py-1 rounded-lg border-0 text-xs sm:text-sm" onchange="updateCalendar()">
                                     <option value="0">Janvier</option>
                                     <option value="1">Février</option>
                                     <option value="2">Mars</option>
@@ -221,45 +222,54 @@
                             </div>
                         </div>
                         
-                        <!-- Navigation -->
-                        <div class="flex justify-center gap-3">
+                        <!-- Navigation Responsive -->
+                        <div class="flex justify-center gap-2 sm:gap-3">
                             <button onclick="navigateMonth(-1)" 
-                                    class="bg-outdoor-cream-50/20 hover:bg-outdoor-cream-50/30 px-4 py-2 rounded-lg font-medium transition-colors duration-200">
-                                ← Mois précédent
+                                    class="bg-outdoor-cream-50/20 hover:bg-outdoor-cream-50/30 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-xs sm:text-sm">
+                                <span class="sm:hidden">← Préc</span>
+                                <span class="hidden sm:inline">← Mois précédent</span>
                             </button>
                             <button onclick="navigateMonth(1)" 
-                                    class="bg-outdoor-cream-50/20 hover:bg-outdoor-cream-50/30 px-4 py-2 rounded-lg font-medium transition-colors duration-200">
-                                Mois suivant →
+                                    class="bg-outdoor-cream-50/20 hover:bg-outdoor-cream-50/30 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-xs sm:text-sm">
+                                <span class="sm:hidden">Suiv →</span>
+                                <span class="hidden sm:inline">Mois suivant →</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Calendrier Content -->
-                    <div class="p-6">
+                    <!-- Calendrier Content Responsive -->
+                    <div class="p-4 sm:p-6">
                         <!-- Titre du mois -->
-                        <div class="mb-6">
-                            <h4 class="text-2xl font-bold text-outdoor-forest-500" id="month-title">Septembre 2025</h4>
-                            <p class="text-outdoor-forest-400" id="season-badge">Printemps/Été — Focus vélo</p>
+                        <div class="mb-4 sm:mb-6 text-center sm:text-left">
+                            <h4 class="text-xl sm:text-2xl font-bold text-outdoor-forest-500" id="month-title">Septembre 2025</h4>
+                            <p class="text-sm sm:text-base text-outdoor-forest-400" id="season-badge">Printemps/Été — Focus vélo</p>
                         </div>
 
-                        <!-- Grille du calendrier -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full border-collapse rounded-lg overflow-hidden shadow-sm">
+                        <!-- Vue Desktop/Tablet : Calendrier tableau -->
+                        <div class="hidden md:block overflow-x-auto">
+                            <table class="w-full border-collapse rounded-lg overflow-hidden shadow-sm min-w-[700px]">
                                 <thead>
                                     <tr class="bg-outdoor-forest-500 text-outdoor-cream-50">
-                                        <th class="p-3 text-sm font-bold">Lun</th>
-                                        <th class="p-3 text-sm font-bold">Mar</th>
-                                        <th class="p-3 text-sm font-bold">Mer</th>
-                                        <th class="p-3 text-sm font-bold">Jeu</th>
-                                        <th class="p-3 text-sm font-bold">Ven</th>
-                                        <th class="p-3 text-sm font-bold">Sam</th>
-                                        <th class="p-3 text-sm font-bold">Dim</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Lun</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Mar</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Mer</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Jeu</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Ven</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Sam</th>
+                                        <th class="p-2 lg:p-3 text-xs lg:text-sm font-bold min-w-[100px]">Dim</th>
                                     </tr>
                                 </thead>
-                                <tbody id="calendar-body" class="text-sm">
+                                <tbody id="calendar-body" class="text-xs lg:text-sm">
                                     <!-- Généré par JavaScript -->
                                 </tbody>
                             </table>
+                        </div>
+
+                        <!-- Vue Mobile : Liste des jours -->
+                        <div class="block md:hidden" id="mobile-calendar">
+                            <div class="space-y-3" id="mobile-calendar-body">
+                                <!-- Généré par JavaScript pour mobile -->
+                            </div>
                         </div>
 
                         <!-- Légende -->
@@ -622,6 +632,104 @@ function generateCalendar(year, month) {
     return html;
 }
 
+// Génération du calendrier mobile (format liste)
+function generateMobileCalendar(year, month) {
+    const program = programs[getSeason(month)];
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startDate = new Date(year, month, 1);
+    const startDay = (startDate.getDay() + 6) % 7; // Lundi = 0
+    
+    const dayNames = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    let html = '';
+    
+    // Générer chaque jour du mois
+    for (let date = 1; date <= daysInMonth; date++) {
+        const currentDate = new Date(year, month, date);
+        const day = (currentDate.getDay() + 6) % 7; // Lundi = 0
+        const dayName = dayNames[day];
+        
+        // Calculer semaine pour déload
+        const weekOfYear = Math.floor((currentDate.getTime() - new Date(year, 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000));
+        const isDeload = isDeloadWeek(weekOfYear);
+        const isWeekend = day >= 5;
+        
+        // Déterminer la séance
+        const weekInPattern = weekOfYear % 4;
+        const sessionType = program.pattern[weekInPattern][day];
+        const sessionDetail = program.sessions[sessionType] ? program.sessions[sessionType][weekInPattern] : null;
+        
+        // Carte mobile pour chaque jour
+        html += `<div class="bg-white rounded-xl p-4 border ${isDeload ? 'border-orange-200 bg-orange-50' : 'border-gray-200'} shadow-sm">`;
+        
+        // Header du jour
+        html += `<div class="flex items-center justify-between mb-3">`;
+        html += `<div class="flex items-center space-x-3">`;
+        html += `<div class="w-10 h-10 bg-outdoor-forest-500 text-white rounded-lg flex items-center justify-center font-bold text-sm">${date}</div>`;
+        html += `<div>`;
+        html += `<div class="font-semibold text-outdoor-forest-600">${dayName}</div>`;
+        html += `<div class="text-xs text-gray-500">${dayName.substr(0, 3)} ${date}</div>`;
+        html += `</div>`;
+        html += `</div>`;
+        
+        // Badge weekend ou déload
+        if (isWeekend) {
+            html += `<span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Week-end</span>`;
+        } else if (isDeload) {
+            html += `<span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">Allégé</span>`;
+        }
+        
+        html += `</div>`;
+        
+        // Séance du jour
+        if (sessionType && sessionDetail && !isWeekend) {
+            const sessionColors = {
+                'bike-endurance': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                'bike-intensity': 'bg-orange-100 text-orange-800 border-orange-200',
+                'bike-tempo': 'bg-blue-100 text-blue-800 border-blue-200',
+                'strength': 'bg-gray-100 text-gray-800 border-gray-200',
+                'ppg': 'bg-blue-100 text-blue-800 border-blue-200',
+                'rest': 'bg-gray-100 text-gray-600 border-gray-200'
+            };
+            
+            const sessionIcons = {
+                'bike-endurance': '🚴',
+                'bike-intensity': '⚡',
+                'bike-tempo': '🎯',
+                'strength': '💪',
+                'ppg': '🏃',
+                'rest': '😴'
+            };
+            
+            const colorClass = sessionColors[sessionType] || 'bg-gray-100 text-gray-800 border-gray-200';
+            const icon = sessionIcons[sessionType] || '📅';
+            
+            html += `<div class="flex items-center space-x-3 p-3 ${colorClass} rounded-lg border">`;
+            html += `<span class="text-lg">${icon}</span>`;
+            html += `<div class="flex-1">`;
+            html += `<div class="font-medium text-sm">${sessionDetail}</div>`;
+            if (isDeload) {
+                html += `<div class="text-xs opacity-75 mt-1">Volume réduit (-30%)</div>`;
+            }
+            html += `</div>`;
+            html += `</div>`;
+        } else if (isWeekend) {
+            html += `<div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">`;
+            html += `<span class="text-lg">😴</span>`;
+            html += `<div class="text-gray-600 text-sm font-medium">Repos</div>`;
+            html += `</div>`;
+        } else {
+            html += `<div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">`;
+            html += `<span class="text-lg">📅</span>`;
+            html += `<div class="text-gray-600 text-sm font-medium">Aucune séance programmée</div>`;
+            html += `</div>`;
+        }
+        
+        html += `</div>`;
+    }
+    
+    return html;
+}
+
 function updateCalendar() {
     const yearInput = document.getElementById('start-year');
     const monthSelect = document.getElementById('month-select');
@@ -651,9 +759,17 @@ function updateCalendar() {
         badge.textContent = 'Printemps/Été — Focus vélo';
     }
     
-    // Générer le calendrier
+    // Générer le calendrier desktop
     const calendarBody = document.getElementById('calendar-body');
-    calendarBody.innerHTML = generateCalendar(displayYear, currentMonth);
+    if (calendarBody) {
+        calendarBody.innerHTML = generateCalendar(displayYear, currentMonth);
+    }
+    
+    // Générer le calendrier mobile
+    const mobileCalendarBody = document.getElementById('mobile-calendar-body');
+    if (mobileCalendarBody) {
+        mobileCalendarBody.innerHTML = generateMobileCalendar(displayYear, currentMonth);
+    }
 }
 
 function navigateMonth(direction) {
