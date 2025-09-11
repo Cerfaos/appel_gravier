@@ -15,6 +15,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend/assets/images/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/assets/images/favicon-16x16.png') }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/assets/images/apple-touch-icon.png') }}">
+  
+  <!-- PWA Configuration -->
+  <link rel="manifest" href="{{ asset('manifest.json') }}">
+  <meta name="theme-color" content="#059669">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Cerfaos">
+  <meta name="msapplication-TileColor" content="#059669">
+  <meta name="msapplication-config" content="{{ asset('browserconfig.xml') }}">
   <!--- End favicon-->
 
   <!-- Google Fonts -->
@@ -31,6 +40,9 @@
   <!-- Keep essential external libraries for animations and functionality -->
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/aos.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
+  
+  <!-- Mobile Touch Optimizations -->
+  <link rel="stylesheet" href="{{ asset('css/mobile-touch-optimizations.css') }}">
 </head>
 
 <body class="antialiased">
@@ -84,6 +96,8 @@
 
   <!-- Essential Scripts for Outdoor Theme -->
   <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
+  <script src="{{ asset('js/mobile-touch-gestures.js') }}"></script>
+  <script src="{{ asset('js/mobile-performance-optimizations.js') }}"></script>
   
   <!-- Custom Outdoor JavaScript -->
   <script>
@@ -177,6 +191,129 @@
         observer.observe(el);
       });
     });
+  </script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    // Enregistrement du Service Worker pour PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('✅ Service Worker enregistré:', registration.scope);
+            
+            // Vérifier les mises à jour
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // Nouvelle version disponible
+                    if (confirm('Une nouvelle version de Cerfaos est disponible. Recharger maintenant ?')) {
+                      window.location.reload();
+                    }
+                  }
+                });
+              }
+            });
+          })
+          .catch((error) => {
+            console.log('❌ Échec de l\'enregistrement du Service Worker:', error);
+          });
+      });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    let installButton = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Créer le bouton d'installation s'il n'existe pas
+      if (!installButton) {
+        installButton = document.createElement('button');
+        installButton.innerHTML = '📱 Installer l\'app';
+        installButton.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #059669;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 25px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+          transition: all 0.3s ease;
+          z-index: 1000;
+          font-family: inherit;
+        `;
+        
+        installButton.addEventListener('mouseover', () => {
+          installButton.style.transform = 'translateX(-50%) translateY(-2px)';
+          installButton.style.boxShadow = '0 6px 16px rgba(5, 150, 105, 0.4)';
+        });
+        
+        installButton.addEventListener('mouseout', () => {
+          installButton.style.transform = 'translateX(-50%)';
+          installButton.style.boxShadow = '0 4px 12px rgba(5, 150, 105, 0.3)';
+        });
+        
+        installButton.addEventListener('click', async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const choiceResult = await deferredPrompt.userChoice;
+            
+            if (choiceResult.outcome === 'accepted') {
+              console.log('✅ PWA installée par l\'utilisateur');
+            }
+            
+            deferredPrompt = null;
+            installButton.remove();
+            installButton = null;
+          }
+        });
+        
+        // Afficher après un court délai
+        setTimeout(() => {
+          document.body.appendChild(installButton);
+          
+          // Masquer automatiquement après 10 secondes
+          setTimeout(() => {
+            if (installButton) {
+              installButton.style.opacity = '0';
+              setTimeout(() => {
+                if (installButton) {
+                  installButton.remove();
+                  installButton = null;
+                }
+              }, 300);
+            }
+          }, 10000);
+        }, 3000);
+      }
+    });
+
+    // Masquer le bouton si l'app est déjà installée
+    window.addEventListener('appinstalled', () => {
+      console.log('✅ PWA installée avec succès');
+      if (installButton) {
+        installButton.remove();
+        installButton = null;
+      }
+      deferredPrompt = null;
+    });
+
+    // Détection du mode standalone (app installée)
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+      console.log('🚀 Application lancée en mode PWA');
+      document.documentElement.classList.add('pwa-mode');
+    }
   </script>
 
   @stack('scripts')

@@ -28,10 +28,10 @@
         <span>Mes Activités</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-display font-bold text-outdoor-forest-600 mb-6">
-        Aventures qui me transforment
+        Aventures qui me tirent vers le haut (et vers la sieste)
       </h2>
       <p class="text-xl text-outdoor-forest-400 max-w-3xl mx-auto">
-        Découvrez ma gamme complète d'activités plein air, conçues pour mon niveau et mes envies d'évasion
+        Découvrez des activités plein air calibrées pour débuter sans se cramer.
       </p>
     </div>
 
