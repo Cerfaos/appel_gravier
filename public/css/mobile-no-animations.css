@@ -5,6 +5,22 @@
 /* Détection mobile via media queries */
 @media (max-width: 768px) {
   
+  /* Éliminer le voile translucide - Forcer visibilité complète */
+  body, html, * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Supprimer tous overlays potentiels */
+  *::before, *::after {
+    opacity: 1 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+  
   /* Désactiver TOUTES les animations et transitions sur mobile */
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -56,6 +72,48 @@
   .hardware-accelerated {
     opacity: 1 !important;
     transform: none !important;
+  }
+  
+  /* Éliminer spécifiquement les sources de voile translucide */
+  .preloader,
+  .loading-overlay,
+  .overlay,
+  .backdrop {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  
+  /* Supprimer blur et autres filtres visuels */
+  .blur,
+  .blurred,
+  [class*="blur"] {
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Forcer contraste complet */
+  section,
+  .section,
+  .container,
+  .content {
+    opacity: 1 !important;
+    filter: none !important;
+    background-color: transparent !important;
+  }
+  
+  /* Éliminer masques et pseudo-éléments translucides */
+  .mask,
+  .gradient-overlay,
+  [class*="overlay"] {
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  /* Forcer texte lisible */
+  h1, h2, h3, h4, h5, h6, p, span, a, li {
+    opacity: 1 !important;
+    color: inherit !important;
+    text-shadow: none !important;
   }
   
 }

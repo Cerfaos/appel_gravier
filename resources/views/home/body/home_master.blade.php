@@ -137,16 +137,34 @@
       console.log('💻 Animations AOS activées sur desktop');
     }
 
-    // Preloader
+    // Preloader - Suppression immédiate sur mobile
     window.addEventListener('load', function() {
       const preloader = document.getElementById('preloader');
       if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
+        // Sur mobile, suppression immédiate sans transition
+        if (window.innerWidth <= 768) {
           preloader.style.display = 'none';
-        }, 300);
+          preloader.remove();
+        } else {
+          // Sur desktop, transition normale
+          preloader.style.opacity = '0';
+          setTimeout(() => {
+            preloader.style.display = 'none';
+          }, 300);
+        }
       }
     });
+
+    // Force suppression preloader sur mobile dès le DOM ready
+    if (window.innerWidth <= 768) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.display = 'none';
+          preloader.remove();
+        }
+      });
+    }
 
     // Scroll to top functionality
     function scrollToTop() {
