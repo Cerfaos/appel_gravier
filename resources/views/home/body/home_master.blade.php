@@ -49,6 +49,9 @@
   
   <!-- Solution radicale voile translucide mobile -->
   <link rel="stylesheet" href="{{ asset('css/mobile-force-visibility.css') }}">
+  
+  <!-- Fix ciblé Hero & Features sections -->
+  <link rel="stylesheet" href="{{ asset('css/mobile-hero-features-fix.css') }}">
 </head>
 
 <body class="antialiased">

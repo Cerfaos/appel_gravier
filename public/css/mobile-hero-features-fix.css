@@ -1,0 +1,171 @@
+/* ========================================
+   CERFAOS - FIX VOILE HERO & FEATURES MOBILE
+   Neutralise spécifiquement les éléments responsables
+   ======================================== */
+
+@media (max-width: 768px) {
+  
+  /* ===== HERO SECTION (SLIDER) FIXES ===== */
+  
+  /* Supprimer backgrounds translucides du hero */
+  section[class*="bg-gradient-to-br"] {
+    background: white !important;
+  }
+  
+  /* Neutraliser les éléments blur du hero */
+  section div[class*="blur-3xl"],
+  section div[class*="blur-2xl"], 
+  section div[class*="blur-xl"] {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  
+  /* Supprimer overlays animés du hero */
+  section div[class*="animate-gradient-slow"],
+  section div[class*="animate-float"] {
+    display: none !important;
+  }
+  
+  /* Neutraliser patterns mesh du hero */
+  section div[class*="bg-[url("] {
+    background-image: none !important;
+    opacity: 0 !important;
+  }
+  
+  /* ===== FEATURES SECTION FIXES ===== */
+  
+  /* Cibler spécifiquement la section Features */
+  #services {
+    background: white !important;
+  }
+  
+  /* Supprimer background gradient Features */
+  #services > div[class*="bg-gradient-to-br"] {
+    background: transparent !important;
+    display: none !important;
+  }
+  
+  /* Neutraliser éléments blur Features */
+  #services div[class*="blur-3xl"],
+  #services div[class*="blur-2xl"],
+  #services div[class*="blur-xl"] {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  
+  /* Supprimer overlays animés Features */
+  #services div[class*="animate-pulse-slow"],
+  #services div[class*="animate-float"] {
+    display: none !important;
+  }
+  
+  /* Neutraliser pattern overlay Features */
+  #services div[class*="bg-[url("] {
+    background-image: none !important;
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  /* Supprimer émojis décoratifs translucides */
+  #services div[class*="opacity-10"] {
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  /* Fix hover overlay sur cartes Features */
+  #services .card-outdoor div[class*="bg-gradient-to-br"] {
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  /* ===== FIXES GÉNÉRAUX POUR CES 2 SECTIONS ===== */
+  
+  /* Hero et Features - Force background blanc */
+  section:nth-child(1),
+  section:nth-child(2),
+  #services {
+    background: white !important;
+    background-image: none !important;
+  }
+  
+  /* Supprimer TOUS les pseudo-éléments translucides */
+  section:nth-child(1) *::before,
+  section:nth-child(1) *::after,
+  section:nth-child(2) *::before,
+  section:nth-child(2) *::after,
+  #services *::before,
+  #services *::after {
+    opacity: 0 !important;
+    display: none !important;
+    background: transparent !important;
+  }
+  
+  /* Force opacity complète sur contenu */
+  section:nth-child(1) *,
+  section:nth-child(2) *,
+  #services * {
+    opacity: 1 !important;
+  }
+  
+  /* Exceptions: préserver opacity sur éléments UI */
+  section:nth-child(1) h1,
+  section:nth-child(1) h2,
+  section:nth-child(1) p,
+  section:nth-child(1) button,
+  section:nth-child(2) h1,
+  section:nth-child(2) h2,
+  section:nth-child(2) p,
+  section:nth-child(2) button,
+  #services h1,
+  #services h2,
+  #services p,
+  #services .card-outdoor {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* ===== CLASSES TAILWIND SPÉCIFIQUES À NEUTRALISER ===== */
+  
+  /* Neutraliser classes opacity avec fraction */
+  [class*="/60"],
+  [class*="/50"], 
+  [class*="/40"],
+  [class*="/30"],
+  [class*="/20"],
+  [class*="/15"],
+  [class*="/10"],
+  [class*="/5"] {
+    opacity: 1 !important;
+    background: transparent !important;
+  }
+  
+  /* Supprimer animations qui peuvent créer flou */
+  [class*="animate-gradient"],
+  [class*="animate-float"],
+  [class*="animate-pulse"] {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+}
+
+/* Version encore plus agressive pour très petits écrans */
+@media (max-width: 480px) {
+  
+  /* Force suppression totale backgrounds première moitié */
+  body > * > section:nth-child(1),
+  body > * > section:nth-child(2),
+  #services {
+    background: white !important;
+    background-image: none !important;
+    background-color: white !important;
+  }
+  
+  /* Suppression radicale divs avec opacity */
+  section:nth-child(1) div[class*="opacity"],
+  section:nth-child(2) div[class*="opacity"],
+  #services div[class*="opacity"] {
+    display: none !important;
+  }
+  
+}
