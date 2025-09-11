@@ -1,23 +1,23 @@
 
 <!-- Outdoor Activities Section -->
-<section id="services" class="py-20 lg:py-32 relative overflow-hidden">
+<section id="services" class="py-20 lg:py-32 relative overflow-hidden" style="background: white;">
   
-  <!-- Enhanced Background -->
-  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/30 via-white to-outdoor-earth-50"></div>
+  <!-- Enhanced Background - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/30 via-white to-outdoor-earth-50 hidden md:block"></div>
   
-  <!-- Animated background elements -->
-  <div class="absolute inset-0">
+  <!-- Animated background elements - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 hidden md:block">
     <div class="absolute top-10 right-10 w-40 h-40 bg-outdoor-olive-200 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
     <div class="absolute bottom-20 left-20 w-32 h-32 bg-outdoor-earth-200 rounded-full blur-2xl opacity-15 animate-float"></div>
     <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-outdoor-ochre-200 rounded-full blur-xl opacity-10 animate-float-delayed"></div>
   </div>
   
-  <!-- Pattern overlay -->
-  <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="m0 40 40-40H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')]"></div>
+  <!-- Pattern overlay - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="m0 40 40-40H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')] hidden md:block"></div>
   
-  <!-- Decorative Elements with better positioning -->
-  <div class="absolute top-10 right-10 text-6xl opacity-10 animate-sway">🏔️</div>
-  <div class="absolute bottom-20 left-20 text-4xl opacity-10 animate-gentle-bounce">🌲</div>
+  <!-- Decorative Elements with better positioning - MASQUÉ SUR MOBILE -->
+  <div class="absolute top-10 right-10 text-6xl opacity-10 animate-sway hidden md:block">🏔️</div>
+  <div class="absolute bottom-20 left-20 text-4xl opacity-10 animate-gentle-bounce hidden md:block">🌲</div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -40,8 +40,8 @@
       @if($features && $features->count() > 0)
         @foreach($features as $index => $feature)
           <div class="card-outdoor group hover:scale-105 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-duration="{{ 500 + ($index * 200) }}">
-            <!-- Gradient overlay on hover -->
-            <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-500/5 to-outdoor-earth-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Gradient overlay on hover - MASQUÉ SUR MOBILE -->
+            <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-500/5 to-outdoor-earth-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"></div>
             <div class="relative">
             <div class="text-center">
               <div class="w-16 h-16 bg-outdoor-olive-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-outdoor-olive-200 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">

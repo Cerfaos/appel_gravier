@@ -1,10 +1,10 @@
 
 
 <!-- Outdoor Adventure Hero Section -->
-<section class="relative min-h-screen flex items-center bg-gradient-to-br from-white via-outdoor-olive-50 to-outdoor-earth-100 overflow-hidden">
+<section class="relative min-h-screen flex items-center overflow-hidden md:bg-gradient-to-br md:from-white md:via-outdoor-olive-50 md:to-outdoor-earth-100" style="background: white;">
   
-  <!-- Enhanced Background Patterns -->
-  <div class="absolute inset-0">
+  <!-- Enhanced Background Patterns - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 hidden md:block">
     <!-- Animated gradient background -->
     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-100/60 via-outdoor-earth-100/50 to-outdoor-forest-100/40 animate-gradient-slow"></div>
     
@@ -19,7 +19,7 @@
     <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23606c38" fill-opacity="0.3"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
   </div>
 
-  <!-- Decorative Elements -->
+  <!-- Decorative Elements - MASQUÉ SUR MOBILE -->
  
  
  
@@ -49,9 +49,9 @@
           {{ $slider->description }}
         </p>
 
-        <!-- Floating Stats -->
+        <!-- Floating Stats - Version mobile propre -->
         <div class="flex flex-wrap gap-6 mb-8" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
+          <div class="bg-white md:bg-white/80 md:backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-3">
               <div class="w-8 h-8 bg-outdoor-olive-100 rounded-full flex items-center justify-center">
                 <span class="text-sm">🏔️</span>
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
+          <div class="bg-white md:bg-white/80 md:backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-3">
               <div class="w-8 h-8 bg-outdoor-earth-100 rounded-full flex items-center justify-center">
                 <span class="text-sm">🥾</span>
@@ -73,7 +73,7 @@
               </div>
             </div>
           </div>
-          <div class="bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
+          <div class="bg-white md:bg-white/80 md:backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-outdoor-olive-100 hover:shadow-xl transition-all duration-300">
             <div class="flex items-center space-x-3">
               <div class="w-8 h-8 bg-outdoor-ochre-100 rounded-full flex items-center justify-center">
                 <span class="text-sm">🗺️</span>
@@ -142,9 +142,9 @@
           </div>
         </div>
 
-        <!-- Decorative Elements -->
-        <div class="absolute -z-10 top-1/4 -right-8 w-32 h-32 bg-outdoor-ochre-200 rounded-full opacity-20 blur-2xl"></div>
-        <div class="absolute -z-10 bottom-1/4 -left-8 w-40 h-40 bg-outdoor-olive-200 rounded-full opacity-20 blur-2xl"></div>
+        <!-- Decorative Elements - MASQUÉ SUR MOBILE -->
+        <div class="absolute -z-10 top-1/4 -right-8 w-32 h-32 bg-outdoor-ochre-200 rounded-full opacity-20 blur-2xl hidden md:block"></div>
+        <div class="absolute -z-10 bottom-1/4 -left-8 w-40 h-40 bg-outdoor-olive-200 rounded-full opacity-20 blur-2xl hidden md:block"></div>
       </div>
     </div>
   </div>
