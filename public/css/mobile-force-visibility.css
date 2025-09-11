@@ -1,0 +1,110 @@
+/* ========================================
+   CERFAOS - FORCE VISIBILITÉ MOBILE RADICAL
+   Solution directe pour éliminer voile translucide
+   ======================================== */
+
+/* SOLUTION RADICALE - Force visibilité sur mobile */
+@media (max-width: 768px) {
+  
+  /* 1. SUPPRIMER PRELOADER COMPLÈTEMENT */
+  #preloader, .preloader {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: -1 !important;
+  }
+  
+  /* 2. FORCER VISIBILITÉ TOTALE DE TOUS LES ÉLÉMENTS */
+  * {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* 3. SUPPRIMER TOUS FILTRES ET EFFETS VISUELS */
+  * {
+    filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* 4. ÉLIMINER TOUS OVERLAYS ET MASQUES */
+  *::before, *::after {
+    display: none !important;
+    opacity: 0 !important;
+    background: transparent !important;
+  }
+  
+  /* 5. FORCER BACKGROUNDS TRANSPARENTS */
+  body, html {
+    background: white !important;
+  }
+  
+  /* 6. DÉSACTIVER AOS COMPLÈTEMENT */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .aos-init, .aos-animate {
+    opacity: 1 !important;
+    transform: translate(0) !important;
+  }
+  
+  /* 7. SUPPRIMER TOUTES ANIMATIONS */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* 8. FORCER CONTRASTE MAXIMAL TEXTE */
+  h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+    color: inherit !important;
+    opacity: 1 !important;
+  }
+  
+  /* 9. NEUTRALISER CLASSES TAILWIND POTENTIELLEMENT PROBLÉMATIQUES */
+  .bg-outdoor-cream-50,
+  .bg-outdoor-cream-100,
+  .bg-opacity-50,
+  .bg-opacity-75,
+  [class*="bg-opacity"],
+  [class*="opacity-"] {
+    background: transparent !important;
+    opacity: 1 !important;
+  }
+  
+  /* 10. SUPPRIMER Z-INDEX ÉLEVÉS QUI PEUVENT CRÉER OVERLAYS */
+  .fixed, .absolute, .sticky {
+    z-index: auto !important;
+  }
+  
+  /* Exception: garder z-index pour navigation */
+  nav, .nav, .navbar, header {
+    z-index: 100 !important;
+  }
+}
+
+/* Solution encore plus agressive pour très petits écrans */
+@media (max-width: 480px) {
+  /* Force suppression de TOUT ce qui peut créer un voile */
+  * {
+    background: transparent !important;
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Background blanc uniquement pour body */
+  body {
+    background: white !important;
+  }
+  
+  /* Supprimer complètement les pseudo-éléments */
+  *::before, *::after {
+    content: none !important;
+    display: none !important;
+  }
+}

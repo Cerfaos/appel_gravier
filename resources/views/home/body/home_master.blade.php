@@ -46,6 +46,9 @@
   
   <!-- Mobile No Animations - Performance optimale -->
   <link rel="stylesheet" href="{{ asset('css/mobile-no-animations.css') }}">
+  
+  <!-- Solution radicale voile translucide mobile -->
+  <link rel="stylesheet" href="{{ asset('css/mobile-force-visibility.css') }}">
 </head>
 
 <body class="antialiased">
@@ -155,15 +158,42 @@
       }
     });
 
-    // Force suppression preloader sur mobile dès le DOM ready
+    // SOLUTION RADICALE - Suppression voile translucide mobile
     if (window.innerWidth <= 768) {
-      document.addEventListener('DOMContentLoaded', function() {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.style.display = 'none';
-          preloader.remove();
-        }
-      });
+      
+      // Supprimer immédiatement TOUT ce qui peut créer un voile
+      const forceVisibility = function() {
+        // Supprimer preloader
+        const preloaders = document.querySelectorAll('#preloader, .preloader, .loading, .loader');
+        preloaders.forEach(el => {
+          el.style.display = 'none';
+          el.remove();
+        });
+        
+        // Forcer visibilité de tous les éléments
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+          el.style.opacity = '1';
+          el.style.visibility = 'visible';
+          el.style.filter = 'none';
+          el.style.backdropFilter = 'none';
+        });
+        
+        // Supprimer overlays potentiels
+        const overlays = document.querySelectorAll('.overlay, .backdrop, .mask, [class*="bg-opacity"]');
+        overlays.forEach(el => {
+          el.style.display = 'none';
+          el.remove();
+        });
+        
+        console.log('🔧 Force visibility mobile: voile translucide éliminé');
+      };
+      
+      // Exécuter immédiatement et à intervalles
+      forceVisibility();
+      document.addEventListener('DOMContentLoaded', forceVisibility);
+      setTimeout(forceVisibility, 100);
+      setTimeout(forceVisibility, 500);
     }
 
     // Scroll to top functionality
