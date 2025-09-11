@@ -1,23 +1,23 @@
 
 <!-- About Cerfaos Outdoor Adventures -->
-<section id="about" class="py-20 lg:py-32 relative overflow-hidden">
+<section id="about" class="py-20 lg:py-32 relative overflow-hidden" style="background: white;">
   
-  <!-- Multi-layered Background -->
-  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/40 via-white to-outdoor-earth-100/30"></div>
+  <!-- Multi-layered Background - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/40 via-white to-outdoor-earth-100/30 hidden md:block"></div>
   
-  <!-- Animated background shapes -->
-  <div class="absolute inset-0">
+  <!-- Animated background shapes - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 hidden md:block">
     <div class="absolute top-20 right-16 w-48 h-48 bg-outdoor-olive-200/20 rounded-full blur-3xl animate-pulse-slow"></div>
     <div class="absolute bottom-32 left-16 w-36 h-36 bg-outdoor-earth-200/15 rounded-full blur-2xl animate-float-slow"></div>
     <div class="absolute top-1/3 left-1/2 w-28 h-28 bg-outdoor-ochre-200/10 rounded-full blur-xl animate-float"></div>
   </div>
   
-  <!-- Organic pattern overlay -->
-  <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.3"%3E%3Cpath d="M40 0c22.091 0 40 17.909 40 40s-17.909 40-40 40S0 62.091 0 40 17.909 0 40 0zm0 20c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20z"/%3E%3C/g%3E%3C/svg%3E')]"></div>
+  <!-- Organic pattern overlay - MASQUÉ SUR MOBILE -->
+  <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.3"%3E%3Cpath d="M40 0c22.091 0 40 17.909 40 40s-17.909 40-40 40S0 62.091 0 40 17.909 0 40 0zm0 20c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20z"/%3E%3C/g%3E%3C/svg%3E')] hidden md:block"></div>
   
-  <!-- Refined Decorative Elements -->
+  <!-- Refined Decorative Elements - MASQUÉ SUR MOBILE -->
  
-  <div class="absolute top-2/3 right-1/4 text-2xl opacity-10 animate-sway" style="animation-delay: 1s">🍃</div>
+  <div class="absolute top-2/3 right-1/4 text-2xl opacity-10 animate-sway hidden md:block" style="animation-delay: 1s">🍃</div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -86,7 +86,7 @@
         <div class="space-y-6 mt-8">
           
           <!-- Experience -->
-          <div class="group hover:bg-white/50 rounded-2xl p-4 -m-4 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-duration="600">
+          <div class="group hover:bg-white md:hover:bg-white/50 rounded-2xl p-4 -m-4 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-duration="600">
             <div class="flex items-start space-x-4">
               <div class="flex-shrink-0 w-12 h-12 bg-outdoor-olive-100 rounded-2xl flex items-center justify-center group-hover:bg-outdoor-olive-200 group-hover:scale-110 transition-all duration-300">
                 <span class="text-2xl">{{ \App\Models\HomeContent::getValue('about_feature_1_icon', 'content', '🚴‍♂️') }}</span>
@@ -103,7 +103,7 @@
           </div>
 
           <!-- Personalization -->
-          <div class="group hover:bg-white/50 rounded-2xl p-4 -m-4 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-duration="700">
+          <div class="group hover:bg-white md:hover:bg-white/50 rounded-2xl p-4 -m-4 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-duration="700">
             <div class="flex items-start space-x-4">
               <div class="flex-shrink-0 w-12 h-12 bg-outdoor-earth-100 rounded-2xl flex items-center justify-center group-hover:bg-outdoor-earth-200 group-hover:scale-110 transition-all duration-300">
                 <span class="text-2xl">{{ \App\Models\HomeContent::getValue('about_feature_2_icon', 'content', '🌿') }}</span>
