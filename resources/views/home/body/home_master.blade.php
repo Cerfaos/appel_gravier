@@ -43,6 +43,9 @@
   
   <!-- Mobile Touch Optimizations -->
   <link rel="stylesheet" href="{{ asset('css/mobile-touch-optimizations.css') }}">
+  
+  <!-- Mobile No Animations - Performance optimale -->
+  <link rel="stylesheet" href="{{ asset('css/mobile-no-animations.css') }}">
 </head>
 
 <body class="antialiased">
@@ -98,39 +101,40 @@
   <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
   <script src="{{ asset('js/mobile-touch-gestures.js') }}"></script>
   <script src="{{ asset('js/mobile-performance-optimizations.js') }}"></script>
-  <script src="{{ asset('js/mobile-animations-optimizer.js') }}"></script>
+  <!-- Script animations optimizer désactivé - remplacé par CSS no-animations -->
+  <!-- <script src="{{ asset('js/mobile-animations-optimizer.js') }}"></script> -->
   
   <!-- Custom Outdoor JavaScript -->
   <script>
-    // Initialize AOS animations avec optimisations mobile
+    // Configuration AOS avec désactivation mobile intelligente
     AOS.init({
-      duration: 600,                    // Animation plus rapide sur mobile
+      duration: window.innerWidth <= 768 ? 0 : 800,  // Pas d'animations sur mobile
       easing: 'ease-out',
-      once: true,                      // Une seule fois pour éviter les re-triggers
-      offset: window.innerWidth <= 768 ? 50 : 100,  // Offset réduit sur mobile
-      delay: 0,                        // Pas de délai sur mobile
-      anchorPlacement: 'top-center',   // Déclenchement dès que le top est visible
+      once: true,
+      offset: window.innerWidth <= 768 ? 0 : 100,    // Pas d'offset mobile
+      delay: 0,
       disable: function() {
-        // Désactiver sur très petits écrans si nécessaire
-        return window.innerWidth < 480 ? 'mobile' : false;
+        // Désactiver complètement les animations sur mobile et tablette
+        return window.innerWidth <= 768 ? 'mobile' : false;
       }
     });
 
-    // Configuration spécifique mobile pour animations plus fluides
+    // Système alternatif pour mobile : Affichage immédiat sans animations
     if (window.innerWidth <= 768) {
-      // Re-initialiser AOS avec des paramètres mobile optimisés
-      AOS.init({
-        duration: 400,                 // Plus rapide
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 30,                    // Très petit offset
-        anchorPlacement: 'top-bottom', // Dès que le top de l'élément touche le bas du viewport
-        startEvent: 'DOMContentLoaded',
-        animatedClassName: 'aos-animate',
-        initClassName: 'aos-init',
-        useClassNames: false,
-        disableMutationObserver: false,
-      });
+      // Forcer l'affichage immédiat de tous les éléments AOS
+      setTimeout(function() {
+        const aosElements = document.querySelectorAll('[data-aos]');
+        aosElements.forEach(function(element) {
+          element.classList.add('aos-animate');
+          element.style.opacity = '1';
+          element.style.transform = 'none';
+          element.style.transition = 'none';
+        });
+      }, 100);
+      
+      console.log('📱 Animations désactivées sur mobile pour performance optimale');
+    } else {
+      console.log('💻 Animations AOS activées sur desktop');
     }
 
     // Preloader

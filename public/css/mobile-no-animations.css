@@ -1,0 +1,128 @@
+/* ========================================
+   CERFAOS - DÉSACTIVATION ANIMATIONS MOBILE
+   ======================================== */
+
+/* Détection mobile via media queries */
+@media (max-width: 768px) {
+  
+  /* Désactiver TOUTES les animations et transitions sur mobile */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Forcer l'affichage immédiat des éléments AOS */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* États AOS forcés visibles */
+  .aos-init,
+  .aos-animate {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) rotate(0) !important;
+    transition: none !important;
+  }
+  
+  /* Désactiver les animations de hover sur mobile */
+  *:hover {
+    transition: none !important;
+  }
+  
+  /* Supprimer les effets de parallaxe sur mobile */
+  .parallax {
+    transform: none !important;
+  }
+  
+  /* Désactiver les animations CSS personnalisées */
+  .animate,
+  [class*="animate-"] {
+    animation: none !important;
+  }
+  
+  /* Préserver uniquement les transitions essentielles pour l'UX */
+  button, .btn, a, input, textarea, select {
+    transition: background-color 0.1s ease, border-color 0.1s ease, opacity 0.1s ease !important;
+  }
+  
+  /* Affichage immédiat du contenu */
+  .fade-in-scroll,
+  .will-change-transform,
+  .hardware-accelerated {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+}
+
+/* Très petits écrans - désactivation encore plus agressive */
+@media (max-width: 480px) {
+  
+  /* Suppression totale des transitions */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* Performance maximale */
+  .preloader {
+    display: none !important;
+  }
+  
+  /* Pas de smooth scroll sur très petits écrans */
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+}
+
+/* Support pour prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Classes utilitaires pour forcer l'affichage */
+.mobile-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.mobile-no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Optimisations de performance sans animations */
+@media (max-width: 768px) {
+  
+  /* Réduire will-change pour économiser la mémoire */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Simplifier les transformations complexes */
+  .complex-transform {
+    transform: none !important;
+  }
+  
+  /* Forcer le repaint pour éviter les bugs d'affichage */
+  .force-repaint {
+    transform: translateZ(0);
+  }
+  
+}
