@@ -1,0 +1,53 @@
+# .gitignore pour serveur Hostinger
+# À copier sur le serveur pour éviter les conflits
+
+# === UPLOADS ET FICHIERS UTILISATEUR ===
+upload/
+public/upload/
+storage/app/public/
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# === FICHIERS SERVEUR SPÉCIFIQUES ===
+.htaccess
+.htaccess.backup
+robots.txt
+FETCH_HEAD
+
+# === BUILD ET ASSETS GÉNÉRÉS ===
+build/
+css/
+js/
+manifest.json
+mix-manifest.json
+
+# === CONFIGURATION SERVEUR ===
+.env.production
+.env.server
+
+# === CACHE LARAVEL ===
+bootstrap/cache/*.php
+storage/framework/cache/data/
+storage/framework/sessions/
+storage/framework/views/*.php
+
+# === LOGS ===
+*.log
+storage/logs/*.log
+
+# === FICHIERS TEMPORAIRES ===
+*.tmp
+*.temp
+*~
+
+# === FICHIERS IDE/EDITOR ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === DEPENDENCIES (si présentes) ===
+/vendor/
+/node_modules/

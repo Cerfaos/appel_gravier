@@ -205,7 +205,7 @@
                                 
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
                                     Après l'armée,  j'ai eu la chance de vivre ma plus belle réalisation : fonder une famille avec mes deux fils, mes amours éternels. C'est ensuite, à 40 ans, que j'ai découvert le kayak en eaux vives puis le kayak de mer. 
-                                    Quel défi c'était à cet âge, <strong>   </strong> class="text-outdoor-ochre-500">mais quelle période extraordinaire et quelle ivresse !</strong>
+                                    Quel défi c'était à cet âge, mais quelle <strong class="text-outdoor-ochre-500">période extraordinaire</strong> et quelle ivresse !
                                 </p>
                                 <p class="text-outdoor-forest-400 leading-relaxed group-hover:text-outdoor-forest-500 transition-colors duration-300">
                                     Chaque sortie en kayak est une nouvelle aventure, une occasion de découvrir des paysages époustouflants et de partager ces moments avec d'autres passionnés et amis.
