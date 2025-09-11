@@ -25,9 +25,9 @@
       <!-- Image Section -->
       <div class="order-2 lg:order-1" data-aos="fade-right" data-aos-duration="800">
         <div class="relative">
-          <!-- Decorative Background -->
-          <div class="absolute inset-0 bg-outdoor-sunset rounded-4xl transform rotate-3 shadow-outdoor-2xl"></div>
-          <div class="absolute inset-0 bg-outdoor-forest rounded-4xl transform -rotate-1 shadow-outdoor-xl opacity-20"></div>
+          <!-- Decorative Background - MASQUÉ SUR MOBILE -->
+          <div class="absolute inset-0 bg-outdoor-sunset rounded-4xl transform rotate-3 shadow-outdoor-2xl hidden md:block"></div>
+          <div class="absolute inset-0 bg-outdoor-forest rounded-4xl transform -rotate-1 shadow-outdoor-xl opacity-20 hidden md:block"></div>
           
           <!-- Main Image Container -->
           <div class="relative bg-white p-6 rounded-4xl shadow-outdoor-xl">
