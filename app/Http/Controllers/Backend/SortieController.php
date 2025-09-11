@@ -53,6 +53,52 @@ class SortieController extends Controller
         return view('admin.sorties.create');
     }
 
+    // API pour récupérer les images du mois courant
+    public function getMonthlyImages(Request $request)
+    {
+        $year = $request->get('year', now()->year);
+        $month = $request->get('month', now()->month);
+
+        Log::info('API getMonthlyImages appelée', [
+            'year' => $year,
+            'month' => $month,
+            'user_id' => auth()->id()
+        ]);
+
+        $images = SortieImage::whereHas('sortie', function ($query) use ($year, $month) {
+                $query->whereYear('sortie_date', $year)
+                      ->whereMonth('sortie_date', $month);
+            })
+            ->with('sortie:id,title,sortie_date')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->groupBy('image_path') // Grouper par chemin d'image pour éviter les doublons
+            ->map(function ($duplicates) {
+                // Prendre la première occurrence de chaque image unique
+                $image = $duplicates->first();
+                // Compter les utilisations et lister les sorties
+                $usedInSorties = $duplicates->map(function($dup) {
+                    return $dup->sortie->title;
+                })->unique()->join(', ');
+                
+                return [
+                    'id' => $image->id,
+                    'url' => asset($image->image_path),
+                    'caption' => $image->caption ?: ('Image ' . basename($image->image_path)),
+                    'is_featured' => $image->is_featured,
+                    'sortie_title' => $image->sortie->title,
+                    'sortie_date' => $image->sortie->sortie_date->format('d/m/Y'),
+                    'used_count' => $duplicates->count(),
+                    'used_in_sorties' => $usedInSorties
+                ];
+            })
+            ->values(); // Réindexer le tableau
+
+        Log::info('Images trouvées: ' . $images->count());
+
+        return response()->json($images);
+    }
+
     // Enregistrer une nouvelle sortie
     public function store(Request $request)
     {
@@ -147,6 +193,9 @@ class SortieController extends Controller
             
             // Gérer les images si présentes
             $imageErrors = [];
+            $totalImagesAdded = 0;
+            
+            // 1. Upload des nouvelles images
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $index => $image) {
                     if ($image->isValid()) {
@@ -159,13 +208,55 @@ class SortieController extends Controller
                                 'image_path' => $imagePath,
                                 'caption' => $request->input("image_captions.{$index}", ''),
                                 'is_featured' => $request->featured_image_index == $index,
-                                'order_position' => $index
+                                'order_position' => $totalImagesAdded
                             ]);
+                            
+                            $totalImagesAdded++;
                         } catch (\Exception $e) {
                             // Log l'erreur et l'ajouter à la notification
                             Log::error('Erreur upload image sortie: ' . $e->getMessage());
                             $imageErrors[] = "Image {$index}: " . $e->getMessage();
                         }
+                    }
+                }
+            }
+            
+            // 2. Gérer les images sélectionnées de la galerie mensuelle
+            if ($request->filled('selected_monthly_images')) {
+                $selectedImageIds = $request->input('selected_monthly_images');
+                Log::info('Images sélectionnées de la galerie:', $selectedImageIds);
+                
+                foreach ($selectedImageIds as $index => $imageId) {
+                    try {
+                        // Récupérer l'image originale
+                        $originalImage = SortieImage::find($imageId);
+                        Log::info('Image originale trouvée:', [
+                            'id' => $imageId,
+                            'exists' => $originalImage ? 'oui' : 'non',
+                            'path' => $originalImage ? $originalImage->image_path : 'N/A'
+                        ]);
+                        
+                        if ($originalImage) {
+                            // Créer une nouvelle entrée qui référence la même image physique
+                            $newImage = SortieImage::create([
+                                'sortie_id' => $sortie->id,
+                                'image_path' => $originalImage->image_path, // Réutiliser le même chemin
+                                'caption' => $originalImage->caption,
+                                'is_featured' => ($totalImagesAdded === 0 && $sortie->images()->count() === 0), // Première image = featured si aucune autre
+                                'order_position' => $totalImagesAdded
+                            ]);
+                            
+                            Log::info('Image réutilisée créée:', [
+                                'new_id' => $newImage->id,
+                                'sortie_id' => $sortie->id,
+                                'path' => $newImage->image_path
+                            ]);
+                            
+                            $totalImagesAdded++;
+                        }
+                    } catch (\Exception $e) {
+                        Log::error('Erreur lors de la réutilisation d\'image: ' . $e->getMessage());
+                        $imageErrors[] = "Image de galerie {$index}: " . $e->getMessage();
                     }
                 }
             }
@@ -221,6 +312,17 @@ class SortieController extends Controller
     // Mettre à jour une sortie
     public function update(UpdateSortieRequest $request)
     {
+        Log::emergency('SortieController::update - REACHED!', [
+            'all_data' => $request->all(),
+            'method' => $request->method(),
+            'url' => $request->url(),
+            'user_id' => auth()->id(),
+            'has_new_images' => $request->hasFile('new_images'),
+            'has_gpx' => $request->hasFile('gpx_file'),
+            'has_selected_monthly' => $request->filled('selected_monthly_images'),
+            'csrf_token' => $request->input('_token')
+        ]);
+        
         $id = $request->id;
         $sortie = Sortie::findOrFail($id);
         
@@ -329,6 +431,37 @@ class SortieController extends Controller
             
             $sortie->save();
             
+            // Gérer les images sélectionnées de la galerie mensuelle
+            $totalImagesAdded = 0;
+            if ($request->filled('selected_monthly_images')) {
+                Log::info('Images sélectionnées de la galerie: ' . json_encode($request->selected_monthly_images));
+                
+                foreach ($request->selected_monthly_images as $imageId) {
+                    try {
+                        $originalImage = SortieImage::find($imageId);
+                        if ($originalImage) {
+                            $newImage = SortieImage::create([
+                                'sortie_id' => $sortie->id,
+                                'image_path' => $originalImage->image_path,
+                                'caption' => $originalImage->caption,
+                                'is_featured' => ($totalImagesAdded === 0 && $sortie->images()->count() === 0),
+                                'order_position' => $totalImagesAdded
+                            ]);
+                            
+                            Log::info('Image réutilisée créée pour mise à jour:', [
+                                'new_id' => $newImage->id,
+                                'sortie_id' => $sortie->id,
+                                'path' => $newImage->image_path
+                            ]);
+                            
+                            $totalImagesAdded++;
+                        }
+                    } catch (\Exception $e) {
+                        Log::error('Erreur lors de la réutilisation d\'image en mise à jour: ' . $e->getMessage());
+                    }
+                }
+            }
+
             // Gérer les nouvelles images si présentes
             $imageErrors = [];
             $newImages = [];
@@ -338,7 +471,8 @@ class SortieController extends Controller
                 'has_new_images' => $request->hasFile('new_images'),
                 'new_images_count' => $request->hasFile('new_images') ? count($request->file('new_images')) : 0,
                 'all_files' => $request->allFiles(),
-                'sortie_id' => $sortie->id
+                'sortie_id' => $sortie->id,
+                'selected_monthly_count' => $request->filled('selected_monthly_images') ? count($request->selected_monthly_images) : 0
             ]);
             
             if ($request->hasFile('new_images')) {

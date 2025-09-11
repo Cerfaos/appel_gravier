@@ -590,7 +590,7 @@
         </div>
         @endif
 
-        <!-- Upload nouvelles images -->
+        <!-- Upload nouvelles images avec galerie -->
         <div class="card cerfaos-enhanced">
           <div class="card__header">
             <h2 class="card__title u-flex u-items-center u-gap-3">
@@ -600,9 +600,31 @@
           </div>
           <div class="card__content">
             
-            <div class="upload-zone cerfaos-enhanced" 
-                 @click="$refs.imageInput.click()"
-                 style="min-height: 200px;">
+            <!-- Onglets -->
+            <div class="tabs-nav" style="margin-bottom: 24px; border-bottom: 1px solid #e5e7eb;">
+              <button type="button" 
+                      class="tab-btn"
+                      :class="activeTab === 'upload' ? 'tab-btn--active' : ''"
+                      @click="activeTab = 'upload'"
+                      style="padding: 12px 16px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; color: #6b7280; font-weight: 500; transition: all 0.2s;"
+                      :style="activeTab === 'upload' ? 'border-bottom-color: #3b82f6; color: #3b82f6; font-weight: 600;' : ''">
+                📤 Uploader nouvelles images
+              </button>
+              <button type="button" 
+                      class="tab-btn"
+                      :class="activeTab === 'gallery' ? 'tab-btn--active' : ''"
+                      @click="activeTab = 'gallery'; $dispatch('tab-changed')"
+                      style="padding: 12px 16px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; color: #6b7280; font-weight: 500; transition: all 0.2s;"
+                      :style="activeTab === 'gallery' ? 'border-bottom-color: #3b82f6; color: #3b82f6; font-weight: 600;' : ''">
+                🖼️ Galerie du mois
+              </button>
+            </div>
+
+            <!-- Tab Upload -->
+            <div x-show="activeTab === 'upload'" x-transition>
+              <div class="upload-zone cerfaos-enhanced" 
+                   @click="$refs.imageInput.click()"
+                   style="min-height: 200px;">
               
               <div x-show="newImages.length === 0" class="upload-zone__empty cerfaos-animate-fade-in">
                 <div class="cerfaos-hover-bounce" style="font-size: 3rem; margin-bottom: var(--cerfaos-space-4);">📸</div>
@@ -644,6 +666,105 @@
                 </template>
               </div>
 
+            </div>
+            </div>
+
+            <!-- Tab Galerie du mois -->
+            <div x-show="activeTab === 'gallery'" x-transition 
+                 @tab-changed.window="if (activeTab === 'gallery' && monthlyImages.length === 0) loadMonthlyImages()"
+                 x-init="if (activeTab === 'gallery') loadMonthlyImages()">
+              <div class="monthly-gallery" style="min-height: 200px;">
+                
+                <!-- Chargement -->
+                <div x-show="loadingImages" class="upload-zone__empty cerfaos-animate-fade-in" style="padding: 32px; text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 16px;" class="cerfaos-pulse">⏳</div>
+                  <h6>Chargement des images du mois...</h6>
+                </div>
+                
+                <!-- Si aucune image du mois -->
+                <div x-show="!loadingImages && monthlyImages.length === 0" class="upload-zone__empty cerfaos-animate-fade-in" style="padding: 32px; text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 16px;">🗂️</div>
+                  <h6>Aucune image disponible pour {{ now()->format('F Y') }}</h6>
+                  <p class="u-text-muted">Créez d'abord une sortie en uploadant des images</p>
+                </div>
+
+                <!-- Tableau des images du mois -->
+                <div x-show="monthlyImages.length > 0" class="monthly-images-table" style="background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;">
+                  <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: #f8fafc; border-bottom: 1px solid #e5e7eb;">
+                      <tr>
+                        <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151; width: 60px;"></th>
+                        <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151; width: 80px;">Aperçu</th>
+                        <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">Nom / Légende</th>
+                        <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">Sortie d'origine</th>
+                        <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <template x-for="(image, index) in monthlyImages" :key="image.id">
+                        <tr style="border-bottom: 1px solid #f3f4f6; transition: background-color 0.2s; cursor: pointer;"
+                            :style="selectedImages.includes(image.id) ? 'background-color: #eff6ff;' : ''"
+                            @click="toggleImageSelection(image.id)"
+                            @mouseenter="$event.target.style.backgroundColor = selectedImages.includes(image.id) ? '#dbeafe' : '#f9fafb'"
+                            @mouseleave="$event.target.style.backgroundColor = selectedImages.includes(image.id) ? '#eff6ff' : 'transparent'">
+                          <!-- Checkbox -->
+                          <td style="padding: 12px 16px; text-align: center;">
+                            <div style="width: 20px; height: 20px; border: 2px solid #d1d5db; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s;"
+                                 :style="selectedImages.includes(image.id) ? 'background-color: #3b82f6; border-color: #3b82f6;' : ''">
+                              <svg x-show="selectedImages.includes(image.id)" style="width: 12px; height: 12px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                              </svg>
+                            </div>
+                          </td>
+                          <!-- Vignette -->
+                          <td style="padding: 12px 16px;">
+                            <div style="width: 60px; height: 60px; border-radius: 6px; overflow: hidden; border: 1px solid #e5e7eb;">
+                              <img :src="image.url" :alt="image.caption || 'Image'" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                          </td>
+                          <!-- Nom / Légende -->
+                          <td style="padding: 12px 16px;">
+                            <div style="font-weight: 500; color: #111827; margin-bottom: 2px;" x-text="image.caption"></div>
+                            <div style="font-size: 12px; color: #6b7280;">
+                              <span x-text="'ID: ' + image.id"></span>
+                              <span x-show="image.used_count > 1" style="margin-left: 8px; color: #f59e0b;" x-text="'• Utilisée ' + image.used_count + ' fois'"></span>
+                            </div>
+                          </td>
+                          <!-- Sortie d'origine -->
+                          <td style="padding: 12px 16px;">
+                            <div style="font-weight: 500; color: #111827; font-size: 14px;" x-text="image.sortie_title"></div>
+                            <div x-show="image.used_count > 1" style="font-size: 12px; color: #6b7280; margin-top: 2px;">
+                              <span style="color: #f59e0b;">↳ Également utilisée dans:</span>
+                              <span x-text="image.used_in_sorties.replace(image.sortie_title, '').replace(/^,\s*/, '').replace(/,\s*$/, '')"></span>
+                            </div>
+                          </td>
+                          <!-- Date -->
+                          <td style="padding: 12px 16px;">
+                            <div style="font-size: 14px; color: #6b7280;" x-text="image.sortie_date"></div>
+                          </td>
+                        </tr>
+                      </template>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Info sélection -->
+                <div x-show="selectedImages.length > 0" style="margin-top: 16px; padding: 12px; background: #eff6ff; border-radius: 6px;">
+                  <small>
+                    <span x-text="selectedImages.length"></span> image(s) sélectionnée(s) 
+                    <button type="button" @click="selectedImages = []" style="margin-left: 8px; color: #dc2626; border: none; background: none; text-decoration: underline; cursor: pointer;">
+                      Désélectionner tout
+                    </button>
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden inputs for form submission -->
+            <div style="display: none;">
+              <template x-for="selectedImageId in selectedImages" :key="'selected-' + selectedImageId">
+                <input type="hidden" name="selected_monthly_images[]" :value="selectedImageId">
+              </template>
             </div>
 
             <input type="file" 
@@ -1028,6 +1149,14 @@ function improvedSortieEdit() {
       actualDurationHours: {{ old('actual_duration_hours', floor(($sortie->actual_duration_minutes ?? 0) / 60)) }},
       actualDurationMinutes: {{ old('actual_duration_minutes_only', ($sortie->actual_duration_minutes ?? 0) % 60) }}
     },
+
+    // État des onglets
+    activeTab: 'upload',
+    
+    // État de la galerie mensuelle
+    monthlyImages: [],
+    selectedImages: [],
+    loadingImages: false,
     
     // État du nouveau fichier GPX
     newGpxFile: null,
@@ -1156,6 +1285,47 @@ function improvedSortieEdit() {
     setNewFeaturedImage(index) {
       this.newFeaturedImageIndex = index;
     },
+
+    // Méthodes galerie mensuelle
+    async loadMonthlyImages() {
+      this.loadingImages = true;
+      this.monthlyImages = [];
+      
+      try {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        
+        const response = await fetch(`/monthly-images?year=${year}&month=${month}`, {
+          headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+        
+        if (response.ok) {
+          const images = await response.json();
+          this.monthlyImages = images;
+          console.log(`Images du mois chargées: ${images.length}`);
+        } else {
+          console.error('Erreur lors du chargement des images');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+      } finally {
+        this.loadingImages = false;
+      }
+    },
+
+    toggleImageSelection(imageId) {
+      const index = this.selectedImages.indexOf(imageId);
+      if (index > -1) {
+        this.selectedImages.splice(index, 1);
+      } else {
+        this.selectedImages.push(imageId);
+      }
+      console.log('Images sélectionnées:', this.selectedImages);
+    },
     
     // Utilitaires
     formatFileSize(bytes) {
@@ -1173,7 +1343,12 @@ function improvedSortieEdit() {
       // Event listener pour le formulaire
       const form = document.getElementById('sortieForm');
       if (form) {
+        console.log('DEBUG: Form action URL:', form.action);
+        console.log('DEBUG: Form method:', form.method);
+        
         form.addEventListener('submit', (e) => {
+          console.log('DEBUG: Form being submitted to:', form.action);
+          console.log('DEBUG: Selected monthly images:', this.selectedImages);
           // S'assurer que les fichiers sont assignés avant soumission
           this.assignFilesToInputs();
         });

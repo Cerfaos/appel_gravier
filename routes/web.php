@@ -156,6 +156,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::controller(BackendSortieController::class)->group(function () {
         Route::get('/all/sortie', 'index')->name('admin.all.sortie');
         Route::get('/add/sortie', 'create')->name('admin.add.sortie');
+        Route::get('/monthly-images', 'getMonthlyImages')->name('admin.monthly.images');
         Route::post('/store/sortie', 'store')->name('admin.store.sortie');
         Route::get('/sortie/{id}', 'show')->name('admin.show.sortie');
         Route::get('/edit/sortie/{id}', 'edit')->name('admin.edit.sortie');
