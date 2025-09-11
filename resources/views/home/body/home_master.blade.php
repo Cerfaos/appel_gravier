@@ -98,16 +98,40 @@
   <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
   <script src="{{ asset('js/mobile-touch-gestures.js') }}"></script>
   <script src="{{ asset('js/mobile-performance-optimizations.js') }}"></script>
+  <script src="{{ asset('js/mobile-animations-optimizer.js') }}"></script>
   
   <!-- Custom Outdoor JavaScript -->
   <script>
-    // Initialize AOS animations
+    // Initialize AOS animations avec optimisations mobile
     AOS.init({
-      duration: 800,
+      duration: 600,                    // Animation plus rapide sur mobile
       easing: 'ease-out',
-      once: true,
-      offset: 100
+      once: true,                      // Une seule fois pour éviter les re-triggers
+      offset: window.innerWidth <= 768 ? 50 : 100,  // Offset réduit sur mobile
+      delay: 0,                        // Pas de délai sur mobile
+      anchorPlacement: 'top-center',   // Déclenchement dès que le top est visible
+      disable: function() {
+        // Désactiver sur très petits écrans si nécessaire
+        return window.innerWidth < 480 ? 'mobile' : false;
+      }
     });
+
+    // Configuration spécifique mobile pour animations plus fluides
+    if (window.innerWidth <= 768) {
+      // Re-initialiser AOS avec des paramètres mobile optimisés
+      AOS.init({
+        duration: 400,                 // Plus rapide
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 30,                    // Très petit offset
+        anchorPlacement: 'top-bottom', // Dès que le top de l'élément touche le bas du viewport
+        startEvent: 'DOMContentLoaded',
+        animatedClassName: 'aos-animate',
+        initClassName: 'aos-init',
+        useClassNames: false,
+        disableMutationObserver: false,
+      });
+    }
 
     // Preloader
     window.addEventListener('load', function() {
