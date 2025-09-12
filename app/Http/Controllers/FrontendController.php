@@ -25,8 +25,7 @@ class FrontendController extends Controller
             ]);
         }
 
-        // Récupérer les features
-        $features = Feature::latest()->take(6)->get();
+        // Features supprimées - non utilisées dans la nouvelle landing page
 
         $latestItineraries = Itinerary::where('status', 'published')
         ->with('featuredImage') // Charger l'image principale
@@ -47,7 +46,7 @@ class FrontendController extends Controller
         ->take(3)
         ->get();
 
-        return view('home.index', compact('slider', 'features', 'latestItineraries', 'latestSorties', 'latestBlogPosts'));
+        return view('home.index', compact('slider', 'latestItineraries', 'latestSorties', 'latestBlogPosts'));
     }
 
     public function MonHistoire()

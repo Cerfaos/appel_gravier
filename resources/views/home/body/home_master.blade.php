@@ -14,10 +14,10 @@
   <!-- Favicon moderne pour tous les devices -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend/assets/images/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/assets/images/favicon-16x16.png') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/assets/images/apple-touch-icon.png') }}">
+  {{-- <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/assets/images/apple-touch-icon.png') }}"> --}}
   
   <!-- PWA Configuration -->
-  <link rel="manifest" href="{{ asset('manifest.json') }}">
+  {{-- <link rel="manifest" href="{{ asset('manifest.json') }}"> --}}
   <meta name="theme-color" content="#059669">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
