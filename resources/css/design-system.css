@@ -128,28 +128,28 @@
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
     
     /* Size Variants */
-    &--sm {
+    &.btn--sm {
       @apply px-3 py-2 text-xs;
       border-radius: var(--radius-md);
     }
     
-    &--md {
+    &.btn--md {
       @apply px-4 py-2.5 text-sm;
       border-radius: var(--radius-lg);
     }
     
-    &--lg {
+    &.btn--lg {
       @apply px-6 py-3 text-base;
       border-radius: var(--radius-xl);
     }
     
-    &--xl {
+    &.btn--xl {
       @apply px-8 py-4 text-lg;
       border-radius: var(--radius-2xl);
     }
     
     /* Style Variants */
-    &--primary {
+    &.btn--primary {
       @apply bg-outdoor-olive-500 text-white;
       @apply hover:bg-outdoor-olive-600 active:bg-outdoor-olive-700;
       @apply focus:ring-outdoor-olive-500/50;
@@ -161,7 +161,7 @@
       }
     }
     
-    &--secondary {
+    &.btn--secondary {
       @apply bg-outdoor-earth-500 text-white;
       @apply hover:bg-outdoor-earth-600 active:bg-outdoor-earth-700;
       @apply focus:ring-outdoor-earth-500/50;
@@ -173,27 +173,27 @@
       }
     }
     
-    &--outline {
+    &.btn--outline {
       @apply bg-transparent border-2 border-outdoor-olive-500;
       @apply text-outdoor-olive-600;
       @apply hover:bg-outdoor-olive-50 hover:border-outdoor-olive-600;
       @apply focus:ring-outdoor-olive-500/50;
     }
     
-    &--ghost {
+    &.btn--ghost {
       @apply bg-transparent text-outdoor-forest-600;
       @apply hover:bg-outdoor-cream-100 hover:text-outdoor-forest-700;
       @apply focus:ring-outdoor-forest-500/50;
     }
     
-    &--danger {
+    &.btn--danger {
       @apply bg-red-500 text-white;
       @apply hover:bg-red-600 active:bg-red-700;
       @apply focus:ring-red-500/50;
     }
     
     /* Full Width */
-    &--block {
+    &.btn--block {
       @apply w-full;
     }
   }
@@ -212,29 +212,8 @@
       box-shadow: var(--shadow-md);
     }
     
-    &__header {
-      @apply p-6 border-b border-outdoor-cream-200;
-    }
-    
-    &__title {
-      @apply text-lg font-semibold text-outdoor-forest-600;
-    }
-    
-    &__subtitle {
-      @apply text-sm text-outdoor-forest-400 mt-1;
-    }
-    
-    &__content {
-      @apply p-6;
-    }
-    
-    &__footer {
-      @apply px-6 py-4 border-t border-outdoor-cream-200;
-      @apply bg-outdoor-cream-50/50;
-    }
-    
     /* Card Variants */
-    &--elevated {
+    &.card--elevated {
       box-shadow: var(--shadow-lg);
       
       &:hover {
@@ -243,7 +222,7 @@
       }
     }
     
-    &--interactive {
+    &.card--interactive {
       @apply cursor-pointer;
       
       &:hover {
@@ -253,29 +232,50 @@
     }
   }
   
+  .card__header {
+    @apply p-6 border-b border-outdoor-cream-200;
+  }
+  
+  .card__title {
+    @apply text-lg font-semibold text-outdoor-forest-600;
+  }
+  
+  .card__subtitle {
+    @apply text-sm text-outdoor-forest-400 mt-1;
+  }
+  
+  .card__content {
+    @apply p-6;
+  }
+  
+  .card__footer {
+    @apply px-6 py-4 border-t border-outdoor-cream-200;
+    @apply bg-outdoor-cream-50/50;
+  }
+  
   /* ============================================
      FORM SYSTEM
      ============================================ */
   
   .form-field {
     @apply space-y-2;
-    
-    &__label {
-      @apply block text-sm font-medium text-outdoor-forest-600;
-      @apply flex items-center gap-2;
-    }
-    
-    &__input {
-      @apply relative;
-    }
-    
-    &__help {
-      @apply text-xs text-outdoor-forest-400;
-    }
-    
-    &__error {
-      @apply text-xs text-red-600 flex items-center gap-1;
-    }
+  }
+  
+  .form-field__label {
+    @apply block text-sm font-medium text-outdoor-forest-600;
+    @apply flex items-center gap-2;
+  }
+  
+  .form-field__input {
+    @apply relative;
+  }
+  
+  .form-field__help {
+    @apply text-xs text-outdoor-forest-400;
+  }
+  
+  .form-field__error {
+    @apply text-xs text-red-600 flex items-center gap-1;
   }
   
   .input {
@@ -286,17 +286,17 @@
     @apply focus:border-outdoor-olive-500 focus:ring-1 focus:ring-outdoor-olive-500;
     border-radius: var(--radius-lg);
     
-    &--sm {
+    &.input--sm {
       @apply px-2.5 py-1.5 text-sm;
       border-radius: var(--radius-md);
     }
     
-    &--lg {
+    &.input--lg {
       @apply px-4 py-3 text-lg;
       border-radius: var(--radius-xl);
     }
     
-    &--error {
+    &.input--error {
       @apply border-red-300 focus:border-red-500 focus:ring-red-500;
     }
   }
@@ -325,27 +325,27 @@
     @apply text-xs font-medium;
     border-radius: var(--radius-full);
     
-    &--primary {
+    &.badge--primary {
       @apply bg-outdoor-olive-100 text-outdoor-olive-700;
     }
     
-    &--secondary {
+    &.badge--secondary {
       @apply bg-outdoor-earth-100 text-outdoor-earth-700;
     }
     
-    &--success {
+    &.badge--success {
       @apply bg-green-100 text-green-700;
     }
     
-    &--warning {
+    &.badge--warning {
       @apply bg-yellow-100 text-yellow-700;
     }
     
-    &--danger {
+    &.badge--danger {
       @apply bg-red-100 text-red-700;
     }
     
-    &--info {
+    &.badge--info {
       @apply bg-blue-100 text-blue-700;
     }
   }

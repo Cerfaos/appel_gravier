@@ -2,20 +2,20 @@
 <!-- Outdoor Activities Section -->
 <section id="services" class="py-20 lg:py-32 relative overflow-hidden" style="background: white;">
   
-  <!-- Enhanced Background - MASQUÉ SUR MOBILE -->
-  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/30 via-white to-outdoor-earth-50 hidden md:block"></div>
+  <!-- Enhanced Background - Version mobile et desktop -->
+  <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-50/30 via-white to-outdoor-earth-50 md:opacity-100 opacity-50"></div>
   
-  <!-- Animated background elements - MASQUÉ SUR MOBILE -->
-  <div class="absolute inset-0 hidden md:block">
-    <div class="absolute top-10 right-10 w-40 h-40 bg-outdoor-olive-200 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-    <div class="absolute bottom-20 left-20 w-32 h-32 bg-outdoor-earth-200 rounded-full blur-2xl opacity-15 animate-float"></div>
-    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-outdoor-ochre-200 rounded-full blur-xl opacity-10 animate-float-delayed"></div>
+  <!-- Animated background elements - Simplifiés sur mobile -->
+  <div class="absolute inset-0">
+    <div class="absolute top-10 right-10 w-20 h-20 md:w-40 md:h-40 bg-outdoor-olive-200 rounded-full blur-2xl md:blur-3xl opacity-10 md:opacity-20 md:animate-pulse-slow"></div>
+    <div class="absolute bottom-20 left-20 w-16 h-16 md:w-32 md:h-32 bg-outdoor-earth-200 rounded-full blur-xl md:blur-2xl opacity-5 md:opacity-15 md:animate-float"></div>
+    <div class="absolute top-1/2 left-1/4 w-12 h-12 md:w-24 md:h-24 bg-outdoor-ochre-200 rounded-full blur-lg md:blur-xl opacity-5 md:opacity-10 md:animate-float-delayed"></div>
   </div>
   
-  <!-- Pattern overlay - MASQUÉ SUR MOBILE -->
-  <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="m0 40 40-40H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')] hidden md:block"></div>
+  <!-- Pattern overlay - Très subtil sur mobile -->
+  <div class="absolute inset-0 opacity-2 md:opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23606c38" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="m0 40 40-40H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')]"></div>
   
-  <!-- Decorative Elements with better positioning - MASQUÉ SUR MOBILE -->
+  <!-- Decorative Elements - Cachés sur mobile pour économiser l'espace -->
   <div class="absolute top-10 right-10 text-6xl opacity-10 animate-sway hidden md:block">🏔️</div>
   <div class="absolute bottom-20 left-20 text-4xl opacity-10 animate-gentle-bounce hidden md:block">🌲</div>
 
@@ -40,8 +40,8 @@
       @if($features && $features->count() > 0)
         @foreach($features as $index => $feature)
           <div class="card-outdoor group hover:scale-105 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-duration="{{ 500 + ($index * 200) }}">
-            <!-- Gradient overlay on hover - MASQUÉ SUR MOBILE -->
-            <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-500/5 to-outdoor-earth-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"></div>
+            <!-- Gradient overlay on hover - Visible sur tous devices -->
+            <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-500/5 to-outdoor-earth-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative">
             <div class="text-center">
               <div class="w-16 h-16 bg-outdoor-olive-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-outdoor-olive-200 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
