@@ -1,9 +1,9 @@
 /* ========================================
-   CERFAOS - FORCE VISIBILITÉ MOBILE RADICAL
-   Solution directe pour éliminer voile translucide
+   CERFAOS - FORCE VISIBILITÉ MOBILE OPTIMISÉ
+   Solution équilibrée qui préserve le design moderne
    ======================================== */
 
-/* SOLUTION RADICALE - Force visibilité sur mobile */
+/* SOLUTION OPTIMISÉE - Force visibilité mais préserve le style */
 @media (max-width: 768px) {
   
   /* 1. SUPPRIMER PRELOADER COMPLÈTEMENT */
@@ -14,33 +14,19 @@
     z-index: -1 !important;
   }
   
-  /* 2. FORCER VISIBILITÉ TOTALE DE TOUS LES ÉLÉMENTS */
-  * {
+  /* 2. FORCER VISIBILITÉ DU CONTENU PRINCIPAL */
+  main, section, article, .container {
     opacity: 1 !important;
     visibility: visible !important;
   }
   
-  /* 3. SUPPRIMER TOUS FILTRES ET EFFETS VISUELS */
-  * {
-    filter: none !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+  /* 3. PRÉSERVER LES EFFETS MODERNES ESSENTIELS */
+  /* Exception: Garder backdrop-filter pour les boutons glassmorphism */
+  .scroll-link, [class*="btn"] {
+    backdrop-filter: blur(10px) !important;
   }
   
-  /* 4. ÉLIMINER TOUS OVERLAYS ET MASQUES */
-  *::before, *::after {
-    display: none !important;
-    opacity: 0 !important;
-    background: transparent !important;
-  }
-  
-  /* 5. FORCER BACKGROUNDS TRANSPARENTS */
-  body, html {
-    background: white !important;
-  }
-  
-  /* 6. DÉSACTIVER AOS COMPLÈTEMENT */
+  /* 4. DÉSACTIVER AOS COMPLÈTEMENT */
   [data-aos] {
     opacity: 1 !important;
     transform: none !important;
@@ -53,58 +39,45 @@
     transform: translate(0) !important;
   }
   
-  /* 7. SUPPRIMER TOUTES ANIMATIONS */
-  *, *::before, *::after {
+  /* 5. SUPPRIMER ANIMATIONS LOURDES SEULEMENT */
+  .animate-fade-in-up,
+  .animate-typewriter,
+  .animate-slide-up-delayed {
     animation: none !important;
-    transition: none !important;
   }
   
-  /* 8. FORCER CONTRASTE MAXIMAL TEXTE */
-  h1, h2, h3, h4, h5, h6, p, span, a, li, div {
-    color: inherit !important;
+  /* 6. FORCER CONTRASTE TEXTE */
+  h1, h2, h3, h4, h5, h6, p, span, a {
     opacity: 1 !important;
   }
   
-  /* 9. NEUTRALISER CLASSES TAILWIND POTENTIELLEMENT PROBLÉMATIQUES */
-  .bg-outdoor-cream-50,
-  .bg-outdoor-cream-100,
-  .bg-opacity-50,
-  .bg-opacity-75,
+  /* 7. NEUTRALISER CLASSES OPACITY PROBLÉMATIQUES */
   [class*="bg-opacity"],
   [class*="opacity-"] {
-    background: transparent !important;
     opacity: 1 !important;
   }
   
-  /* 10. SUPPRIMER Z-INDEX ÉLEVÉS QUI PEUVENT CRÉER OVERLAYS */
-  .fixed, .absolute, .sticky {
-    z-index: auto !important;
-  }
-  
-  /* Exception: garder z-index pour navigation */
+  /* 8. GARDER Z-INDEX POUR NAVIGATION */
   nav, .nav, .navbar, header {
     z-index: 100 !important;
   }
 }
 
-/* Solution encore plus agressive pour très petits écrans */
+/* Solution équilibrée pour très petits écrans */
 @media (max-width: 480px) {
-  /* Force suppression de TOUT ce qui peut créer un voile */
-  * {
-    background: transparent !important;
+  /* Forcer visibilité du contenu essentiel */
+  main, section, h1, h2, h3, p, a, button {
     opacity: 1 !important;
-    filter: none !important;
-    backdrop-filter: none !important;
   }
   
-  /* Background blanc uniquement pour body */
+  /* Background blanc pour body seulement */
   body {
     background: white !important;
   }
   
-  /* Supprimer complètement les pseudo-éléments */
-  *::before, *::after {
-    content: none !important;
-    display: none !important;
+  /* Préserver le bouton glassmorphism */
+  .scroll-link, [class*="btn"] {
+    backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255,255,255,0.8) !important;
   }
 }
