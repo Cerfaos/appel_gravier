@@ -54,12 +54,10 @@
                 {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
-            <!-- CTA avec animation -->
-            <a href="#main-content" class="scroll-link inline-flex items-center bg-white text-black px-6 py-3 rounded font-medium hover:bg-gray-100 transition-all duration-300 animate-elegant-cta group">
-                <span class="text-lg font-medium">Commencer l'exploration</span>
-                <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                </svg>
+            <!-- CTA avec animation - VERSION SIMPLE ET FONCTIONNELLE -->
+            <a href="#" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'}); return false;" 
+               class="inline-block bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 animate-elegant-cta shadow-lg">
+                🚀 Commencer l'exploration
             </a>
         </div>
 
