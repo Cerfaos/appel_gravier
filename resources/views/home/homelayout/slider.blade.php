@@ -1,5 +1,5 @@
 <!-- GRAND HERO VISUEL - Style Outdoor Cohérent -->
-<section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+<section class="relative min-h-screen text-white overflow-hidden">
     <!-- Image de fond du slider - Optimisé pour images paysage 874×490 -->
     @if($slider && $slider->image)
         <div class="absolute inset-0 w-full h-full bg-no-repeat" 
@@ -25,27 +25,52 @@
         <div class="absolute bottom-1/3 left-1/2 w-1 h-1 bg-white/30 rounded-full animate-float-slow"></div>
     </div>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="space-y-8 animate-fade-in-up">
-            <!-- Titre principal -->
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight text-white">
-                {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
-            </h1>
-            
-            <!-- Sous-titre -->
-            <p class="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto opacity-90 leading-relaxed font-light text-white">
-                {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
-            </p>
-            
-            <!-- CTA décentré à droite -->
-            <div class="pt-8 flex justify-end">
-                <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300">
-                    <span class="text-xl font-medium">Commencer l'exploration</span>
-                    <svg class="ml-3 w-8 h-8 group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                    </svg>
-                </a>
+    <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
+        <!-- Mobile : layout centré -->
+        <div class="block lg:hidden text-center">
+            <div class="space-y-8 animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white">
+                    {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white">
+                    {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
+                </p>
             </div>
+        </div>
+
+        <!-- Desktop : layout bas-gauche avec animation -->
+        <div class="hidden lg:block absolute bottom-16 left-6 xl:bottom-20 xl:left-8 max-w-2xl space-y-6 z-20">
+                <!-- Titre avec animation typewriter -->
+                <h1 class="text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white animate-typewriter">
+                    {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
+                </h1>
+            
+                
+                <!-- Description avec animation slide-up -->
+                <p class="text-xl opacity-90 leading-relaxed font-light text-white animate-slide-up-delayed">
+                    {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
+                </p>
+                
+                <!-- CTA avec animation -->
+                <div class="pt-4 animate-fade-in-slow">
+                    <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-lg">
+                        <span class="text-lg font-medium">Commencer l'exploration</span>
+                        <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                </div>
+        </div>
+
+        <!-- CTA mobile centré -->
+        <div class="flex lg:hidden pt-8 justify-center animate-fade-in-up">
+            <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300">
+                <span class="text-xl font-medium">Commencer l'exploration</span>
+                <svg class="ml-3 w-8 h-8 group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </a>
         </div>
     </div>
     
@@ -55,6 +80,83 @@
         @keyframes fade-in-up {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animation blur to focus élégante */
+        @keyframes blur-to-focus {
+            0% { 
+                filter: blur(15px);
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            60% {
+                filter: blur(0px);
+                opacity: 0.8;
+            }
+            100% { 
+                filter: blur(0px);
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Animation elastic scale */
+        @keyframes elastic-scale {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Animation fade cascade */
+        @keyframes elegant-fade {
+            0% {
+                transform: translateY(30px) scale(0.95);
+                opacity: 0;
+                filter: blur(5px);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes blink-cursor {
+            0%, 50% { border-right: 3px solid white; }
+            51%, 100% { border-right: 3px solid transparent; }
+        }
+        
+        /* Animation slide-up pour la description */
+        @keyframes slide-up {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 0.9; 
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animation fade-in lente pour le CTA */
+        @keyframes fade-in-slow {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
         }
         
         @keyframes float {
@@ -83,6 +185,46 @@
         .animate-float-delayed { animation: float-delayed 8s ease-in-out infinite; }
         .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
         .animate-scroll-down { animation: scroll-down 2s ease-in-out infinite; }
+        
+        /* Classes d'animation desktop uniquement */
+        @media (min-width: 1024px) {
+            .animate-typewriter { 
+                animation: blur-to-focus 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+                filter: blur(15px);
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            
+            .animate-slide-up-delayed { 
+                animation: elastic-scale 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            
+            .animate-fade-in-slow { 
+                animation: elegant-fade 1.5s ease-out 1.4s forwards;
+                transform: translateY(30px) scale(0.95);
+                opacity: 0;
+                filter: blur(5px);
+            }
+        }
+        
+        /* Sur mobile, pas d'animation typewriter */
+        @media (max-width: 1023px) {
+            .animate-typewriter { 
+                animation: fade-in-up 1s ease-out;
+            }
+            
+            .animate-slide-up-delayed { 
+                animation: fade-in-up 1s ease-out 0.3s forwards;
+                opacity: 0;
+            }
+            
+            .animate-fade-in-slow { 
+                animation: fade-in-up 1s ease-out 0.6s forwards;
+                opacity: 0;
+            }
+        }
         
         html { scroll-behavior: smooth; }
         
