@@ -41,21 +41,21 @@
 
     </div>
     
-    <!-- Desktop : Contenu en bas à gauche (test simplifié) -->
+    <!-- Desktop : Contenu en bas à gauche avec animations corrigées -->
     <div class="absolute bottom-0 left-0 right-0 p-8 z-30">
         <div class="hidden lg:block max-w-2xl">
-            <!-- Titre visible en bas à gauche -->
-            <h1 class="text-5xl xl:text-6xl font-bold text-white mb-4 bg-black/20 p-4 rounded">
-                {{ $slider->title ?? 'TEST TITRE VISIBLE' }}
+            <!-- Titre avec animation élégante -->
+            <h1 class="text-5xl xl:text-6xl font-bold text-white mb-4 bg-black/20 p-4 rounded animate-elegant-title">
+                {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
             </h1>
             
-            <!-- Description -->
-            <p class="text-lg text-white/90 mb-4 bg-black/20 p-3 rounded">
-                {{ $slider->description ?? 'Description de test visible' }}
+            <!-- Description avec animation -->
+            <p class="text-lg text-white/90 mb-4 bg-black/20 p-3 rounded animate-elegant-desc">
+                {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
-            <!-- CTA -->
-            <a href="#main-content" class="inline-block bg-white text-black px-6 py-3 rounded font-medium">
+            <!-- CTA avec animation -->
+            <a href="#main-content" class="inline-block bg-white text-black px-6 py-3 rounded font-medium hover:bg-gray-100 transition-all duration-300 animate-elegant-cta">
                 Commencer l'exploration
             </a>
         </div>
@@ -183,26 +183,28 @@
         .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
         .animate-scroll-down { animation: scroll-down 2s ease-in-out infinite; }
         
-        /* Classes d'animation desktop uniquement */
+        /* Classes d'animation desktop - VISIBLES dès le début */
         @media (min-width: 1024px) {
-            .animate-typewriter { 
+            .animate-elegant-title { 
                 animation: blur-to-focus 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-                filter: blur(15px);
-                transform: scale(0.9);
-                opacity: 0;
+                /* Commence visible et s'améliore */
+                opacity: 0.7;
+                filter: blur(2px);
+                transform: scale(0.98);
             }
             
-            .animate-slide-up-delayed { 
+            .animate-elegant-desc { 
                 animation: elastic-scale 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
-                transform: scale(0.8);
-                opacity: 0;
+                /* Commence visible */
+                opacity: 0.6;
+                transform: scale(0.96);
             }
             
-            .animate-fade-in-slow { 
+            .animate-elegant-cta { 
                 animation: elegant-fade 1.5s ease-out 1.4s forwards;
-                transform: translateY(30px) scale(0.95);
-                opacity: 0;
-                filter: blur(5px);
+                /* Commence visible */
+                opacity: 0.5;
+                transform: translateY(10px) scale(0.98);
             }
         }
         
