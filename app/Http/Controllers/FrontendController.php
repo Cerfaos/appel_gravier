@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Slider;
-use App\Models\Feature;
-use App\Models\Itinerary;
 use App\Models\Sortie;
 use App\Models\BlogPost;
+use App\Services\CacheService;
 
 class FrontendController extends Controller
 {
+    protected CacheService $cacheService;
+
+    public function __construct(CacheService $cacheService)
+    {
+        $this->cacheService = $cacheService;
+    }
+
     public function index()
     {
         // Récupérer le premier slider ou créer un slider par défaut
@@ -27,18 +32,17 @@ class FrontendController extends Controller
 
         // Features supprimées - non utilisées dans la nouvelle landing page
 
-        $latestItineraries = Itinerary::where('status', 'published')
-        ->with('featuredImage') // Charger l'image principale
-        ->latest('published_at')
-        ->take(3)
-        ->get();
+        $latestItineraries = $this->cacheService->getPopularItineraries(3);
 
-        // Récupérer les dernières sorties/expéditions
-        $latestSorties = Sortie::where('status', 'published')
-        ->with(['featuredImage', 'user'])
-        ->latest('published_at')
-        ->take(3)
-        ->get();
+        // Récupérer les dernières sorties/expéditions avec cache
+        $latestSorties = cache()->tags(['sorties'])
+            ->remember('latest_sorties_3', 1800, function () {
+                return Sortie::where('status', 'published')
+                    ->with(['featuredImage', 'user'])
+                    ->latest('published_at')
+                    ->take(3)
+                    ->get();
+            });
 
         // Récupérer les derniers articles de blog
         $latestBlogPosts = BlogPost::with('blogCategory')

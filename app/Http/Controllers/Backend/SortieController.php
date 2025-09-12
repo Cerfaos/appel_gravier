@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Sortie;
 use App\Models\SortieImage;
 use App\Services\GpxParserService;
+use App\Services\SortieService;
 use App\Http\Requests\StoreSortieRequest;
 use App\Http\Requests\UpdateSortieRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -19,21 +19,24 @@ use Intervention\Image\Drivers\Gd\Driver;
 class SortieController extends Controller
 {
     protected $gpxParser;
+    protected $sortieService;
 
-    public function __construct(GpxParserService $gpxParser)
+    public function __construct(GpxParserService $gpxParser, SortieService $sortieService)
     {
         $this->gpxParser = $gpxParser;
+        $this->sortieService = $sortieService;
     }
 
     // Afficher toutes les sorties (admin)
     public function index(Request $request)
     {
-        $query = Sortie::with(['user', 'featuredImage']);
-        
-        // Filtrage par statut
+        // Utiliser le service pour récupérer les sorties avec filtres
+        $filters = [];
         if ($request->filled('status')) {
-            $query->where('status', $request->get('status'));
+            $filters['status'] = $request->get('status');
         }
+        
+        $sorties = $this->sortieService->getSorties($filters, 10);
         
         // Statistiques pour la vue
         $stats = [
@@ -41,8 +44,6 @@ class SortieController extends Controller
             'published' => Sortie::where('status', 'published')->count(),
             'draft' => Sortie::where('status', 'draft')->count()
         ];
-        
-        $sorties = $query->latest()->paginate(10);
         
         return view('admin.sorties.index', compact('sorties', 'stats'));
     }
@@ -100,43 +101,19 @@ class SortieController extends Controller
     }
 
     // Enregistrer une nouvelle sortie
-    public function store(Request $request)
+    public function store(StoreSortieRequest $request)
     {
-        // EMERGENCY DEBUG - Log EVERYTHING that reaches this method
-        Log::emergency('SortieController::store - REACHED!', [
-            'all_data' => $request->all(),
-            'method' => $request->method(),
-            'url' => $request->url(),
+        Log::info('SortieController::store - Création via service', [
             'user_id' => auth()->id(),
-            'has_files' => !empty($request->allFiles()),
-            'csrf_token' => $request->input('_token')
-        ]);
-        
-        Log::info('SortieController::store - Début de la création', [
-            'user_id' => auth()->id(),
-            'title' => $request->title,
-            'has_gpx' => $request->hasFile('gpx_file'),
-            'has_images' => $request->hasFile('images'),
-            'request_data' => $request->except(['gpx_file', 'images'])
+            'title' => $request->title
         ]);
         
         try {
-            // Créer la sortie de base
-            $sortie = new Sortie();
-            $sortie->user_id = auth()->id();
-            $sortie->title = $request->title;
-            $sortie->slug = Str::slug($request->title);
-            $sortie->description = $request->description;
-            $sortie->personal_comment = $request->personal_comment;
-            $sortie->difficulty_level = $request->difficulty_level;
-            $sortie->departement = $request->departement;
-            $sortie->pays = $request->pays;
-            $sortie->actual_duration_minutes = $request->actual_duration_minutes;
-            $sortie->weather_conditions = $request->weather_conditions;
-            $sortie->sortie_date = $request->sortie_date;
-            $sortie->meta_title = $request->meta_title;
-            $sortie->meta_description = $request->meta_description;
-            $sortie->status = $request->input('status', 'draft');
+            // Utiliser le service pour créer la sortie
+            $data = $request->validated();
+            $data['user_id'] = auth()->id();
+            
+            $sortie = $this->sortieService->createSortie($data);
 
             // Upload et parse du fichier GPX si présent
             if ($request->hasFile('gpx_file')) {
@@ -191,33 +168,11 @@ class SortieController extends Controller
                 }
             }
             
-            // Gérer les images si présentes
-            $imageErrors = [];
-            $totalImagesAdded = 0;
-            
-            // 1. Upload des nouvelles images
+            // Gérer les images si présentes via le service
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $index => $image) {
-                    if ($image->isValid()) {
-                        try {
-                            $imagePath = $this->uploadSortieImage($image);
-                            
-                            // Créer l'enregistrement en base
-                            SortieImage::create([
-                                'sortie_id' => $sortie->id,
-                                'image_path' => $imagePath,
-                                'caption' => $request->input("image_captions.{$index}", ''),
-                                'is_featured' => $request->featured_image_index == $index,
-                                'order_position' => $totalImagesAdded
-                            ]);
-                            
-                            $totalImagesAdded++;
-                        } catch (\Exception $e) {
-                            // Log l'erreur et l'ajouter à la notification
-                            Log::error('Erreur upload image sortie: ' . $e->getMessage());
-                            $imageErrors[] = "Image {$index}: " . $e->getMessage();
-                        }
-                    }
+                    $isFeatured = $request->input('featured_image_index') == $index;
+                    $this->sortieService->addImageToSortie($sortie, $image, $isFeatured);
                 }
             }
             
@@ -310,48 +265,27 @@ class SortieController extends Controller
     }
 
     // Mettre à jour une sortie
-    public function update(UpdateSortieRequest $request)
+    public function update(UpdateSortieRequest $request, $id)
     {
-        Log::emergency('SortieController::update - REACHED!', [
-            'all_data' => $request->all(),
-            'method' => $request->method(),
-            'url' => $request->url(),
-            'user_id' => auth()->id(),
-            'has_new_images' => $request->hasFile('new_images'),
-            'has_gpx' => $request->hasFile('gpx_file'),
-            'has_selected_monthly' => $request->filled('selected_monthly_images'),
-            'csrf_token' => $request->input('_token')
+        Log::info('SortieController::update - Mise à jour via service', [
+            'sortie_id' => $id,
+            'user_id' => auth()->id()
         ]);
         
-        $id = $request->id;
         $sortie = Sortie::findOrFail($id);
         
         try {
             DB::beginTransaction();
             
-            // Mise à jour des champs de base
-            $sortie->title = $request->title;
-            $sortie->slug = Str::slug($request->title);
-            $sortie->description = $request->description;
-            $sortie->personal_comment = $request->personal_comment;
-            $sortie->difficulty_level = $request->difficulty_level;
-            $sortie->departement = $request->departement;
-            $sortie->pays = $request->pays;
-            $sortie->actual_duration_minutes = $request->actual_duration_minutes;
-            $sortie->weather_conditions = $request->weather_conditions;
-            $sortie->sortie_date = $request->sortie_date;
-            $sortie->meta_title = $request->meta_title;
-            $sortie->meta_description = $request->meta_description;
+            // Utiliser le service pour la mise à jour
+            $data = $request->validated();
+            $sortie = $this->sortieService->updateSortie($sortie, $data);
             
-            // Gestion du statut et date de publication
-            $oldStatus = $sortie->status;
-            $newStatus = $request->input('status', $sortie->status);
-            $sortie->status = $newStatus;
-            
-            if ($newStatus === 'published' && $oldStatus !== 'published') {
-                $sortie->published_at = now();
-            } elseif ($newStatus !== 'published') {
-                $sortie->published_at = null;
+            // Gérer la publication/dépublication via le service
+            if ($data['status'] === 'published' && $sortie->status !== 'published') {
+                $sortie = $this->sortieService->publishSortie($sortie);
+            } elseif ($data['status'] !== 'published' && $sortie->status === 'published') {
+                $sortie = $this->sortieService->unpublishSortie($sortie);
             }
             
             // Si un nouveau fichier GPX est uploadé

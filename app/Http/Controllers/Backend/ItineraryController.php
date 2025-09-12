@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Itinerary;
 use App\Models\ItineraryImage;
 use App\Services\GpxParserService;
+use App\Services\ItineraryService;
+use App\Services\CacheService;
 use App\Http\Requests\StoreItineraryRequest;
 use App\Http\Requests\UpdateItineraryRequest;
 use Illuminate\Http\Request;
@@ -19,30 +21,32 @@ use Intervention\Image\Drivers\Gd\Driver;
 class ItineraryController extends Controller
 {
     protected $gpxParser;
+    protected $itineraryService;
+    protected $cacheService;
 
-    public function __construct(GpxParserService $gpxParser)
-    {
+    public function __construct(
+        GpxParserService $gpxParser,
+        ItineraryService $itineraryService,
+        CacheService $cacheService
+    ) {
         $this->gpxParser = $gpxParser;
+        $this->itineraryService = $itineraryService;
+        $this->cacheService = $cacheService;
     }
 
     // Afficher tous les itinéraires (admin)
     public function index(Request $request)
     {
-        $query = Itinerary::with(['user', 'featuredImage']);
-        
-        // Filtrage par statut
+        // Utiliser le service pour récupérer les itinéraires avec filtres
+        $filters = [];
         if ($request->filled('status')) {
-            $query->where('status', $request->get('status'));
+            $filters['status'] = $request->get('status');
         }
         
-        // Statistiques pour la vue
-        $stats = [
-            'total' => Itinerary::count(),
-            'published' => Itinerary::where('status', 'published')->count(),
-            'draft' => Itinerary::where('status', 'draft')->count()
-        ];
+        $itineraries = $this->itineraryService->getItineraries($filters, 10);
         
-        $itineraries = $query->latest()->paginate(10);
+        // Statistiques via le cache
+        $stats = $this->cacheService->getDashboardStats();
         
         return view('admin.itineraries.index', compact('itineraries', 'stats'));
     }
