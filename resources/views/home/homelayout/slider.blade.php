@@ -226,8 +226,30 @@
             }
         }
         
-        /* Sur mobile, pas d'animation typewriter */
+        /* Animations mobiles - mêmes animations élégantes que desktop */
         @media (max-width: 1023px) {
+            .animate-elegant-title { 
+                animation: blur-to-focus 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+                /* Commence visible et s'améliore */
+                opacity: 0.7;
+                filter: blur(2px);
+                transform: scale(0.98);
+            }
+            
+            .animate-elegant-desc { 
+                animation: elastic-scale 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
+                /* Commence visible */
+                opacity: 0.6;
+                transform: scale(0.96);
+            }
+            
+            .animate-elegant-cta { 
+                animation: elegant-fade 1.5s ease-out 1.4s forwards;
+                /* Commence visible */
+                opacity: 0.5;
+                transform: translateY(10px) scale(0.98);
+            }
+            
             .animate-typewriter { 
                 animation: fade-in-up 1s ease-out;
             }
