@@ -55,8 +55,11 @@
             </p>
             
             <!-- CTA avec animation -->
-            <a href="#main-content" class="inline-block bg-white text-black px-6 py-3 rounded font-medium hover:bg-gray-100 transition-all duration-300 animate-elegant-cta">
-                Commencer l'exploration
+            <a href="#main-content" class="scroll-link inline-flex items-center bg-white text-black px-6 py-3 rounded font-medium hover:bg-gray-100 transition-all duration-300 animate-elegant-cta group">
+                <span class="text-lg font-medium">Commencer l'exploration</span>
+                <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
             </a>
         </div>
 
