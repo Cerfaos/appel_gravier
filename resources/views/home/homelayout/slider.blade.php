@@ -41,12 +41,12 @@
     <div class="absolute top-1/2 left-0 right-0 p-8 z-30 transform -translate-y-1/2">
         <div class="hidden lg:block max-w-2xl">
             <!-- Titre avec animation élégante -->
-            <h1 class="text-5xl xl:text-6xl font-bold text-white mb-4 bg-black/20 p-4 rounded animate-elegant-title">
+            <h1 class="text-5xl xl:text-6xl font-bold text-white mb-4 animate-elegant-title">
                 {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
             </h1>
             
             <!-- Description avec animation -->
-            <p class="text-lg text-white/90 mb-4 bg-black/20 p-3 rounded animate-elegant-desc">
+            <p class="text-lg text-white/90 mb-4 animate-elegant-desc">
                 {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
