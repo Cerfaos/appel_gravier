@@ -12,11 +12,7 @@
     @endif
     
     <!-- Overlay gradient outdoor par-dessus l'image -->
-    <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-600/80 via-outdoor-forest-600/70 to-outdoor-earth-600/80"></div>
-    <div class="absolute inset-0 bg-black/30"></div>
-    
-    <!-- Fade vers la couleur exacte du dégradé des blocs -->
-    <div class="absolute bottom-0 left-0 right-0" style="height: 40vh; background: linear-gradient(to bottom, transparent 0%, rgba(96, 108, 56, 0.3) 30%, rgba(40, 54, 24, 0.6) 70%, #232f15 100%) !important; z-index: 10;"></div>
+    <div class="absolute inset-0 bg-black/20"></div>
     
     <!-- Particules d'animation -->
     <div class="absolute inset-0">
@@ -41,8 +37,8 @@
 
     </div>
     
-    <!-- Desktop : Contenu en bas à gauche avec animations corrigées -->
-    <div class="absolute bottom-0 left-0 right-0 p-8 z-30">
+    <!-- Desktop : Contenu au centre à gauche avec animations corrigées -->
+    <div class="absolute top-1/2 left-0 right-0 p-8 z-30 transform -translate-y-1/2">
         <div class="hidden lg:block max-w-2xl">
             <!-- Titre avec animation élégante -->
             <h1 class="text-5xl xl:text-6xl font-bold text-white mb-4 bg-black/20 p-4 rounded animate-elegant-title">
