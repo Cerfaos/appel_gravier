@@ -54,11 +54,11 @@
                 {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
-            <!-- CTA avec animation - VERSION SIMPLE ET FONCTIONNELLE -->
-            <a href="#" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'}); return false;" 
-               class="inline-block bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 animate-elegant-cta shadow-lg">
-                🚀 Commencer l'exploration
-            </a>
+            <!-- CTA TEST MAXIMAL -->
+            <div onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})" 
+                 style="background: white; color: black; padding: 20px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: inline-block;">
+                🚀 COMMENCER L'EXPLORATION 🚀
+            </div>
         </div>
 
         <!-- CTA mobile centré -->
