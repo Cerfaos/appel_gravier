@@ -40,7 +40,7 @@
         </div>
 
         <!-- Desktop : layout bas-gauche avec animation -->
-        <div class="hidden lg:block absolute bottom-16 left-6 xl:bottom-20 xl:left-8 max-w-2xl space-y-6 z-20">
+        <div class="hidden lg:block absolute bottom-8 left-6 xl:bottom-12 xl:left-8 max-w-2xl space-y-6 z-20">
                 <!-- Titre avec animation typewriter -->
                 <h1 class="text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white animate-typewriter">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
