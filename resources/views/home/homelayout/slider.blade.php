@@ -26,10 +26,10 @@
         <!-- Mobile : layout centré -->
         <div class="block lg:hidden text-center">
             <div class="space-y-8">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white animate-elegant-title">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
                 </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white animate-elegant-desc">
+                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white">
                     {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
                 </p>
             </div>
@@ -81,7 +81,7 @@
 
         <!-- CTA mobile centré -->
         <div class="flex lg:hidden pt-8 justify-center">
-            <div class="scroll-link animate-elegant-cta" 
+            <div class="scroll-link" 
                  style="background: transparent; color: white; padding: 14px 28px; margin: 10px 0; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px);"
                  onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});">
                 Commencer l'exploration
@@ -226,28 +226,16 @@
             }
         }
         
-        /* Animations mobiles - mêmes animations élégantes que desktop */
+        /* Mobile - Style statique sans animations */
         @media (max-width: 1023px) {
-            .animate-elegant-title { 
-                animation: blur-to-focus 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-                /* Commence visible et s'améliore */
-                opacity: 0.7;
-                filter: blur(2px);
-                transform: scale(0.98);
-            }
-            
-            .animate-elegant-desc { 
-                animation: elastic-scale 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
-                /* Commence visible */
-                opacity: 0.6;
-                transform: scale(0.96);
-            }
-            
+            .animate-elegant-title, 
+            .animate-elegant-desc, 
             .animate-elegant-cta { 
-                animation: elegant-fade 1.5s ease-out 1.4s forwards;
-                /* Commence visible */
-                opacity: 0.5;
-                transform: translateY(10px) scale(0.98);
+                /* Éléments statiques et entièrement visibles */
+                opacity: 1;
+                filter: none;
+                transform: none;
+                animation: none;
             }
             
             .animate-typewriter { 
