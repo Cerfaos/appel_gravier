@@ -1,10 +1,10 @@
 <!-- GRAND HERO VISUEL - Style Outdoor Cohérent -->
 <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
-    <!-- Image de fond du slider - Format universel (paysage ET portrait) -->
+    <!-- Image de fond du slider - Optimisé pour images paysage 874×490 -->
     @if($slider && $slider->image)
         <div class="absolute inset-0 w-full h-full bg-no-repeat" 
              style="background-image: url('{{ asset($slider->image) }}');
-                    background-size: cover;
+                    background-size: 100% auto;
                     background-position: center center;
                     background-attachment: scroll;
                     min-height: 100vh;">
