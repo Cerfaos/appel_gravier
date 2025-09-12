@@ -54,19 +54,29 @@
                 {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
-            <!-- CTA TEST AVEC JAVASCRIPT DIRECT -->
-            <div id="scroll-btn-hero" 
-                 style="background: white; color: black; padding: 20px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: inline-block; user-select: none;">
-                🚀 COMMENCER L'EXPLORATION 🚀
+            <!-- CTA FINAL avec style et animations -->
+            <div id="scroll-btn-hero" class="animate-elegant-cta"
+                 style="background: white; color: black; padding: 16px 24px; margin: 10px 0; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                🚀 Commencer l'exploration
             </div>
             
             <script>
                 document.getElementById('scroll-btn-hero').addEventListener('click', function() {
-                    console.log('Bouton cliqué !'); // Debug
                     window.scrollTo({
                         top: window.innerHeight,
                         behavior: 'smooth'
                     });
+                });
+                
+                // Hover effects
+                document.getElementById('scroll-btn-hero').addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
+                });
+                
+                document.getElementById('scroll-btn-hero').addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
                 });
             </script>
         </div>

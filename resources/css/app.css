@@ -29,8 +29,56 @@
   }
 }
 
-/* Legacy component styles - TODO: migrate to design-system.css */
+/* Hero Background Image - Support universel pour format paysage ET portrait */
 @layer components {
+  /* 
+   * Solution optimisée pour images 874×490 (paysage) ET 306×618 (portrait)
+   * Assure un affichage parfait sur Hostinger ET en local
+   */
+  .hero-bg-image {
+    /* Paramètres de base pour tous les formats */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll; /* Évite les problèmes mobiles */
+    background-repeat: no-repeat;
+    
+    /* Force l'image à couvrir entièrement la zone */
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+  }
+  
+  /* Optimisation Desktop - Images paysage comme 874×490 */
+  @media (min-width: 1024px) {
+    .hero-bg-image {
+      /* Pour les images paysage : centre parfaitement */
+      background-position: center center;
+      background-size: cover;
+      /* Assure que l'image paysage remplit sans déformation */
+      object-fit: cover;
+    }
+  }
+  
+  /* Optimisation Mobile/Tablette */
+  @media (max-width: 1023px) {
+    .hero-bg-image {
+      /* Mobile : centre également mais peut recadrer différemment */
+      background-position: center center;
+      background-size: cover;
+      /* Sur mobile, les images paysage s'adaptent mieux */
+    }
+  }
+  
+  /* Gestion spéciale pour les images très larges (ratio > 1.7) */
+  @media (min-aspect-ratio: 17/10) {
+    .hero-bg-image {
+      /* Pour écrans très larges avec image paysage */
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
+/* Legacy component styles - TODO: migrate to design-system.css */
   /* Legacy button styles - use new btn classes instead */
   .btn-primary {
     @apply inline-flex items-center px-6 py-3 bg-outdoor-olive-500 border border-transparent rounded-xl2 font-medium text-white shadow-outdoor-sm transition-all duration-200 hover:bg-outdoor-olive-600 hover:shadow-outdoor-md focus:outline-none focus:ring-2 focus:ring-outdoor-olive-500 focus:ring-offset-2 active:bg-outdoor-olive-700;
