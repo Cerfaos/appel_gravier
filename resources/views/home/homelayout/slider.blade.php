@@ -54,11 +54,21 @@
                 {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
             </p>
             
-            <!-- CTA TEST MAXIMAL -->
-            <div onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})" 
-                 style="background: white; color: black; padding: 20px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: inline-block;">
+            <!-- CTA TEST AVEC JAVASCRIPT DIRECT -->
+            <div id="scroll-btn-hero" 
+                 style="background: white; color: black; padding: 20px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: inline-block; user-select: none;">
                 🚀 COMMENCER L'EXPLORATION 🚀
             </div>
+            
+            <script>
+                document.getElementById('scroll-btn-hero').addEventListener('click', function() {
+                    console.log('Bouton cliqué !'); // Debug
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            </script>
         </div>
 
         <!-- CTA mobile centré -->
