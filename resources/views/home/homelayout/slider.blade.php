@@ -25,11 +25,11 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
         <!-- Mobile : layout centré -->
         <div class="block lg:hidden text-center">
-            <div class="space-y-8 animate-fade-in-up">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white animate-elegant-title">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
                 </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white">
+                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white animate-elegant-desc">
                     {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
                 </p>
             </div>
@@ -80,13 +80,12 @@
         </div>
 
         <!-- CTA mobile centré -->
-        <div class="flex lg:hidden pt-8 justify-center animate-fade-in-up">
-            <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300">
-                <span class="text-xl font-medium">Commencer l'exploration</span>
-                <svg class="ml-3 w-8 h-8 group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                </svg>
-            </a>
+        <div class="flex lg:hidden pt-8 justify-center">
+            <div class="scroll-link animate-elegant-cta" 
+                 style="background: transparent; color: white; padding: 14px 28px; margin: 10px 0; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px);"
+                 onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});">
+                Commencer l'exploration
+            </div>
         </div>
     </div>
     
