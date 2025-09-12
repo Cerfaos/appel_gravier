@@ -35,14 +35,13 @@ class FrontendController extends Controller
         $latestItineraries = $this->cacheService->getPopularItineraries(3);
 
         // Récupérer les dernières sorties/expéditions avec cache
-        $latestSorties = cache()->tags(['sorties'])
-            ->remember('latest_sorties_3', 1800, function () {
-                return Sortie::where('status', 'published')
-                    ->with(['featuredImage', 'user'])
-                    ->latest('published_at')
-                    ->take(3)
-                    ->get();
-            });
+        $latestSorties = cache()->remember('latest_sorties_3', 1800, function () {
+            return Sortie::where('status', 'published')
+                ->with(['featuredImage', 'user'])
+                ->latest('published_at')
+                ->take(3)
+                ->get();
+        });
 
         // Récupérer les derniers articles de blog
         $latestBlogPosts = BlogPost::with('blogCategory')

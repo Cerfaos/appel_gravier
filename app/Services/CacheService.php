@@ -28,14 +28,20 @@ class CacheService
      */
     public function getPopularItineraries(int $limit = 10)
     {
-        return Cache::tags([self::CACHE_TAGS['itineraries']])
-            ->remember('popular_itineraries_' . $limit, self::CACHE_TTL['medium'], function () use ($limit) {
-                return \App\Models\Itinerary::with(['featuredImage', 'user'])
-                    ->where('status', 'published')
-                    ->orderBy('created_at', 'desc')
-                    ->take($limit)
-                    ->get();
-            });
+        $cacheKey = 'popular_itineraries_' . $limit;
+        
+        // Vérifier si le cache supporte les tags
+        if ($this->supportsTagging()) {
+            return Cache::tags([self::CACHE_TAGS['itineraries']])
+                ->remember($cacheKey, self::CACHE_TTL['medium'], function () use ($limit) {
+                    return $this->fetchPopularItineraries($limit);
+                });
+        }
+        
+        // Fallback pour les stores sans tags
+        return Cache::remember($cacheKey, self::CACHE_TTL['medium'], function () use ($limit) {
+            return $this->fetchPopularItineraries($limit);
+        });
     }
 
     /**
@@ -244,5 +250,26 @@ class CacheService
         } catch (\Exception $e) {
             return 'N/A';
         }
+    }
+
+    /**
+     * Vérifier si le driver de cache supporte les tags
+     */
+    private function supportsTagging(): bool
+    {
+        $driver = Cache::getStore();
+        return method_exists($driver, 'tags');
+    }
+
+    /**
+     * Récupérer les itinéraires populaires depuis la DB
+     */
+    private function fetchPopularItineraries(int $limit)
+    {
+        return \App\Models\Itinerary::with(['featuredImage', 'user'])
+            ->where('status', 'published')
+            ->orderBy('created_at', 'desc')
+            ->take($limit)
+            ->get();
     }
 }
