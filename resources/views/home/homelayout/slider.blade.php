@@ -42,18 +42,18 @@
         <!-- Desktop : layout bas-gauche avec animation -->
         <div class="hidden lg:block absolute bottom-8 left-6 xl:bottom-12 xl:left-8 max-w-2xl space-y-6 z-20">
                 <!-- Titre avec animation typewriter -->
-                <h1 class="text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white animate-typewriter">
+                <h1 class="text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
                 </h1>
             
                 
                 <!-- Description avec animation slide-up -->
-                <p class="text-xl opacity-90 leading-relaxed font-light text-white animate-slide-up-delayed">
+                <p class="text-xl opacity-90 leading-relaxed font-light text-white">
                     {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
                 </p>
                 
                 <!-- CTA avec animation -->
-                <div class="pt-4 animate-fade-in-slow">
+                <div class="pt-4">
                     <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-lg">
                         <span class="text-lg font-medium">Commencer l'exploration</span>
                         <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
