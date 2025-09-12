@@ -80,12 +80,13 @@
         </div>
 
         <!-- CTA mobile centré -->
-        <div class="flex lg:hidden pt-8 justify-center">
-            <div class="scroll-link" 
-                 style="background: transparent; color: white; padding: 14px 28px; margin: 10px 0; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px);"
-                 onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});">
-                Commencer l'exploration
-            </div>
+        <div class="flex lg:hidden pt-8 justify-center animate-fade-in-up">
+            <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300">
+                <span class="text-xl font-medium">Commencer l'exploration</span>
+                <svg class="ml-3 w-8 h-8 group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </a>
         </div>
     </div>
     
