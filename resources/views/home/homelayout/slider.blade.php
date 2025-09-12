@@ -1,8 +1,14 @@
 <!-- GRAND HERO VISUEL - Style Outdoor Cohérent -->
 <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
-    <!-- Image de fond du slider - Remplit tout l'espace -->
+    <!-- Image de fond du slider - Sans déformation, proportions préservées -->
     @if($slider && $slider->image)
-        <div class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset($slider->image) }}'); background-size: cover; background-position: center center;"></div>
+        <div class="absolute inset-0 w-full h-full bg-outdoor-earth-900">
+            <img src="{{ asset($slider->image) }}" 
+                 alt="Aventures outdoor Cerfaos" 
+                 class="absolute inset-0 w-full h-full object-contain object-center"
+                 loading="eager"
+                 style="object-fit: contain;">
+        </div>
     @endif
     
     <!-- Overlay gradient outdoor par-dessus l'image -->
