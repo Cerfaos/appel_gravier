@@ -52,7 +52,7 @@
             
             <!-- CTA FINAL avec style et animations -->
             <div id="scroll-btn-hero" class="animate-elegant-cta"
-                 style="background: rgba(255, 255, 255, 0.8); color: black; padding: 16px 24px; margin: 10px 0; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                 style="background: transparent; color: white; padding: 14px 28px; margin: 10px 0; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px);">
                 Commencer l'exploration
             </div>
             
@@ -67,12 +67,14 @@
                 // Hover effects
                 document.getElementById('scroll-btn-hero').addEventListener('mouseenter', function() {
                     this.style.transform = 'scale(1.05)';
-                    this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
+                    this.style.background = 'rgba(255,255,255,0.2)';
+                    this.style.borderColor = 'rgba(255,255,255,1)';
                 });
                 
                 document.getElementById('scroll-btn-hero').addEventListener('mouseleave', function() {
                     this.style.transform = 'scale(1)';
-                    this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+                    this.style.background = 'transparent';
+                    this.style.borderColor = 'rgba(255,255,255,0.8)';
                 });
             </script>
         </div>
