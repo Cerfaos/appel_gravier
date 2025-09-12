@@ -56,8 +56,8 @@
             
             <!-- CTA FINAL avec style et animations -->
             <div id="scroll-btn-hero" class="animate-elegant-cta"
-                 style="background: white; color: black; padding: 16px 24px; margin: 10px 0; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                🚀 Commencer l'exploration
+                 style="background: rgba(255, 255, 255, 0.8); color: black; padding: 16px 24px; margin: 10px 0; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: inline-block; user-select: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                Commencer l'exploration
             </div>
             
             <script>
