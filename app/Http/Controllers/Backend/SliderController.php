@@ -46,7 +46,7 @@ class SliderController extends Controller
                 $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                 
                 $image = $manager->read($image);
-                $image->resize(306, 618)->save(base_path('upload/slider/'.$name_gen));
+                $image->resize(1366, 768)->save(public_path('upload/slider/'.$name_gen));
                 $save_url = 'upload/slider/'.$name_gen;
             } catch (\Exception $e) {
                 $notification = array(

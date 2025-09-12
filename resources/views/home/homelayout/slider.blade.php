@@ -4,7 +4,7 @@
     @if($slider && $slider->image)
         <div class="absolute inset-0 w-full h-full bg-no-repeat" 
              style="background-image: url('{{ asset($slider->image) }}');
-                    background-size: 100% auto;
+                    background-size: cover;
                     background-position: center center;
                     background-attachment: scroll;
                     min-height: 100vh;">
