@@ -18,15 +18,15 @@
               <div>
                   <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                       <span class="text-outdoor-cream-50">Parlons de votre</span><br>
-                      <span class="text-outdoor-ochre-200">prochaine aventure</span>
+                      <span class="text-outdoor-ochre-200">prochain projet</span>
                   </h1>
                   
                  
                   
                   <div class="bg-outdoor-cream-50/20 backdrop-blur-sm rounded-xl p-6 mb-8">
                       <p class="text-lg font-medium">
-                        Une question sur nos itinéraires ? Envie de partager une sortie ? Besoin de conseils pour votre équipement ?<br>
-                        L'équipe Cerfaos est là pour échanger et vous accompagner dans vos projets outdoor.
+                        Une question sur mes itinéraires ? Envie de partager une sortie ? Besoin de conseils pour votre équipement ?<br>
+                        Je suis là pour échanger et vous accompagner dans vos idées.
                       </p>
                   </div>
 
@@ -90,10 +90,10 @@
         <!-- Section Title -->
         <div class="space-y-4">
           <h2 class="text-3xl md:text-4xl font-display font-bold text-outdoor-forest-600 leading-tight">
-            Discutons de vos <span class="text-outdoor-olive-500">projets outdoor</span>
+            Discutons de vos <span class="text-outdoor-olive-500">projets</span>
           </h2>
           <p class="text-lg text-outdoor-forest-400 leading-relaxed">
-            Que vous soyez débutant ou aventurier confirmé, chaque échange nous permet de mieux comprendre vos envies et de vous proposer des expériences sur mesure.
+            Que vous soyez débutant ou aventurier confirmé, chaque échange me permet de mieux comprendre vos envies.
           </p>
         </div>
 
@@ -111,7 +111,7 @@
               <div>
                 <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-2">Par email</h4>
                 <p class="text-outdoor-forest-400 mb-2">Pour toute question générale ou demande d'information</p>
-                <a href="mailto:contact@cerfaos.com" class="link-outdoor">contact@cerfaos.com</a>
+                <a href="mailto:contact@cerfaos.com" class="link-outdoor">cerfaos@gmail.com</a>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@
               </div>
               <div>
                 <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-2">Temps de réponse</h4>
-                <p class="text-outdoor-forest-400">Nous répondons généralement sous 24h, parfois plus rapidement si nous ne sommes pas en vadrouille !</p>
+                <p class="text-outdoor-forest-400">Je réponds généralement sous 24h, parfois plus rapidement si je ne suis pas en vadrouille !</p>
               </div>
             </div>
           </div>
@@ -140,8 +140,8 @@
                 </svg>
               </div>
               <div>
-                <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-2">Rejoindre la communauté</h4>
-                <p class="text-outdoor-forest-400">Suivez-nous sur les réseaux pour découvrir nos dernières aventures et conseils outdoor.</p>
+                <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-2">Pas de communauté</h4>
+                <p class="text-outdoor-forest-400">Je ne suis pas sur les réseaux sociaux.</p>
               </div>
             </div>
           </div>
@@ -314,22 +314,22 @@
       
       <div class="card-outdoor text-left">
         <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-3">🚴‍♂️ Quel niveau pour les sorties gravel ?</h4>
-        <p class="text-outdoor-forest-400">Nos sorties s'adaptent à tous les niveaux. Précisez votre expérience dans votre message pour que nous puissions vous proposer l'itinéraire idéal.</p>
+        <p class="text-outdoor-forest-400">Mes sorties s'adaptent à tous les niveaux. Précisez votre expérience dans votre message, en 2025, je me considère comme un débutant.</p>
       </div>
 
       <div class="card-outdoor text-left">
         <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-3">📅 Comment réserver une sortie ?</h4>
-        <p class="text-outdoor-forest-400">Contactez-nous avec vos dates préférées et le type d'aventure souhaité. Nous organisons nos sorties en fonction des demandes et de la météo.</p>
+        <p class="text-outdoor-forest-400">Contactez-moi avec vos dates préférées et le type de parcours souhaité. J'organiserai mes sorties en fonction des demandes et de la météo.</p>
       </div>
 
       <div class="card-outdoor text-left">
         <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-3">🎒 Que faut-il apporter ?</h4>
-        <p class="text-outdoor-forest-400">Une liste d'équipement vous sera fournie selon l'activité. En général : vélo, casque, vêtements adaptés et bonne humeur sont les essentiels !</p>
+        <p class="text-outdoor-forest-400">En général : vélo, casque, vêtements adaptés, de quoi manger, de quoi boire (on ne sait jamais) et bonne humeur sont les essentiels !</p>
       </div>
 
       <div class="card-outdoor text-left">
         <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-3">🌦️ Et si la météo ne joue pas le jeu ?</h4>
-        <p class="text-outdoor-forest-400">L'aventure continue sous la pluie ! Mais si les conditions sont vraiment difficiles, nous reportons pour votre sécurité et votre plaisir.</p>
+        <p class="text-outdoor-forest-400">L'aventure continue sous la pluie ! Mais si les conditions sont vraiment difficiles, je reporte pour notre sécurité et notre plaisir.</p>
       </div>
     </div>
   </div>
