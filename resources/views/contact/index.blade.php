@@ -25,7 +25,7 @@
                   
                   <div class="bg-outdoor-cream-50/20 backdrop-blur-sm rounded-xl p-6 mb-8">
                       <p class="text-lg font-medium">
-                        Une question sur mes itinéraires ? Envie de partager une sortie ? Besoin de conseils pour votre équipement ?<br>
+                        Une question sur mes itinéraires ? Envie de partager une sortie ? Besoin de conseils pour votre équipement ? Ou même de développement web ?<br>
                         Je suis là pour échanger et vous accompagner dans vos idées.
                       </p>
                   </div>
@@ -126,7 +126,7 @@
               </div>
               <div>
                 <h4 class="font-display font-semibold text-lg text-outdoor-forest-600 mb-2">Temps de réponse</h4>
-                <p class="text-outdoor-forest-400">Je réponds généralement sous 24h, parfois plus rapidement si je ne suis pas en vadrouille !</p>
+                <p class="text-outdoor-forest-400">Ne me demander pas une réponse sous 24h, le temps de réponse est variable sans certitudes.</p>
               </div>
             </div>
           </div>
@@ -307,7 +307,7 @@
     </div>
 
     <h2 class="text-3xl md:text-4xl font-display font-bold text-outdoor-forest-600 mb-8">
-      Tout ce que vous devez savoir avant de <span class="text-outdoor-olive-500">partir à l'aventure</span>
+      Tout ce que vous devez savoir avant de <span class="text-outdoor-olive-500">partir avec moi</span>
     </h2>
 
     <div class="grid md:grid-cols-2 gap-6 mt-12">
