@@ -1,0 +1,1481 @@
+/* ========================================
+   CERFAOS ADMIN PROFESSIONAL THEME
+   Design Système Ultra-Moderne et Professionnel
+   ======================================== */
+
+/* ===== IMPORTS TYPOGRAPHIE PREMIUM ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ===== VARIABLES DESIGN SYSTEM PROFESSIONNEL ===== */
+:root {
+  /* PALETTE COULEURS PREMIUM - Sophistiquée et moderne */
+  
+  /* Primaires - Sombres élégants */
+  --cerfaos-charcoal: #1a1a1a;              /* Charcoal ultra-sombre */
+  --cerfaos-charcoal-light: #2a2a2a;        /* Charcoal éclairci */
+  --cerfaos-charcoal-dark: #0f0f0f;         /* Charcoal profond */
+  --cerfaos-slate: #2d3748;                 /* Slate moderne */
+  --cerfaos-slate-light: #4a5568;           /* Slate éclairci */
+  --cerfaos-slate-dark: #1a202c;            /* Slate foncé */
+  
+  /* Accents - Or raffiné */
+  --cerfaos-gold: #f7d794;                  /* Gold lumineux */
+  --cerfaos-gold-light: #f9e79f;            /* Gold très clair */
+  --cerfaos-gold-dark: #d4ac0d;             /* Gold profond */
+  --cerfaos-bronze: #cd7f32;                /* Bronze classique */
+  --cerfaos-bronze-light: #e49b52;          /* Bronze éclairci */
+  --cerfaos-bronze-dark: #a0612a;           /* Bronze foncé */
+  
+  /* Couleurs fonctionnelles modernes */
+  --cerfaos-white: #ffffff;                 /* Blanc pur */
+  --cerfaos-white-soft: #fafbfc;            /* Blanc doux */
+  --cerfaos-gray-50: #f7fafc;               /* Gris ultra-clair */
+  --cerfaos-gray-100: #edf2f7;              /* Gris très clair */
+  --cerfaos-gray-200: #e2e8f0;              /* Gris clair */
+  --cerfaos-gray-300: #cbd5e0;              /* Gris moyen-clair */
+  --cerfaos-gray-400: #a0aec0;              /* Gris moyen */
+  --cerfaos-gray-500: #718096;              /* Gris foncé */
+  --cerfaos-gray-600: #4a5568;              /* Gris très foncé */
+  --cerfaos-gray-700: #2d3748;              /* Gris charcoal */
+  --cerfaos-gray-800: #1a202c;              /* Gris presque noir */
+  --cerfaos-gray-900: #171923;              /* Gris noir */
+  
+  /* États et feedback */
+  --cerfaos-success: #48bb78;               /* Vert succès moderne */
+  --cerfaos-success-light: #68d391;         /* Vert succès clair */
+  --cerfaos-warning: #ed8936;               /* Orange attention */
+  --cerfaos-warning-light: #f6ad55;         /* Orange clair */
+  --cerfaos-danger: #f56565;                /* Rouge erreur */
+  --cerfaos-danger-light: #fc8181;          /* Rouge clair */
+  --cerfaos-info: #4299e1;                  /* Bleu info */
+  --cerfaos-info-light: #63b3ed;            /* Bleu info clair */
+  
+  /* TYPOGRAPHIE MODERNE ET HIÉRARCHIQUE */
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;     /* Titres impactants */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;          /* Corps lisible */
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;                  /* Code/données */
+  --font-accent: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; /* Accents */
+  
+  /* Échelle typographique raffinée */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+  
+  /* Poids typographiques précis */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+  
+  /* ESPACEMENTS SYSTÈME 8PT GRID */
+  --space-px: 1px;
+  --space-0: 0;
+  --space-1: 0.25rem;      /* 4px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-8: 2rem;         /* 32px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-12: 3rem;        /* 48px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+  --space-32: 8rem;        /* 128px */
+  
+  /* RAYONS MODERNES ET COHÉRENTS */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-2xl: 1.5rem;    /* 24px */
+  --radius-3xl: 2rem;      /* 32px */
+  --radius-full: 9999px;   /* Cercle complet */
+  
+  /* OMBRES ULTRA-RÉALISTES - Design System Apple/Google */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  
+  /* Ombres colorées premium */
+  --shadow-gold: 0 10px 25px -5px rgba(247, 215, 148, 0.2), 0 8px 10px -6px rgba(247, 215, 148, 0.1);
+  --shadow-success: 0 10px 25px -5px rgba(72, 187, 120, 0.2), 0 8px 10px -6px rgba(72, 187, 120, 0.1);
+  --shadow-danger: 0 10px 25px -5px rgba(245, 101, 101, 0.2), 0 8px 10px -6px rgba(245, 101, 101, 0.1);
+  --shadow-info: 0 10px 25px -5px rgba(66, 153, 225, 0.2), 0 8px 10px -6px rgba(66, 153, 225, 0.1);
+  
+  /* TRANSITIONS PREMIUM - Courbes naturelles */
+  --transition-fast: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-spring: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Z-INDEX SYSTÈME ORGANISÉ */
+  --z-hide: -1;
+  --z-base: 0;
+  --z-docked: 10;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-banner: 1200;
+  --z-overlay: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-skipLink: 1600;
+  --z-toast: 1700;
+  --z-tooltip: 1800;
+  
+  /* GLASSMORPHISM VARIABLES */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 16px;
+  
+  /* NEUMORPHISM VARIABLES */
+  --neuro-bg: #2d3748;
+  --neuro-shadow-light: rgba(255, 255, 255, 0.1);
+  --neuro-shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(0, 0, 0, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ===== RESET MODERNE ET PROFESSIONNEL ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: var(--text-base) !important;
+  line-height: 1.6 !important;
+  color: var(--cerfaos-white) !important;
+  background: linear-gradient(135deg, var(--cerfaos-charcoal) 0%, var(--cerfaos-slate-dark) 50%, var(--cerfaos-charcoal-dark) 100%) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+  font-feature-settings: "cv11", "ss01";
+  font-variant-numeric: oldstyle-nums;
+  text-rendering: optimizeLegibility;
+}
+
+/* Texture de fond ultra-subtile */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(247, 215, 148, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(205, 127, 50, 0.015) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.005) 50%, transparent 60%);
+  pointer-events: none;
+  z-index: var(--z-hide);
+  animation: subtleShimmer 20s ease-in-out infinite alternate;
+}
+
+@keyframes subtleShimmer {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ===== LAYOUT PRINCIPAL PROFESSIONNEL ===== */
+.cerfaos-app-layout {
+  min-height: 100vh !important;
+  background: transparent !important;
+  position: relative;
+}
+
+.cerfaos-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 280px !important;
+  height: 100vh !important;
+  z-index: var(--z-sticky) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  transition: transform var(--transition-smooth) !important;
+  
+  /* Glassmorphism Sidebar */
+  background: linear-gradient(180deg, 
+    rgba(45, 55, 72, 0.95) 0%, 
+    rgba(26, 26, 26, 0.98) 50%,
+    rgba(15, 15, 15, 0.99) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border-right: 1px solid rgba(247, 215, 148, 0.1) !important;
+  box-shadow: 
+    var(--shadow-2xl),
+    inset -1px 0 0 rgba(247, 215, 148, 0.05) !important;
+  
+  /* Texture subtile */
+  position: relative;
+}
+
+.cerfaos-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, transparent 0%, rgba(247, 215, 148, 0.02) 50%, transparent 100%),
+    repeating-linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.01) 1px, transparent 2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cerfaos-topbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 280px !important;
+  right: 0 !important;
+  height: 72px !important;
+  z-index: var(--z-banner) !important;
+  transition: all var(--transition-smooth) !important;
+  
+  /* Glassmorphism Topbar */
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border-bottom: 1px solid rgba(247, 215, 148, 0.1) !important;
+  box-shadow: 
+    var(--shadow-md),
+    inset 0 -1px 0 rgba(247, 215, 148, 0.05) !important;
+  
+  padding: 0 var(--space-6) !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.cerfaos-content-page,
+.content-page {
+  margin-left: 280px !important;
+  margin-top: 72px !important;
+  background: transparent !important;
+  padding: var(--space-8) var(--space-6) !important;
+  min-height: calc(100vh - 72px) !important;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.container-xxl {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* ===== HEADER GLASSMORPHISM PREMIUM ===== */
+.cerfaos-header {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 50%,
+    rgba(15, 15, 15, 0.98) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border-radius: var(--radius-3xl) !important;
+  padding: var(--space-8) var(--space-10) !important;
+  margin-bottom: var(--space-8) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(247, 215, 148, 0.2) !important;
+  
+  /* Ombre premium */
+  box-shadow: 
+    var(--shadow-2xl),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(247, 215, 148, 0.1) !important;
+}
+
+/* Effet de brillance animé */
+.cerfaos-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 45deg,
+    transparent 0deg,
+    rgba(247, 215, 148, 0.03) 90deg,
+    transparent 180deg,
+    rgba(205, 127, 50, 0.02) 270deg,
+    transparent 360deg
+  );
+  animation: headerShimmer 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes headerShimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Overlay gradient subtil */
+.cerfaos-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(247, 215, 148, 0.05) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(205, 127, 50, 0.03) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cerfaos-header > * {
+  position: relative;
+  z-index: 3;
+}
+
+.cerfaos-header h2 {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)) !important;
+  font-weight: var(--weight-bold) !important;
+  margin: 0 0 var(--space-3) 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  
+  /* Gradient text */
+  background: linear-gradient(135deg, 
+    var(--cerfaos-white) 0%, 
+    var(--cerfaos-gold-light) 50%,
+    var(--cerfaos-white) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Ombre de texte raffinée */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.cerfaos-header p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: var(--text-lg) !important;
+  margin: 0 !important;
+  font-weight: var(--weight-medium) !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.01em !important;
+  
+  /* Gradient text subtil */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(247, 215, 148, 0.7) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.cerfaos-status-badge {
+  background: linear-gradient(135deg, 
+    rgba(247, 215, 148, 0.9) 0%, 
+    rgba(205, 127, 50, 0.8) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  font-weight: var(--weight-semibold) !important;
+  padding: var(--space-3) var(--space-6) !important;
+  border-radius: var(--radius-2xl) !important;
+  font-family: var(--font-accent) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: var(--text-sm) !important;
+  
+  /* Ombre premium */
+  box-shadow: 
+    var(--shadow-gold),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  
+  transition: all var(--transition-bounce) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.cerfaos-status-badge::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 25%,
+    var(--cerfaos-gold) 50%,
+    var(--cerfaos-bronze) 75%,
+    var(--cerfaos-gold) 100%);
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  animation: badgeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0.9; transform: scale(1.02); }
+}
+
+.cerfaos-status-badge:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 
+    var(--shadow-xl),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ===== CARTES NEUMORPHISM PREMIUM ===== */
+.cerfaos-stat-card,
+.cerfaos-main-card {
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(247, 215, 148, 0.1) !important;
+  border-radius: var(--radius-3xl) !important;
+  transition: all var(--transition-spring) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  
+  /* Neumorphism shadows */
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Effet de relief neumorphique */
+.cerfaos-stat-card::before,
+.cerfaos-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--cerfaos-gold) 20%,
+    var(--cerfaos-bronze) 50%,
+    var(--cerfaos-gold) 80%,
+    transparent 100%) !important;
+  animation: cardShimmer 4s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Texture subtile interne */
+.cerfaos-stat-card::after,
+.cerfaos-main-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(247, 215, 148, 0.02) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(205, 127, 50, 0.015) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cerfaos-stat-card:hover,
+.cerfaos-main-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(247, 215, 148, 0.3) !important;
+  box-shadow: 
+    var(--shadow-2xl),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(247, 215, 148, 0.1) !important;
+}
+
+.cerfaos-stat-card .card-body,
+.cerfaos-main-card .card-body {
+  padding: var(--space-8) var(--space-6) !important;
+  text-align: center !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== ICÔNES ET ÉLÉMENTS GRAPHIQUES ===== */
+.cerfaos-stat-icon {
+  font-size: var(--text-5xl) !important;
+  margin-bottom: var(--space-6) !important;
+  display: block !important;
+  color: var(--cerfaos-gold) !important;
+  
+  /* Effet de brillance */
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 50%,
+    var(--cerfaos-gold-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  filter: drop-shadow(2px 2px 8px rgba(247, 215, 148, 0.3));
+  
+  /* Animation subtile */
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+}
+
+.cerfaos-stat-number {
+  font-family: var(--font-display) !important;
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl)) !important;
+  font-weight: var(--weight-black) !important;
+  color: var(--cerfaos-white) !important;
+  margin-bottom: var(--space-2) !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  
+  /* Gradient numérique */
+  background: linear-gradient(135deg, 
+    var(--cerfaos-white) 0%, 
+    var(--cerfaos-gold-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+  /* Counter animation */
+  animation: numberPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes numberPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.02); }
+}
+
+.cerfaos-stat-label {
+  font-size: var(--text-sm) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: var(--weight-medium) !important;
+  margin-bottom: var(--space-4) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-family: var(--font-accent) !important;
+}
+
+.cerfaos-trend-badge {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-success) 0%, 
+    var(--cerfaos-success-light) 100%) !important;
+  color: var(--cerfaos-white) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: var(--weight-bold) !important;
+  padding: var(--space-2) var(--space-4) !important;
+  border-radius: var(--radius-2xl) !important;
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: var(--shadow-success) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  
+  /* Micro-animation */
+  animation: trendPulse 2s ease-in-out infinite;
+}
+
+@keyframes trendPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.cerfaos-trend-badge.trend-down {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-danger) 0%, 
+    var(--cerfaos-danger-light) 100%) !important;
+  box-shadow: var(--shadow-danger) !important;
+}
+
+/* ===== ACTIONS RAPIDES GLASSMORPHISM ===== */
+.cerfaos-actions-card {
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.8) 0%, 
+    rgba(26, 26, 26, 0.9) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(247, 215, 148, 0.15) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.cerfaos-actions-title {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-display) !important;
+  font-size: var(--text-2xl) !important;
+  font-weight: var(--weight-bold) !important;
+  margin-bottom: var(--space-8) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--space-4) !important;
+  
+  /* Gradient text */
+  background: linear-gradient(135deg, 
+    var(--cerfaos-white) 0%, 
+    var(--cerfaos-gold-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cerfaos-action-btn {
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  border: 1px solid rgba(247, 215, 148, 0.2) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-8) var(--space-6) !important;
+  text-decoration: none !important;
+  color: var(--cerfaos-white) !important;
+  font-weight: var(--weight-medium) !important;
+  transition: all var(--transition-spring) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 160px !important;
+  box-shadow: var(--shadow-base) !important;
+  font-family: var(--font-body) !important;
+  backdrop-filter: blur(8px) !important;
+  
+  /* Display flex pour centrage parfait */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Effet de survol spectaculaire */
+.cerfaos-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(247, 215, 148, 0.1), 
+    transparent);
+  transition: left 0.8s ease;
+}
+
+.cerfaos-action-btn:hover::before {
+  left: 100%;
+}
+
+.cerfaos-action-btn:hover {
+  border-color: rgba(247, 215, 148, 0.5) !important;
+  transform: translateY(-6px) scale(1.03) !important;
+  box-shadow: 
+    var(--shadow-2xl),
+    0 0 40px rgba(247, 215, 148, 0.15) !important;
+  color: var(--cerfaos-white) !important;
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.95) 0%, 
+    rgba(26, 26, 26, 1) 100%) !important;
+}
+
+.cerfaos-action-btn .action-icon {
+  font-size: var(--text-5xl) !important;
+  margin-bottom: var(--space-4) !important;
+  display: block !important;
+  
+  /* Gradient icon */
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 50%,
+    var(--cerfaos-gold-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  filter: drop-shadow(2px 2px 8px rgba(247, 215, 148, 0.3));
+  
+  /* Micro-rotation au hover */
+  transition: transform var(--transition-bounce);
+}
+
+.cerfaos-action-btn:hover .action-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cerfaos-action-btn .action-text {
+  font-size: var(--text-base) !important;
+  font-weight: var(--weight-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.4 !important;
+}
+
+/* ===== TABLEAUX MODERNES GLASSMORPHISM ===== */
+.table-cerfaos {
+  font-family: var(--font-body) !important;
+  color: var(--cerfaos-white) !important;
+  background: transparent !important;
+  border-collapse: separate !important;
+  border-spacing: 0 var(--space-1) !important;
+}
+
+.table-cerfaos thead th {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.95) 0%, 
+    rgba(26, 26, 26, 0.98) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  color: var(--cerfaos-gold) !important;
+  border: none !important;
+  padding: var(--space-4) var(--space-6) !important;
+  font-weight: var(--weight-bold) !important;
+  font-family: var(--font-accent) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  position: relative !important;
+  font-size: var(--text-sm) !important;
+  
+  /* Première et dernière cellule arrondies */
+  &:first-child {
+    border-top-left-radius: var(--radius-xl);
+    border-bottom-left-radius: var(--radius-xl);
+  }
+  
+  &:last-child {
+    border-top-right-radius: var(--radius-xl);
+    border-bottom-right-radius: var(--radius-xl);
+  }
+}
+
+.table-cerfaos thead th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--space-2);
+  right: var(--space-2);
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--cerfaos-gold) 20%,
+    var(--cerfaos-bronze) 80%,
+    transparent 100%);
+}
+
+.table-cerfaos tbody tr {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.3) 0%, 
+    rgba(26, 26, 26, 0.5) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(247, 215, 148, 0.05) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all var(--transition-smooth) !important;
+  margin-bottom: var(--space-1) !important;
+}
+
+.table-cerfaos tbody tr:hover {
+  background: linear-gradient(135deg, 
+    rgba(247, 215, 148, 0.08) 0%, 
+    rgba(205, 127, 50, 0.05) 100%) !important;
+  border-color: rgba(247, 215, 148, 0.2) !important;
+  transform: translateX(4px) scale(1.01) !important;
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 20px rgba(247, 215, 148, 0.1) !important;
+}
+
+.table-cerfaos td {
+  padding: var(--space-4) var(--space-6) !important;
+  vertical-align: middle !important;
+  border: none !important;
+  color: var(--cerfaos-white) !important;
+  font-weight: var(--weight-medium) !important;
+}
+
+/* ===== FORMULAIRES GLASSMORPHISM ===== */
+.form-control {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.3) 0%, 
+    rgba(26, 26, 26, 0.5) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(247, 215, 148, 0.2) !important;
+  border-radius: var(--radius-xl) !important;
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-body) !important;
+  font-weight: var(--weight-medium) !important;
+  padding: var(--space-4) var(--space-6) !important;
+  font-size: var(--text-base) !important;
+  transition: all var(--transition-smooth) !important;
+  
+  box-shadow: 
+    var(--shadow-inner),
+    0 0 0 0 rgba(247, 215, 148, 0) !important;
+}
+
+.form-control:focus {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.5) 0%, 
+    rgba(26, 26, 26, 0.7) 100%) !important;
+  border-color: var(--cerfaos-gold) !important;
+  box-shadow: 
+    var(--shadow-inner),
+    0 0 0 4px rgba(247, 215, 148, 0.15) !important;
+  outline: none !important;
+  transform: translateY(-1px) scale(1.02) !important;
+  color: var(--cerfaos-white) !important;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-style: italic !important;
+  font-weight: var(--weight-normal) !important;
+}
+
+.form-label {
+  color: var(--cerfaos-gold) !important;
+  font-family: var(--font-accent) !important;
+  font-weight: var(--weight-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: var(--text-sm) !important;
+  margin-bottom: var(--space-3) !important;
+}
+
+/* ===== BOUTONS PREMIUM GLASSMORPHISM ===== */
+.btn-primary {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--radius-xl) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  font-weight: var(--weight-bold) !important;
+  font-family: var(--font-body) !important;
+  padding: var(--space-4) var(--space-8) !important;
+  font-size: var(--text-base) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all var(--transition-bounce) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  
+  /* Ombre premium */
+  box-shadow: 
+    var(--shadow-gold),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold-light) 0%, 
+    var(--cerfaos-bronze-light) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 
+    var(--shadow-xl),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-success) 0%, 
+    var(--cerfaos-success-light) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--cerfaos-white) !important;
+  box-shadow: var(--shadow-success) !important;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-danger) 0%, 
+    var(--cerfaos-danger-light) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--cerfaos-white) !important;
+  box-shadow: var(--shadow-danger) !important;
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-warning) 0%, 
+    var(--cerfaos-warning-light) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--cerfaos-white) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(247, 215, 148, 0.3) !important;
+  color: var(--cerfaos-white) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ===== CARTES PRINCIPALES PREMIUM ===== */
+.card {
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(247, 215, 148, 0.1) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-lg) !important;
+  color: var(--cerfaos-white) !important;
+  transition: all var(--transition-spring) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.card:hover {
+  box-shadow: 
+    var(--shadow-xl),
+    0 0 40px rgba(247, 215, 148, 0.1) !important;
+  transform: translateY(-4px) scale(1.01) !important;
+  border-color: rgba(247, 215, 148, 0.3) !important;
+}
+
+.card-header {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.95) 0%, 
+    rgba(26, 26, 26, 0.98) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border-bottom: 1px solid rgba(247, 215, 148, 0.2) !important;
+  color: var(--cerfaos-gold) !important;
+  font-weight: var(--weight-bold) !important;
+  font-family: var(--font-display) !important;
+  padding: var(--space-6) var(--space-8) !important;
+  position: relative !important;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--cerfaos-gold) 50%,
+    transparent 100%);
+}
+
+.card-body {
+  padding: var(--space-8) !important;
+}
+
+/* ===== ALERTES GLASSMORPHISM ===== */
+.alert {
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-6) var(--space-8) !important;
+  font-weight: var(--weight-medium) !important;
+}
+
+.alert-success {
+  background: linear-gradient(135deg, 
+    rgba(72, 187, 120, 0.15) 0%, 
+    rgba(72, 187, 120, 0.1) 100%) !important;
+  border-color: var(--cerfaos-success) !important;
+  color: var(--cerfaos-success-light) !important;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, 
+    rgba(245, 101, 101, 0.15) 0%, 
+    rgba(245, 101, 101, 0.1) 100%) !important;
+  border-color: var(--cerfaos-danger) !important;
+  color: var(--cerfaos-danger-light) !important;
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, 
+    rgba(237, 137, 54, 0.15) 0%, 
+    rgba(237, 137, 54, 0.1) 100%) !important;
+  border-color: var(--cerfaos-warning) !important;
+  color: var(--cerfaos-warning-light) !important;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, 
+    rgba(66, 153, 225, 0.15) 0%, 
+    rgba(66, 153, 225, 0.1) 100%) !important;
+  border-color: var(--cerfaos-info) !important;
+  color: var(--cerfaos-info-light) !important;
+}
+
+/* ===== MODALES PREMIUM ===== */
+.modal-content {
+  background: linear-gradient(145deg, 
+    rgba(45, 55, 72, 0.95) 0%, 
+    rgba(26, 26, 26, 0.98) 100%) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(247, 215, 148, 0.2) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-2xl) !important;
+  color: var(--cerfaos-white) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(247, 215, 148, 0.2) !important;
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.98) 0%, 
+    rgba(26, 26, 26, 1) 100%) !important;
+  border-radius: var(--radius-3xl) var(--radius-3xl) 0 0 !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(247, 215, 148, 0.2) !important;
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.98) 0%, 
+    rgba(26, 26, 26, 1) 100%) !important;
+  border-radius: 0 0 var(--radius-3xl) var(--radius-3xl) !important;
+}
+
+/* ===== DATATABLES PREMIUM ===== */
+.dataTables_wrapper {
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-body) !important;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.8) 0%, 
+    rgba(26, 26, 26, 0.9) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(247, 215, 148, 0.2) !important;
+  border-radius: var(--radius-xl) !important;
+  color: var(--cerfaos-white) !important;
+  font-family: var(--font-body) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  transition: all var(--transition-smooth) !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus,
+.dataTables_wrapper .dataTables_filter input:focus {
+  border-color: var(--cerfaos-gold) !important;
+  box-shadow: 0 0 0 3px rgba(247, 215, 148, 0.15) !important;
+  outline: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: linear-gradient(135deg, 
+    rgba(45, 55, 72, 0.9) 0%, 
+    rgba(26, 26, 26, 0.95) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(247, 215, 148, 0.2) !important;
+  color: var(--cerfaos-white) !important;
+  border-radius: var(--radius-lg) !important;
+  margin: 0 var(--space-1) !important;
+  transition: all var(--transition-smooth) !important;
+  padding: var(--space-2) var(--space-4) !important;
+  font-weight: var(--weight-medium) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 100%) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: linear-gradient(135deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 100%) !important;
+  color: var(--cerfaos-charcoal-dark) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+/* ===== SCROLLBAR PREMIUM ===== */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, 
+    rgba(45, 55, 72, 0.5) 0%, 
+    rgba(26, 26, 26, 0.7) 100%);
+  border-radius: var(--radius-xl);
+  margin: var(--space-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    var(--cerfaos-gold) 0%, 
+    var(--cerfaos-bronze) 100%);
+  border-radius: var(--radius-xl);
+  border: 2px solid rgba(45, 55, 72, 0.8);
+  box-shadow: var(--shadow-inner);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, 
+    var(--cerfaos-gold-light) 0%, 
+    var(--cerfaos-bronze-light) 100%);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ===== MICRO-INTERACTIONS AVANCÉES ===== */
+
+/* Ripple effect pour les boutons */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active:before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Parallax subtil pour les cartes */
+.parallax-card {
+  transition: transform var(--transition-smooth);
+}
+
+.parallax-card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.02);
+}
+
+/* Loading states élégants */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 215, 148, 0.1) 0%,
+    rgba(247, 215, 148, 0.2) 50%,
+    rgba(247, 215, 148, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Pulse pour les éléments importants */
+.pulse-gold {
+  animation: pulseGold 2s infinite;
+}
+
+@keyframes pulseGold {
+  0% { box-shadow: 0 0 0 0 rgba(247, 215, 148, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(247, 215, 148, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(247, 215, 148, 0); }
+}
+
+/* ===== RESPONSIVE DESIGN PROFESSIONNEL ===== */
+@media (max-width: 1400px) {
+  .container-xxl {
+    max-width: 1200px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cerfaos-sidebar {
+    width: 260px !important;
+  }
+  
+  .cerfaos-topbar {
+    left: 260px !important;
+  }
+  
+  .cerfaos-content-page,
+  .content-page {
+    margin-left: 260px !important;
+    padding: var(--space-6) var(--space-4) !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .cerfaos-sidebar {
+    transform: translateX(-100%) !important;
+    transition: transform var(--transition-smooth) !important;
+    z-index: var(--z-modal) !important;
+  }
+  
+  .cerfaos-sidebar.show {
+    transform: translateX(0) !important;
+  }
+  
+  .cerfaos-topbar {
+    left: 0 !important;
+    height: 64px !important;
+  }
+  
+  .cerfaos-content-page,
+  .content-page {
+    margin-left: 0 !important;
+    margin-top: 64px !important;
+    padding: var(--space-4) var(--space-3) !important;
+  }
+  
+  .cerfaos-header {
+    padding: var(--space-6) var(--space-4) !important;
+    margin-bottom: var(--space-6) !important;
+  }
+  
+  .cerfaos-header h2 {
+    font-size: var(--text-2xl) !important;
+  }
+  
+  .cerfaos-action-btn {
+    min-height: 140px !important;
+    padding: var(--space-6) var(--space-4) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .cerfaos-topbar {
+    height: 56px !important;
+    padding: 0 var(--space-4) !important;
+  }
+  
+  .cerfaos-content-page,
+  .content-page {
+    margin-top: 56px !important;
+    padding: var(--space-3) var(--space-2) !important;
+  }
+  
+  .cerfaos-header {
+    padding: var(--space-4) var(--space-3) !important;
+    margin-bottom: var(--space-4) !important;
+  }
+  
+  .cerfaos-header h2 {
+    font-size: var(--text-xl) !important;
+  }
+  
+  .cerfaos-header p {
+    font-size: var(--text-base) !important;
+  }
+  
+  .cerfaos-stat-card .card-body,
+  .cerfaos-main-card .card-body {
+    padding: var(--space-6) var(--space-4) !important;
+  }
+  
+  .cerfaos-action-btn {
+    min-height: 120px !important;
+    padding: var(--space-4) var(--space-3) !important;
+  }
+  
+  .cerfaos-action-btn .action-icon {
+    font-size: var(--text-4xl) !important;
+  }
+  
+  .table-cerfaos {
+    font-size: var(--text-sm) !important;
+  }
+  
+  .table-cerfaos th,
+  .table-cerfaos td {
+    padding: var(--space-3) var(--space-4) !important;
+  }
+}
+
+/* ===== CLASSES UTILITAIRES PREMIUM ===== */
+.text-gold { color: var(--cerfaos-gold) !important; }
+.text-bronze { color: var(--cerfaos-bronze) !important; }
+.text-white { color: var(--cerfaos-white) !important; }
+.text-gray-400 { color: var(--cerfaos-gray-400) !important; }
+
+.bg-glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.shadow-gold { box-shadow: var(--shadow-gold) !important; }
+.shadow-success { box-shadow: var(--shadow-success) !important; }
+.shadow-danger { box-shadow: var(--shadow-danger) !important; }
+.shadow-info { box-shadow: var(--shadow-info) !important; }
+
+.font-display { font-family: var(--font-display) !important; }
+.font-body { font-family: var(--font-body) !important; }
+.font-mono { font-family: var(--font-mono) !important; }
+.font-accent { font-family: var(--font-accent) !important; }
+
+.transition-fast { transition: var(--transition-fast) !important; }
+.transition-smooth { transition: var(--transition-smooth) !important; }
+.transition-bounce { transition: var(--transition-bounce) !important; }
+
+/* ===== ÉTATS DE CHARGEMENT PREMIUM ===== */
+.loading-premium {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading-premium::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 3px solid rgba(247, 215, 148, 0.2);
+  border-top: 3px solid var(--cerfaos-gold);
+  border-radius: 50%;
+  animation: premiumSpin 1s linear infinite;
+}
+
+@keyframes premiumSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== ACCESSIBILITÉ PREMIUM ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible pour l'accessibilité */
+*:focus-visible {
+  outline: 2px solid var(--cerfaos-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Amélioration du contraste en mode sombre */
+@media (prefers-contrast: high) {
+  :root {
+    --cerfaos-gold: #ffdd00;
+    --cerfaos-white: #ffffff;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .cerfaos-sidebar,
+  .cerfaos-topbar {
+    display: none !important;
+  }
+  
+  .cerfaos-content-page,
+  .content-page {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .card,
+  .cerfaos-stat-card,
+  .cerfaos-main-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}

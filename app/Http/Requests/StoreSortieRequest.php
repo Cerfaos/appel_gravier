@@ -17,7 +17,7 @@ class StoreSortieRequest extends FormRequest
             'title' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:10|max:5000',
             'departement' => 'nullable|string|max:100',
-            'pays' => 'nullable|string|max:100|alpha',
+            'pays' => 'nullable|string|max:100',
             'personal_comment' => 'nullable|string|max:2000',
             'difficulty_level' => 'required|in:facile,moyen,difficile',
             'gpx_file' => 'nullable|file|mimes:xml,gpx|max:5120',

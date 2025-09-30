@@ -43,13 +43,18 @@ class ItineraryController extends Controller
             $filters['status'] = $request->get('status');
         }
         
-        $itineraries = $this->itineraryService->getItineraries($filters, 10);
+        $itineraries = Itinerary::paginate(10);
         
         // Statistiques via le cache
-        $stats = $this->cacheService->getDashboardStats();
-        
-        return view('admin.itineraries.index', compact('itineraries', 'stats'));
-    }
+        // $stats = $this->cacheService->getDashboardStats(); // TEMPORAIRE
+   $stats = [
+      'total' => Itinerary::count(),
+      'published' => Itinerary::where('status', 'published')->count(),
+      'draft' => Itinerary::where('status', 'draft')->count()
+  ];
+
+  return view('admin.itineraries.index', compact('itineraries', 'stats'));
+}
 
     // Afficher le formulaire de création
     public function create()

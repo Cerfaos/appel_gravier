@@ -18,6 +18,21 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SortieController;
 use Illuminate\Support\Facades\Route;
 
+// Route pour servir les images depuis /upload
+Route::get('/upload/{path}', function ($path) {
+    $filePath = public_path('upload/' . $path);
+
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+
+    $mimeType = mime_content_type($filePath);
+    return response()->file($filePath, [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=31536000',
+    ]);
+})->where('path', '.*')->name('upload.serve');
+
 // Route principale
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('home');
 
@@ -201,9 +216,6 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::get('/ppg/programs/{program}/delete', 'deleteProgram')->name('admin.ppg.programs.delete');
     });
 
-    // API Routes pour l'analyse GPX en temps réel
-    Route::post('/api/gpx/analyze', [App\Http\Controllers\Api\GpxAnalysisController::class, 'analyze'])
-        ->name('api.gpx.analyze');
 
 });
 

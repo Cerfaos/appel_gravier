@@ -79,7 +79,7 @@ class SortieController extends Controller
                 $image = $duplicates->first();
                 // Compter les utilisations et lister les sorties
                 $usedInSorties = $duplicates->map(function($dup) {
-                    return $dup->sortie->title;
+                    return $dup->sortie ? $dup->sortie->title : 'Sortie supprimée';
                 })->unique()->join(', ');
                 
                 return [
@@ -87,8 +87,8 @@ class SortieController extends Controller
                     'url' => asset($image->image_path),
                     'caption' => $image->caption ?: ('Image ' . basename($image->image_path)),
                     'is_featured' => $image->is_featured,
-                    'sortie_title' => $image->sortie->title,
-                    'sortie_date' => $image->sortie->sortie_date->format('d/m/Y'),
+                    'sortie_title' => $image->sortie ? $image->sortie->title : 'Sortie supprimée',
+                    'sortie_date' => $image->sortie ? $image->sortie->sortie_date->format('d/m/Y') : 'Date inconnue',
                     'used_count' => $duplicates->count(),
                     'used_in_sorties' => $usedInSorties
                 ];
@@ -265,13 +265,15 @@ class SortieController extends Controller
     }
 
     // Mettre à jour une sortie
-    public function update(UpdateSortieRequest $request, $id)
+    public function update(UpdateSortieRequest $request)
     {
+        $id = $request->input('id') ?? $request->route('id');
+
         Log::info('SortieController::update - Mise à jour via service', [
             'sortie_id' => $id,
             'user_id' => auth()->id()
         ]);
-        
+
         $sortie = Sortie::findOrFail($id);
         
         try {
