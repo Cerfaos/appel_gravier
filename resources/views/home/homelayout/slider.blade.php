@@ -2,30 +2,35 @@
 <section class="relative min-h-screen text-white overflow-hidden">
     <!-- Carrousel d'images en arrière-plan -->
     <div class="carousel-container absolute inset-0 w-full h-full">
-        <!-- Image 1 -->
+        <!-- Image 1 - Format paysage -->
         <div class="carousel-slide active absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_alsace16.png') }}');
-                    background-size: contain;">
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_01.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
         </div>
-        <!-- Image 2 -->
+        <!-- Image 2 - Format paysage -->
         <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/moi_descente.png') }}');
-                    background-size: contain;">
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_02.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
         </div>
-        <!-- Image 3 -->
+        <!-- Image 3 - Format paysage -->
         <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/moi_jaune.png') }}');
-                    background-size: contain;">
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_04.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
         </div>
-        <!-- Image 4 -->
+        <!-- Image 4 - Format paysage -->
         <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/aube_foret.png') }}');
-                    background-size: contain;">
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_05.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
         </div>
-        <!-- Image 5 -->
+        <!-- Image 5 - Format paysage -->
         <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_03.png') }}');
-                    background-size: contain;">
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_06.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
         </div>
     </div>
 
