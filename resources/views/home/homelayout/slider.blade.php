@@ -1,18 +1,41 @@
-<!-- GRAND HERO VISUEL - Style Outdoor Cohérent -->
+<!-- GRAND HERO VISUEL - Carrousel d'images dynamique -->
 <section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Image de fond du slider - Optimisé pour images paysage 874×490 -->
-    @if($slider && $slider->image)
-        <div class="absolute inset-0 w-full h-full bg-no-repeat" 
-             style="background-image: url('{{ asset($slider->image) }}');
+    <!-- Carrousel d'images en arrière-plan -->
+    <div class="carousel-container absolute inset-0 w-full h-full">
+        <!-- Image 1 -->
+        <div class="carousel-slide active absolute inset-0 w-full h-full bg-no-repeat"
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_alsace16.png') }}');
                     background-size: cover;
-                    background-position: center center;
-                    background-attachment: scroll;
-                    min-height: 100vh;">
+                    background-position: center center;">
         </div>
-    @endif
-    
-    <!-- Overlay gradient outdoor par-dessus l'image -->
-    <div class="absolute inset-0 bg-black/20"></div>
+        <!-- Image 2 -->
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+             style="background-image: url('{{ asset('upload/design-test/images/moi_descente.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
+        </div>
+        <!-- Image 3 -->
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+             style="background-image: url('{{ asset('upload/design-test/images/moi_jaune.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
+        </div>
+        <!-- Image 4 -->
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+             style="background-image: url('{{ asset('upload/design-test/images/aube_foret.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
+        </div>
+        <!-- Image 5 -->
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_03.png') }}');
+                    background-size: cover;
+                    background-position: center center;">
+        </div>
+    </div>
+
+    <!-- Overlay gradient outdoor par-dessus les images -->
+    <div class="absolute inset-0 bg-black/30"></div>
     
     <!-- Particules d'animation -->
     <div class="absolute inset-0">
@@ -93,6 +116,34 @@
     
     <!-- Styles intégrés -->
     <style>
+        /* ===== CARROUSEL STYLES ===== */
+        .carousel-slide {
+            transition: opacity 1.5s ease-in-out, z-index 0s 1.5s;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-dot {
+            cursor: pointer;
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot:hover {
+            transform: scale(1.3);
+        }
+
+        .carousel-dot.active {
+            transform: scale(1.4);
+        }
+
+        /* ===== ANIMATIONS EXISTANTES ===== */
         @keyframes fade-in-up {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -259,10 +310,99 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Smooth scroll -->
+    <!-- Navigation du carrousel (points indicateurs) -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex space-x-3">
+        <button class="carousel-dot active w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300" data-slide="0"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="1"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="2"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="3"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="4"></button>
+    </div>
+
+    <!-- JavaScript - Carrousel & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll pour le hero
+            // ===== CARROUSEL =====
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentSlide = 0;
+            let carouselInterval;
+            let isPaused = false;
+
+            // Fonction pour changer de slide
+            function showSlide(index) {
+                // Retirer la classe active de tous les slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                    slide.style.opacity = '0';
+                    slide.style.zIndex = '1';
+                });
+
+                // Retirer la classe active de tous les dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                    dot.classList.remove('bg-white/80');
+                    dot.classList.add('bg-white/40');
+                });
+
+                // Activer le slide et le dot correspondants
+                slides[index].classList.add('active');
+                slides[index].style.opacity = '1';
+                slides[index].style.zIndex = '2';
+
+                dots[index].classList.add('active');
+                dots[index].classList.remove('bg-white/40');
+                dots[index].classList.add('bg-white/80');
+
+                currentSlide = index;
+            }
+
+            // Fonction pour passer au slide suivant
+            function nextSlide() {
+                if (!isPaused) {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }
+            }
+
+            // Démarrer le carrousel automatique
+            function startCarousel() {
+                carouselInterval = setInterval(nextSlide, 5000); // Change toutes les 5 secondes
+            }
+
+            // Arrêter le carrousel
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+
+            // Navigation manuelle avec les dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    showSlide(index);
+                    stopCarousel();
+                    isPaused = true;
+                    // Redémarrer après 10 secondes
+                    setTimeout(() => {
+                        isPaused = false;
+                        startCarousel();
+                    }, 10000);
+                });
+            });
+
+            // Pause au survol
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            carouselContainer.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+
+            // Initialiser le carrousel
+            showSlide(0);
+            startCarousel();
+
+            // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
