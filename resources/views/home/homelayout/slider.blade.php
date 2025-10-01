@@ -1,41 +1,15 @@
-<!-- GRAND HERO VISUEL - Carrousel d'images dynamique -->
+<!-- OPTION 1 : PARALLAX DYNAMIQUE - Effet 3D au scroll -->
 <section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Carrousel d'images en arrière-plan -->
-    <div class="carousel-container absolute inset-0 w-full h-full">
-        <!-- Image 1 - Format paysage -->
-        <div class="carousel-slide active absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_01.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
-        </div>
-        <!-- Image 2 - Format paysage -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_02.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
-        </div>
-        <!-- Image 3 - Format paysage -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_04.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
-        </div>
-        <!-- Image 4 - Format paysage -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_05.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
-        </div>
-        <!-- Image 5 - Format paysage -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
-             style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_06.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
-        </div>
+    <!-- Image principale en arrière-plan -->
+    <div class="parallax-layer parallax-bg absolute inset-0 w-full h-full"
+         style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_01.png') }}');
+                background-size: cover;
+                background-position: center center;
+                will-change: transform;">
     </div>
 
-    <!-- Overlay gradient outdoor par-dessus les images -->
-    <div class="absolute inset-0 bg-black/30"></div>
+    <!-- Overlay gradient animé pour créer de la profondeur -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60 parallax-overlay"></div>
     
     <!-- Particules d'animation -->
     <div class="absolute inset-0">
@@ -321,102 +295,49 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- Navigation du carrousel (points indicateurs) -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex space-x-3">
-        <button class="carousel-dot active w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300" data-slide="0"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="1"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="2"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="3"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="4"></button>
-    </div>
-
-    <!-- JavaScript - Carrousel & Smooth scroll -->
+    <!-- JavaScript - Parallax & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== CARROUSEL =====
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            let currentSlide = 0;
-            let carouselInterval;
-            let isPaused = false;
+            // ===== PARALLAX SCROLL EFFECT =====
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const parallaxOverlay = document.querySelector('.parallax-overlay');
 
-            // Fonction pour changer de slide
-            function showSlide(index) {
-                console.log('Changement de slide vers:', index);
+            function parallaxScroll() {
+                const scrolled = window.pageYOffset;
+                const heroHeight = window.innerHeight;
 
-                // Cacher TOUS les slides
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    slide.style.display = 'none';
-                    slide.style.opacity = '0';
-                    slide.style.zIndex = '1';
-                });
+                // Ne pas appliquer l'effet si on a scrollé au-delà du hero
+                if (scrolled <= heroHeight) {
+                    // Effet de zoom progressif sur l'image
+                    const scale = 1 + (scrolled * 0.0003);
 
-                // Retirer la classe active de tous les dots
-                dots.forEach(dot => {
-                    dot.classList.remove('active');
-                    dot.classList.remove('bg-white/80');
-                    dot.classList.add('bg-white/40');
-                });
+                    // Appliquer la transformation : déplacement + zoom
+                    if (parallaxBg) {
+                        parallaxBg.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0) scale(${scale})`;
+                    }
 
-                // Afficher UNIQUEMENT le slide actif
-                slides[index].classList.add('active');
-                slides[index].style.display = 'block';
-                slides[index].style.opacity = '1';
-                slides[index].style.zIndex = '2';
-
-                // Activer le dot correspondant
-                dots[index].classList.add('active');
-                dots[index].classList.remove('bg-white/40');
-                dots[index].classList.add('bg-white/80');
-
-                currentSlide = index;
-            }
-
-            // Fonction pour passer au slide suivant
-            function nextSlide() {
-                if (!isPaused) {
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    showSlide(currentSlide);
+                    // Modifier l'opacité de l'overlay pour créer un effet de profondeur
+                    if (parallaxOverlay) {
+                        const opacity = Math.min(0.8, scrolled / heroHeight);
+                        parallaxOverlay.style.opacity = opacity;
+                    }
                 }
             }
 
-            // Démarrer le carrousel automatique
-            function startCarousel() {
-                carouselInterval = setInterval(nextSlide, 5000); // Change toutes les 5 secondes
-            }
-
-            // Arrêter le carrousel
-            function stopCarousel() {
-                clearInterval(carouselInterval);
-            }
-
-            // Navigation manuelle avec les dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    showSlide(index);
-                    stopCarousel();
-                    isPaused = true;
-                    // Redémarrer après 10 secondes
-                    setTimeout(() => {
-                        isPaused = false;
-                        startCarousel();
-                    }, 10000);
-                });
+            // Utiliser requestAnimationFrame pour des performances optimales
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        parallaxScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
 
-            // Pause au survol
-            const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.addEventListener('mouseenter', () => {
-                isPaused = true;
-            });
-            carouselContainer.addEventListener('mouseleave', () => {
-                isPaused = false;
-            });
-
-            // Initialiser le carrousel
-            showSlide(0);
-            startCarousel();
+            // Initialiser au chargement
+            parallaxScroll();
 
             // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
