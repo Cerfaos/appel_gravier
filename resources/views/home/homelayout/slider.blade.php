@@ -84,20 +84,7 @@
         .video-parallax {
             filter: brightness(0.8) contrast(1.1);
             will-change: transform;
-        }
-
-        @keyframes video-zoom {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        /* Animation subtile de zoom sur la vidéo */
-        .video-parallax {
-            animation: video-zoom 30s ease-in-out infinite;
+            transform-origin: center center;
         }
 
         /* ===== ANIMATIONS EXISTANTES ===== */
