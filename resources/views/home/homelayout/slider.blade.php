@@ -1,18 +1,12 @@
-<!-- OPTION 5 : EFFET KEN BURNS - Zoom et pan progressif sur images -->
-<section class="relative min-h-screen text-white overflow-hidden bg-black">
-    <!-- Vidéo de fond fixe avec opacité fluctuante -->
-    <video autoplay muted loop playsinline class="background-video absolute inset-0 w-full h-full object-cover"
-           style="filter: blur(3px);">
+<!-- OPTION 4 : VIDÉO HERO + OVERLAY - Vidéo en arrière-plan avec overlay -->
+<section class="relative min-h-screen text-white overflow-hidden">
+    <!-- Vidéo en arrière-plan -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
         <source src="{{ asset('upload/design-test/videos/Sept2025 ‐ Bilan720.mp4') }}" type="video/mp4">
     </video>
 
-    <!-- Conteneur pour l'effet Ken Burns -->
-    <div class="ken-burns-container absolute inset-0">
-        <!-- Les slides seront créés dynamiquement par JavaScript -->
-    </div>
-
     <!-- Overlay gradient pour améliorer la lisibilité -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60 z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
@@ -86,82 +80,23 @@
     
     <!-- Styles intégrés -->
     <style>
-        /* ===== BACKGROUND VIDEO WITH PULSING OPACITY ===== */
-        @keyframes backgroundPulse {
+        /* ===== VIDEO HERO STYLES ===== */
+        video {
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        @keyframes video-zoom {
             0%, 100% {
-                opacity: 0.7;
+                transform: scale(1);
             }
             50% {
-                opacity: 1;
+                transform: scale(1.05);
             }
         }
 
-        .background-video {
-            animation: backgroundPulse 8s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        /* ===== KEN BURNS EFFECT STYLES ===== */
-        .ken-burns-slide {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            z-index: 2;
-        }
-
-        .ken-burns-slide.active {
-            opacity: 0.4;
-        }
-
-        /* Animations Ken Burns - Différentes variantes */
-        @keyframes kenBurnsZoomIn {
-            0% {
-                transform: scale(1) translate(0, 0);
-            }
-            100% {
-                transform: scale(1.2) translate(-5%, -5%);
-            }
-        }
-
-        @keyframes kenBurnsZoomOut {
-            0% {
-                transform: scale(1.2) translate(5%, 5%);
-            }
-            100% {
-                transform: scale(1) translate(0, 0);
-            }
-        }
-
-        @keyframes kenBurnsPanLeft {
-            0% {
-                transform: scale(1.15) translateX(5%);
-            }
-            100% {
-                transform: scale(1.15) translateX(-5%);
-            }
-        }
-
-        @keyframes kenBurnsPanRight {
-            0% {
-                transform: scale(1.15) translateX(-5%);
-            }
-            100% {
-                transform: scale(1.15) translateX(5%);
-            }
-        }
-
-        @keyframes kenBurnsDiagonal {
-            0% {
-                transform: scale(1) translate(0, 0);
-            }
-            100% {
-                transform: scale(1.2) translate(-8%, 8%);
-            }
+        /* Animation subtile de zoom sur la vidéo */
+        video {
+            animation: video-zoom 30s ease-in-out infinite;
         }
 
         /* ===== ANIMATIONS EXISTANTES ===== */
@@ -331,64 +266,33 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Ken Burns Effect & Smooth scroll -->
+    <!-- JavaScript - Video Hero & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== KEN BURNS EFFECT =====
-            const container = document.querySelector('.ken-burns-container');
+            // ===== VIDEO HERO =====
+            const video = document.querySelector('video');
 
-            // Images pour le diaporama (utilisons des gradients colorés pour tester sans problème de chemin)
-            const slides = [
-                { type: 'gradient', value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-                { type: 'gradient', value: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-                { type: 'gradient', value: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-                { type: 'gradient', value: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' },
-                { type: 'gradient', value: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }
-            ];
+            // S'assurer que la vidéo démarre automatiquement
+            if (video) {
+                video.play().catch(error => {
+                    console.log('Autoplay bloqué:', error);
+                });
 
-            // Animations Ken Burns
-            const animations = [
-                'kenBurnsZoomIn',
-                'kenBurnsZoomOut',
-                'kenBurnsPanLeft',
-                'kenBurnsPanRight',
-                'kenBurnsDiagonal'
-            ];
+                // Contrôle de lecture au scroll
+                let lastScroll = 0;
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset;
 
-            let currentSlide = 0;
+                    // Si on scrolle au-delà du hero, mettre en pause
+                    if (currentScroll > window.innerHeight) {
+                        video.pause();
+                    } else if (video.paused && currentScroll < window.innerHeight) {
+                        video.play();
+                    }
 
-            // Créer les slides
-            slides.forEach((slide, index) => {
-                const slideEl = document.createElement('div');
-                slideEl.className = 'ken-burns-slide';
-                slideEl.style.background = slide.value;
-
-                if (index === 0) {
-                    slideEl.classList.add('active');
-                    slideEl.style.animation = `${animations[index]} 8s ease-in-out infinite alternate`;
-                }
-
-                container.appendChild(slideEl);
-            });
-
-            const slideElements = document.querySelectorAll('.ken-burns-slide');
-
-            // Fonction pour changer de slide
-            function changeSlide() {
-                // Masquer le slide actuel
-                slideElements[currentSlide].classList.remove('active');
-
-                // Passer au slide suivant
-                currentSlide = (currentSlide + 1) % slides.length;
-
-                // Afficher le nouveau slide avec son animation
-                const nextSlide = slideElements[currentSlide];
-                nextSlide.classList.add('active');
-                nextSlide.style.animation = `${animations[currentSlide % animations.length]} 8s ease-in-out infinite alternate`;
+                    lastScroll = currentScroll;
+                });
             }
-
-            // Changer de slide toutes les 8 secondes
-            setInterval(changeSlide, 8000);
 
             // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
