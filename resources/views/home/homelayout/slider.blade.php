@@ -339,9 +339,10 @@
             function showSlide(index) {
                 console.log('Changement de slide vers:', index);
 
-                // Retirer la classe active de tous les slides
+                // Cacher TOUS les slides
                 slides.forEach((slide, i) => {
                     slide.classList.remove('active');
+                    slide.style.display = 'none';
                     slide.style.opacity = '0';
                     slide.style.zIndex = '1';
                 });
@@ -353,11 +354,13 @@
                     dot.classList.add('bg-white/40');
                 });
 
-                // Activer le slide et le dot correspondants
+                // Afficher UNIQUEMENT le slide actif
                 slides[index].classList.add('active');
+                slides[index].style.display = 'block';
                 slides[index].style.opacity = '1';
                 slides[index].style.zIndex = '2';
 
+                // Activer le dot correspondant
                 dots[index].classList.add('active');
                 dots[index].classList.remove('bg-white/40');
                 dots[index].classList.add('bg-white/80');
