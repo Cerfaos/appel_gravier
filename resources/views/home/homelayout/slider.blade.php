@@ -3,34 +3,29 @@
     <!-- Carrousel d'images en arrière-plan -->
     <div class="carousel-container absolute inset-0 w-full h-full">
         <!-- Image 1 -->
-        <div class="carousel-slide active absolute inset-0 w-full h-full bg-no-repeat"
+        <div class="carousel-slide active absolute inset-0 w-full h-full bg-no-repeat bg-center"
              style="background-image: url('{{ asset('upload/design-test/images/cerfaos_alsace16.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
+                    background-size: contain;">
         </div>
         <!-- Image 2 -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
              style="background-image: url('{{ asset('upload/design-test/images/moi_descente.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
+                    background-size: contain;">
         </div>
         <!-- Image 3 -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
              style="background-image: url('{{ asset('upload/design-test/images/moi_jaune.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
+                    background-size: contain;">
         </div>
         <!-- Image 4 -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
              style="background-image: url('{{ asset('upload/design-test/images/aube_foret.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
+                    background-size: contain;">
         </div>
         <!-- Image 5 -->
-        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat"
+        <div class="carousel-slide absolute inset-0 w-full h-full bg-no-repeat bg-center"
              style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_03.png') }}');
-                    background-size: cover;
-                    background-position: center center;">
+                    background-size: contain;">
         </div>
     </div>
 
@@ -331,8 +326,10 @@
 
             // Fonction pour changer de slide
             function showSlide(index) {
+                console.log('Changement de slide vers:', index);
+
                 // Retirer la classe active de tous les slides
-                slides.forEach(slide => {
+                slides.forEach((slide, i) => {
                     slide.classList.remove('active');
                     slide.style.opacity = '0';
                     slide.style.zIndex = '1';
