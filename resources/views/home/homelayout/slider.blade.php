@@ -1,12 +1,12 @@
-<!-- OPTION 3 : MOSAÏQUE ANIMÉE - Grille dynamique de tuiles -->
-<section class="relative min-h-screen text-white overflow-hidden bg-black">
-    <!-- Grille de mosaïque -->
-    <div class="mosaic-grid absolute inset-0 grid grid-cols-6 grid-rows-4 gap-1">
-        <!-- Les tuiles seront créées dynamiquement par JavaScript -->
-    </div>
+<!-- OPTION 4 : VIDÉO HERO + OVERLAY - Vidéo en arrière-plan avec overlay -->
+<section class="relative min-h-screen text-white overflow-hidden">
+    <!-- Vidéo en arrière-plan -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <source src="{{ asset('upload/design-test/videos/Sept2025 ‐ Bilan720.mp4') }}" type="video/mp4">
+    </video>
 
     <!-- Overlay gradient pour améliorer la lisibilité -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
@@ -80,38 +80,23 @@
     
     <!-- Styles intégrés -->
     <style>
-        /* ===== MOSAIC STYLES ===== */
-        .mosaic-tile {
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.7;
+        /* ===== VIDEO HERO STYLES ===== */
+        video {
+            filter: brightness(0.8) contrast(1.1);
         }
 
-        .mosaic-tile:hover {
-            transform: scale(1.1);
-            opacity: 1;
-            z-index: 5;
-        }
-
-        @keyframes mosaic-reveal {
-            from {
-                opacity: 0;
-                transform: scale(0.8) rotate(5deg);
-            }
-            to {
-                opacity: 0.7;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        @keyframes mosaic-pulse {
+        @keyframes video-zoom {
             0%, 100% {
-                opacity: 0.7;
-                filter: brightness(1);
+                transform: scale(1);
             }
             50% {
-                opacity: 0.9;
-                filter: brightness(1.2);
+                transform: scale(1.05);
             }
+        }
+
+        /* Animation subtile de zoom sur la vidéo */
+        video {
+            animation: video-zoom 30s ease-in-out infinite;
         }
 
         /* ===== ANIMATIONS EXISTANTES ===== */
@@ -281,47 +266,33 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Mosaic Animation & Smooth scroll -->
+    <!-- JavaScript - Video Hero & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== MOSAIC ANIMATION =====
-            const mosaicGrid = document.querySelector('.mosaic-grid');
+            // ===== VIDEO HERO =====
+            const video = document.querySelector('video');
 
-            // Couleurs dynamiques pour les tuiles
-            const colors = [
-                '#1e3a8a', '#1e40af', '#1d4ed8', '#2563eb', '#3b82f6', // Bleus
-                '#134e4a', '#115e59', '#0f766e', '#14b8a6', '#2dd4bf', // Turquoise
-                '#164e63', '#155e75', '#0e7490', '#0891b2', '#06b6d4', // Cyan
-                '#1e293b', '#334155', '#475569', '#64748b', '#94a3b8'  // Gris-bleu
-            ];
-
-            // Créer 24 tuiles (6 colonnes × 4 lignes)
-            for (let i = 0; i < 24; i++) {
-                const tile = document.createElement('div');
-                tile.className = 'mosaic-tile';
-
-                // Assigner une couleur aléatoire
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                tile.style.background = randomColor;
-                tile.style.animationDelay = `${i * 0.05}s`;
-                tile.style.animation = 'mosaic-reveal 0.8s ease-out forwards';
-
-                // Ajouter animation de pulse continue (différente pour chaque tuile)
-                setTimeout(() => {
-                    tile.style.animation = `mosaic-pulse ${3 + Math.random() * 2}s ease-in-out infinite`;
-                    tile.style.animationDelay = `${Math.random() * 2}s`;
-                }, 800 + (i * 50));
-
-                mosaicGrid.appendChild(tile);
-            }
-
-            // Effet de changement de couleur au survol
-            document.querySelectorAll('.mosaic-tile').forEach(tile => {
-                tile.addEventListener('mouseenter', function() {
-                    const newColor = colors[Math.floor(Math.random() * colors.length)];
-                    this.style.background = newColor;
+            // S'assurer que la vidéo démarre automatiquement
+            if (video) {
+                video.play().catch(error => {
+                    console.log('Autoplay bloqué:', error);
                 });
-            });
+
+                // Contrôle de lecture au scroll
+                let lastScroll = 0;
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset;
+
+                    // Si on scrolle au-delà du hero, mettre en pause
+                    if (currentScroll > window.innerHeight) {
+                        video.pause();
+                    } else if (video.paused && currentScroll < window.innerHeight) {
+                        video.play();
+                    }
+
+                    lastScroll = currentScroll;
+                });
+            }
 
             // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
