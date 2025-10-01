@@ -1,22 +1,27 @@
-<!-- OPTION 1 : PARALLAX DYNAMIQUE - Effet 3D au scroll -->
+<!-- OPTION 2 : SPLIT SCREEN AVEC ANIMATION - Écran divisé dynamique -->
 <section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Image principale en arrière-plan -->
-    <div class="parallax-layer parallax-bg absolute inset-0 w-full h-full"
-         style="background-image: url('{{ asset('upload/design-test/images/cerfaos_sept25_01.png') }}');
-                background-size: cover;
-                background-position: center center;
-                will-change: transform;">
+    <!-- Conteneur Split Screen -->
+    <div class="flex h-screen">
+        <!-- Partie Gauche - Image 1 -->
+        <div class="split-left w-1/2 relative overflow-hidden transition-all duration-700 ease-in-out"
+             style="background: url('/upload/design-test/images/cerfaos_sept25_01.png') center center / cover;">
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 z-10"></div>
+        </div>
+
+        <!-- Partie Droite - Image 2 -->
+        <div class="split-right w-1/2 relative overflow-hidden transition-all duration-700 ease-in-out"
+             style="background: url('/upload/design-test/images/cerfaos_sept25_04.png') center center / cover;">
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/40 z-10"></div>
+        </div>
     </div>
 
-    <!-- Overlay gradient animé pour créer de la profondeur -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60 parallax-overlay"></div>
-    
-    <!-- Particules d'animation -->
-    <div class="absolute inset-0">
-        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-float"></div>
-        <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-white/10 rounded-full animate-float-delayed"></div>
-        <div class="absolute bottom-1/3 left-1/2 w-1 h-1 bg-white/30 rounded-full animate-float-slow"></div>
-    </div>
+    <!-- Ligne de séparation centrale animée -->
+    <div class="split-divider absolute top-0 left-1/2 w-1 h-full bg-white/30 transform -translate-x-1/2 z-10 shadow-glow"></div>
+
+    <!-- Overlay global pour le contenu -->
+    <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
@@ -90,42 +95,41 @@
     
     <!-- Styles intégrés -->
     <style>
-        /* ===== CARROUSEL STYLES ===== */
-        .carousel-slide {
-            transition: opacity 1.5s ease-in-out;
-            opacity: 0 !important;
-            z-index: 1 !important;
-            visibility: hidden;
+        /* ===== SPLIT SCREEN STYLES ===== */
+        .split-left:hover {
+            width: 60%;
         }
 
-        .carousel-slide.active {
-            opacity: 1 !important;
-            z-index: 2 !important;
-            visibility: visible;
-            transition: opacity 1.5s ease-in-out;
+        .split-left:hover ~ .split-right {
+            width: 40%;
         }
 
-        /* Initialisation - Cacher toutes les slides sauf la première */
-        .carousel-slide:not(.active) {
-            display: none;
+        .split-right:hover {
+            width: 60%;
         }
 
-        .carousel-slide.active {
-            display: block;
+        .split-left:hover .split-bg-left,
+        .split-right:hover .split-bg-right {
+            transform: scale(1.1);
+            transition: transform 0.7s ease-in-out;
         }
 
-        .carousel-dot {
-            cursor: pointer;
-            transform: scale(1);
-            transition: all 0.3s ease;
+        .split-bg-left,
+        .split-bg-right {
+            transition: transform 0.7s ease-in-out;
         }
 
-        .carousel-dot:hover {
-            transform: scale(1.3);
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
-        .carousel-dot.active {
-            transform: scale(1.4);
+        @keyframes pulse-divider {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .split-divider {
+            animation: pulse-divider 3s ease-in-out infinite;
         }
 
         /* ===== ANIMATIONS EXISTANTES ===== */
@@ -295,49 +299,40 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Parallax & Smooth scroll -->
+    <!-- JavaScript - Split Screen & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== PARALLAX SCROLL EFFECT =====
-            const parallaxBg = document.querySelector('.parallax-bg');
-            const parallaxOverlay = document.querySelector('.parallax-overlay');
+            // ===== SPLIT SCREEN ANIMATION =====
+            const splitLeft = document.querySelector('.split-left');
+            const splitRight = document.querySelector('.split-right');
+            const splitBgLeft = document.querySelector('.split-bg-left');
+            const splitBgRight = document.querySelector('.split-bg-right');
 
-            function parallaxScroll() {
-                const scrolled = window.pageYOffset;
-                const heroHeight = window.innerHeight;
+            // Animation au chargement - effet de révélation
+            setTimeout(() => {
+                if (splitLeft) splitLeft.style.opacity = '1';
+                if (splitRight) splitRight.style.opacity = '1';
+            }, 100);
 
-                // Ne pas appliquer l'effet si on a scrollé au-delà du hero
-                if (scrolled <= heroHeight) {
-                    // Effet de zoom progressif sur l'image
-                    const scale = 1 + (scrolled * 0.0003);
+            // Mouvement des backgrounds au mouvement de la souris
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
 
-                    // Appliquer la transformation : déplacement + zoom
-                    if (parallaxBg) {
-                        parallaxBg.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0) scale(${scale})`;
-                    }
-
-                    // Modifier l'opacité de l'overlay pour créer un effet de profondeur
-                    if (parallaxOverlay) {
-                        const opacity = Math.min(0.8, scrolled / heroHeight);
-                        parallaxOverlay.style.opacity = opacity;
-                    }
+                // Mouvement subtil de l'arrière-plan gauche
+                if (splitLeft) {
+                    const moveX = (mouseX - 0.5) * -10;
+                    const moveY = (mouseY - 0.5) * -10;
+                    splitLeft.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
                 }
-            }
 
-            // Utiliser requestAnimationFrame pour des performances optimales
-            let ticking = false;
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        parallaxScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
+                // Mouvement subtil de l'arrière-plan droit
+                if (splitRight) {
+                    const moveX = (mouseX - 0.5) * 10;
+                    const moveY = (mouseY - 0.5) * 10;
+                    splitRight.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
                 }
             });
-
-            // Initialiser au chargement
-            parallaxScroll();
 
             // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
