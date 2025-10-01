@@ -1,27 +1,12 @@
-<!-- OPTION 2 : SPLIT SCREEN AVEC ANIMATION - Écran divisé dynamique -->
-<section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Conteneur Split Screen -->
-    <div class="flex h-screen">
-        <!-- Partie Gauche - Image 1 -->
-        <div class="split-left w-1/2 relative overflow-hidden transition-all duration-700 ease-in-out"
-             style="background: url('/upload/design-test/images/cerfaos_sept25_01.png') center center / cover;">
-            <!-- Overlay gradient -->
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 z-10"></div>
-        </div>
-
-        <!-- Partie Droite - Image 2 -->
-        <div class="split-right w-1/2 relative overflow-hidden transition-all duration-700 ease-in-out"
-             style="background: url('/upload/design-test/images/cerfaos_sept25_04.png') center center / cover;">
-            <!-- Overlay gradient -->
-            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/40 z-10"></div>
-        </div>
+<!-- OPTION 3 : MOSAÏQUE ANIMÉE - Grille dynamique de tuiles -->
+<section class="relative min-h-screen text-white overflow-hidden bg-black">
+    <!-- Grille de mosaïque -->
+    <div class="mosaic-grid absolute inset-0 grid grid-cols-6 grid-rows-4 gap-1">
+        <!-- Les tuiles seront créées dynamiquement par JavaScript -->
     </div>
 
-    <!-- Ligne de séparation centrale animée -->
-    <div class="split-divider absolute top-0 left-1/2 w-1 h-full bg-white/30 transform -translate-x-1/2 z-10 shadow-glow"></div>
-
-    <!-- Overlay global pour le contenu -->
-    <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+    <!-- Overlay gradient pour améliorer la lisibilité -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
@@ -95,41 +80,38 @@
     
     <!-- Styles intégrés -->
     <style>
-        /* ===== SPLIT SCREEN STYLES ===== */
-        .split-left:hover {
-            width: 60%;
+        /* ===== MOSAIC STYLES ===== */
+        .mosaic-tile {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.7;
         }
 
-        .split-left:hover ~ .split-right {
-            width: 40%;
-        }
-
-        .split-right:hover {
-            width: 60%;
-        }
-
-        .split-left:hover .split-bg-left,
-        .split-right:hover .split-bg-right {
+        .mosaic-tile:hover {
             transform: scale(1.1);
-            transition: transform 0.7s ease-in-out;
+            opacity: 1;
+            z-index: 5;
         }
 
-        .split-bg-left,
-        .split-bg-right {
-            transition: transform 0.7s ease-in-out;
+        @keyframes mosaic-reveal {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(5deg);
+            }
+            to {
+                opacity: 0.7;
+                transform: scale(1) rotate(0deg);
+            }
         }
 
-        .shadow-glow {
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes pulse-divider {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        .split-divider {
-            animation: pulse-divider 3s ease-in-out infinite;
+        @keyframes mosaic-pulse {
+            0%, 100% {
+                opacity: 0.7;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.9;
+                filter: brightness(1.2);
+            }
         }
 
         /* ===== ANIMATIONS EXISTANTES ===== */
@@ -299,39 +281,46 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Split Screen & Smooth scroll -->
+    <!-- JavaScript - Mosaic Animation & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== SPLIT SCREEN ANIMATION =====
-            const splitLeft = document.querySelector('.split-left');
-            const splitRight = document.querySelector('.split-right');
-            const splitBgLeft = document.querySelector('.split-bg-left');
-            const splitBgRight = document.querySelector('.split-bg-right');
+            // ===== MOSAIC ANIMATION =====
+            const mosaicGrid = document.querySelector('.mosaic-grid');
 
-            // Animation au chargement - effet de révélation
-            setTimeout(() => {
-                if (splitLeft) splitLeft.style.opacity = '1';
-                if (splitRight) splitRight.style.opacity = '1';
-            }, 100);
+            // Couleurs dynamiques pour les tuiles
+            const colors = [
+                '#1e3a8a', '#1e40af', '#1d4ed8', '#2563eb', '#3b82f6', // Bleus
+                '#134e4a', '#115e59', '#0f766e', '#14b8a6', '#2dd4bf', // Turquoise
+                '#164e63', '#155e75', '#0e7490', '#0891b2', '#06b6d4', // Cyan
+                '#1e293b', '#334155', '#475569', '#64748b', '#94a3b8'  // Gris-bleu
+            ];
 
-            // Mouvement des backgrounds au mouvement de la souris
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
+            // Créer 24 tuiles (6 colonnes × 4 lignes)
+            for (let i = 0; i < 24; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'mosaic-tile';
 
-                // Mouvement subtil de l'arrière-plan gauche
-                if (splitLeft) {
-                    const moveX = (mouseX - 0.5) * -10;
-                    const moveY = (mouseY - 0.5) * -10;
-                    splitLeft.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
-                }
+                // Assigner une couleur aléatoire
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                tile.style.background = randomColor;
+                tile.style.animationDelay = `${i * 0.05}s`;
+                tile.style.animation = 'mosaic-reveal 0.8s ease-out forwards';
 
-                // Mouvement subtil de l'arrière-plan droit
-                if (splitRight) {
-                    const moveX = (mouseX - 0.5) * 10;
-                    const moveY = (mouseY - 0.5) * 10;
-                    splitRight.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
-                }
+                // Ajouter animation de pulse continue (différente pour chaque tuile)
+                setTimeout(() => {
+                    tile.style.animation = `mosaic-pulse ${3 + Math.random() * 2}s ease-in-out infinite`;
+                    tile.style.animationDelay = `${Math.random() * 2}s`;
+                }, 800 + (i * 50));
+
+                mosaicGrid.appendChild(tile);
+            }
+
+            // Effet de changement de couleur au survol
+            document.querySelectorAll('.mosaic-tile').forEach(tile => {
+                tile.addEventListener('mouseenter', function() {
+                    const newColor = colors[Math.floor(Math.random() * colors.length)];
+                    this.style.background = newColor;
+                });
             });
 
             // ===== SMOOTH SCROLL =====
