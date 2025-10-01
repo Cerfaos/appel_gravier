@@ -113,15 +113,26 @@
     <style>
         /* ===== CARROUSEL STYLES ===== */
         .carousel-slide {
-            transition: opacity 1.5s ease-in-out, z-index 0s 1.5s;
-            opacity: 0;
-            z-index: 1;
+            transition: opacity 1.5s ease-in-out;
+            opacity: 0 !important;
+            z-index: 1 !important;
+            visibility: hidden;
         }
 
         .carousel-slide.active {
-            opacity: 1;
-            z-index: 2;
+            opacity: 1 !important;
+            z-index: 2 !important;
+            visibility: visible;
             transition: opacity 1.5s ease-in-out;
+        }
+
+        /* Initialisation - Cacher toutes les slides sauf la première */
+        .carousel-slide:not(.active) {
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: block;
         }
 
         .carousel-dot {
