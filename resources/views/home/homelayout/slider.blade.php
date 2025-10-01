@@ -1,12 +1,12 @@
-<!-- OPTION 4 : VIDÉO HERO + OVERLAY - Vidéo en arrière-plan avec overlay -->
+<!-- OPTION 4 + PARALLAX : VIDÉO HERO avec effet Parallax au scroll -->
 <section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Vidéo en arrière-plan -->
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-        <source src="{{ asset('upload/design-test/videos/Sept2025 ‐ Bilan720.mp4') }}" type="video/mp4">
+    <!-- Vidéo en arrière-plan avec effet parallax -->
+    <video autoplay muted loop playsinline class="video-parallax absolute inset-0 w-full h-full object-cover">
+        <source src="{{ asset('upload/video/Sept2025 ‐ Bilan720.mp4') }}" type="video/mp4">
     </video>
 
     <!-- Overlay gradient pour améliorer la lisibilité -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10"></div>
+    <div class="overlay-parallax absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
@@ -81,8 +81,9 @@
     <!-- Styles intégrés -->
     <style>
         /* ===== VIDEO HERO STYLES ===== */
-        video {
+        .video-parallax {
             filter: brightness(0.8) contrast(1.1);
+            will-change: transform;
         }
 
         @keyframes video-zoom {
@@ -95,7 +96,7 @@
         }
 
         /* Animation subtile de zoom sur la vidéo */
-        video {
+        .video-parallax {
             animation: video-zoom 30s ease-in-out infinite;
         }
 
@@ -266,33 +267,67 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Video Hero & Smooth scroll -->
+    <!-- JavaScript - Video Hero avec Parallax & Smooth scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== VIDEO HERO =====
-            const video = document.querySelector('video');
+            // ===== VIDEO HERO + PARALLAX =====
+            const video = document.querySelector('.video-parallax');
+            const overlay = document.querySelector('.overlay-parallax');
 
             // S'assurer que la vidéo démarre automatiquement
             if (video) {
                 video.play().catch(error => {
                     console.log('Autoplay bloqué:', error);
                 });
+            }
 
-                // Contrôle de lecture au scroll
-                let lastScroll = 0;
-                window.addEventListener('scroll', () => {
-                    const currentScroll = window.pageYOffset;
+            // Effet Parallax au scroll
+            function parallaxScroll() {
+                const scrolled = window.pageYOffset;
+                const heroHeight = window.innerHeight;
 
-                    // Si on scrolle au-delà du hero, mettre en pause
-                    if (currentScroll > window.innerHeight) {
-                        video.pause();
-                    } else if (video.paused && currentScroll < window.innerHeight) {
-                        video.play();
+                // Ne pas appliquer l'effet si on a scrollé au-delà du hero
+                if (scrolled <= heroHeight) {
+                    // Effet de zoom progressif + déplacement
+                    const scale = 1 + (scrolled * 0.0003);
+
+                    // Appliquer la transformation sur la vidéo
+                    if (video) {
+                        video.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0) scale(${scale})`;
                     }
 
-                    lastScroll = currentScroll;
-                });
+                    // Modifier l'opacité de l'overlay pour créer un effet de profondeur
+                    if (overlay) {
+                        const opacity = Math.min(0.8, scrolled / heroHeight);
+                        overlay.style.opacity = opacity;
+                    }
+                } else {
+                    // Mettre en pause la vidéo si on scrolle au-delà du hero
+                    if (video && !video.paused) {
+                        video.pause();
+                    }
+                }
+
+                // Relancer la vidéo si on remonte dans le hero
+                if (scrolled < heroHeight && video && video.paused) {
+                    video.play();
+                }
             }
+
+            // Utiliser requestAnimationFrame pour des performances optimales
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        parallaxScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initialiser au chargement
+            parallaxScroll();
 
             // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
