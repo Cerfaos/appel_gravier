@@ -2,7 +2,7 @@
 <section class="relative min-h-screen text-white overflow-hidden">
     <!-- Vidéo en arrière-plan avec effet parallax -->
     <video autoplay muted loop playsinline class="video-parallax absolute inset-0 w-full h-full object-cover">
-        <source src="{{ asset('upload/video/Sept2025 ‐ Bilan720.mp4') }}" type="video/mp4">
+        <source src="{{ asset('upload/video/video_092025.mp4') }}" type="video/mp4">
     </video>
 
     <!-- Overlay gradient pour améliorer la lisibilité -->
