@@ -74,9 +74,10 @@
        
 
         <!-- Mobile Menu Button - Accessible et responsive -->
-        <button 
-          class="lg:hidden p-2 min-w-[44px] min-h-[44px] bg-outdoor-ochre-500/10 border border-outdoor-ochre-200 text-outdoor-forest-600 hover:text-outdoor-ochre-600 hover:bg-outdoor-ochre-500/20 rounded-xl shadow-md transition-all duration-200 flex items-center justify-center" 
+        <button
+          class="lg:hidden p-2 min-w-[44px] min-h-[44px] bg-outdoor-ochre-500/10 border border-outdoor-ochre-200 text-outdoor-forest-600 hover:text-outdoor-ochre-600 hover:bg-outdoor-ochre-500/20 rounded-xl shadow-md transition-all duration-200 flex items-center justify-center"
           id="hamburger-btn"
+          onclick="toggleMobileMenu()"
           aria-label="Menu de navigation"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -295,14 +296,6 @@ function toggleMobileSubmenu(submenuId) {
     arrow.style.transform = 'rotate(0deg)';
   }
 }
-
-// Initialize mobile menu button when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', toggleMobileMenu);
-  }
-});
 </script>
 
 <style>
