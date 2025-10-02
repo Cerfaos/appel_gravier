@@ -41,14 +41,11 @@
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/aos.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
   
+  <!-- Mobile Responsive Enhanced - Expérience optimale -->
+  <link rel="stylesheet" href="{{ asset('css/mobile-responsive-enhanced.css') }}">
+
   <!-- Mobile Touch Optimizations -->
   <link rel="stylesheet" href="{{ asset('css/mobile-touch-optimizations.css') }}">
-  
-  <!-- Mobile No Animations - Performance optimale -->
-  <link rel="stylesheet" href="{{ asset('css/mobile-no-animations.css') }}">
-  
-  <!-- Fix ciblé Hero & Features sections -->
-  <link rel="stylesheet" href="{{ asset('css/mobile-hero-features-fix.css') }}">
 </head>
 
 <body class="antialiased">

@@ -1,6 +1,6 @@
 @props(['sortie'])
 
-<div class="bg-gradient-to-br from-white via-outdoor-cream-50 to-white rounded-3xl shadow-2xl border-2 border-outdoor-forest-200/30 overflow-hidden hover:shadow-outdoor-brutal transition-all duration-500 group hover:-translate-y-2 hover:rotate-1 backdrop-blur-sm relative">
+<div class="bg-gradient-to-br from-white via-outdoor-cream-50 to-white rounded-3xl lg:rounded-3xl rounded-2xl shadow-lg lg:shadow-2xl border-2 border-outdoor-forest-200/30 overflow-hidden hover:shadow-outdoor-brutal transition-all duration-300 lg:duration-500 group lg:hover:-translate-y-2 lg:hover:rotate-1 backdrop-blur-sm relative">
     {{-- Effet de brillance au hover --}}
     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-outdoor-ochre-200/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     {{-- Image de la sortie avec overlay dramatique --}}
@@ -10,9 +10,10 @@
         <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"/%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
         @if($sortie->featuredImage && $sortie->featuredImage->image_path)
-            <img src="{{ $sortie->featuredImage->medium_image }}" 
+            <img src="{{ $sortie->featuredImage->medium_image }}"
                  alt="{{ $sortie->title }}"
-                 class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700 relative z-5">
+                 loading="lazy"
+                 class="w-full h-48 md:h-56 object-cover lg:group-hover:scale-110 transition-transform duration-500 relative z-5">
         @else
             <div class="w-full h-56 bg-gradient-to-br from-outdoor-olive-500 via-outdoor-forest-600 to-outdoor-earth-700 flex items-center justify-center relative z-5">
                 <div class="text-center text-white relative z-10">
@@ -62,11 +63,11 @@
     </div>
 
     {{-- Contenu de la carte avec plus de punch --}}
-    <div class="p-8 relative z-10">
+    <div class="p-4 md:p-6 lg:p-8 relative z-10">
         {{-- Titre et description --}}
         <div class="mb-6">
             <div class="flex items-start justify-between mb-3">
-                <h3 class="text-2xl font-display font-black text-outdoor-forest-800 leading-tight line-clamp-2 group-hover:text-outdoor-olive-600 transition-colors duration-300 tracking-tight">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-display font-black text-outdoor-forest-800 leading-tight line-clamp-2 lg:group-hover:text-outdoor-olive-600 transition-colors duration-300 tracking-tight">
                     {{ $sortie->title }}
                 </h3>
                 <div class="ml-3 w-8 h-8 bg-gradient-to-br from-outdoor-ochre-400 to-outdoor-ochre-600 rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
@@ -74,7 +75,7 @@
                 </div>
             </div>
             
-            <p class="text-outdoor-forest-600 leading-relaxed line-clamp-3 font-medium">
+            <p class="text-sm md:text-base text-outdoor-forest-600 leading-relaxed line-clamp-2 md:line-clamp-3 font-medium">
                 {{ Str::limit($sortie->description, 130) }}
             </p>
             
@@ -84,12 +85,12 @@
 
         {{-- Statistiques impactantes --}}
         @if($sortie->distance_km || $sortie->elevation_gain_m || $sortie->estimated_duration_minutes)
-        <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4 mb-4 md:mb-6">
             @if($sortie->distance_km)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-400 to-outdoor-olive-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-olive-500 to-outdoor-olive-600 rounded-2xl p-4 text-center shadow-xl border border-outdoor-olive-400 transform group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-olive-500 to-outdoor-olive-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-olive-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             {{ number_format($sortie->distance_km, 1) }}
                         </div>
                         <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">KM</div>
@@ -106,17 +107,17 @@
             @if($sortie->elevation_gain_m)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-earth-400 to-outdoor-earth-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-earth-500 to-outdoor-earth-600 rounded-2xl p-4 text-center shadow-xl border border-outdoor-earth-400 transform group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-earth-500 to-outdoor-earth-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-earth-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             +{{ $sortie->elevation_gain_m }}
                         </div>
-                        <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">DÉNIVELÉ</div>
-                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-outdoor-ochre-400 rounded-full"></div>
+                        <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">D+</div>
+                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-outdoor-ochre-400 rounded-full hidden lg:block"></div>
                     </div>
                 </div>
             @else
-                <div class="bg-outdoor-cream-100 rounded-2xl p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
-                    <div class="text-2xl font-black text-outdoor-forest-300">-</div>
+                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
+                    <div class="text-lg md:text-xl lg:text-2xl font-black text-outdoor-forest-300">-</div>
                     <div class="text-xs font-bold tracking-widest uppercase text-outdoor-forest-400">M</div>
                 </div>
             @endif
@@ -124,17 +125,17 @@
             @if($sortie->estimated_duration_minutes)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-ochre-400 to-outdoor-ochre-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-ochre-500 to-outdoor-ochre-600 rounded-2xl p-4 text-center shadow-xl border border-outdoor-ochre-400 transform group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-ochre-500 to-outdoor-ochre-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-ochre-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             {{ floor($sortie->estimated_duration_minutes / 60) }}h{{ $sortie->estimated_duration_minutes % 60 > 0 ? sprintf('%02d', $sortie->estimated_duration_minutes % 60) : '' }}
                         </div>
                         <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">DURÉE</div>
-                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-outdoor-olive-400 rounded-full"></div>
+                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-outdoor-olive-400 rounded-full hidden lg:block"></div>
                     </div>
                 </div>
             @else
-                <div class="bg-outdoor-cream-100 rounded-2xl p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
-                    <div class="text-2xl font-black text-outdoor-forest-300">-</div>
+                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
+                    <div class="text-lg md:text-xl lg:text-2xl font-black text-outdoor-forest-300">-</div>
                     <div class="text-xs font-bold tracking-widest uppercase text-outdoor-forest-400">H</div>
                 </div>
             @endif

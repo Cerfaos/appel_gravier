@@ -1,5 +1,5 @@
 <!-- OPTION 4 + PARALLAX : VIDÉO HERO avec effet Parallax au scroll -->
-<section class="relative min-h-screen text-white overflow-hidden">
+<section class="relative min-h-screen text-white overflow-hidden" style="min-height: 100svh;">
     <!-- Vidéo en arrière-plan avec effet parallax - VERSION RESPONSIVE -->
     <video autoplay muted loop playsinline class="video-parallax absolute inset-0 w-full h-full object-cover">
         <!-- Mobile: version compressée 854x480, 22MB -->
@@ -15,14 +15,14 @@
     <div class="overlay-parallax absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10"></div>
     
     <!-- Layout responsive : centré sur mobile, aligné à gauche sur desktop -->
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start z-20">
         <!-- Mobile : layout centré -->
-        <div class="block lg:hidden text-center">
-            <div class="space-y-8">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white">
+        <div class="block lg:hidden text-center px-4">
+            <div class="space-y-4 md:space-y-6">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
                 </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light text-white">
+                <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-95 leading-relaxed font-light text-white drop-shadow-md">
                     {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
                 </p>
             </div>
@@ -73,10 +73,10 @@
         </div>
 
         <!-- CTA mobile centré -->
-        <div class="flex lg:hidden pt-8 justify-center animate-fade-in-up">
-            <a href="#main-content" class="scroll-link inline-flex items-center text-white hover:text-yellow-200 group transition-all duration-300">
-                <span class="text-xl font-medium">Commencer l'exploration</span>
-                <svg class="ml-3 w-8 h-8 group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex lg:hidden absolute bottom-16 left-0 right-0 justify-center z-30">
+            <a href="#main-content" class="scroll-link inline-flex items-center px-6 py-3 bg-outdoor-olive-600/90 hover:bg-outdoor-olive-700 backdrop-blur-sm text-white rounded-full font-semibold shadow-xl transition-all duration-200 active:scale-95">
+                <span class="text-base md:text-lg">Découvrir</span>
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                 </svg>
             </a>
@@ -274,12 +274,25 @@
                 });
             }
 
-            // Effet Parallax au scroll
+            // Effet Parallax au scroll (désactivé sur mobile)
+            const isMobile = window.innerWidth <= 768;
+
             function parallaxScroll() {
                 const scrolled = window.pageYOffset;
                 const heroHeight = window.innerHeight;
 
-                // Ne pas appliquer l'effet si on a scrollé au-delà du hero
+                // Pas de parallax sur mobile
+                if (isMobile) {
+                    // Juste pause/play de la vidéo
+                    if (scrolled > heroHeight && video && !video.paused) {
+                        video.pause();
+                    } else if (scrolled < heroHeight && video && video.paused) {
+                        video.play();
+                    }
+                    return;
+                }
+
+                // Desktop: Effet parallax complet
                 if (scrolled <= heroHeight) {
                     // Effet de zoom progressif + déplacement
                     const scale = 1 + (scrolled * 0.0003);
