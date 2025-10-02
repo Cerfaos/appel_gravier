@@ -4,6 +4,7 @@
 @import './design-system.css';
 @import './components/itineraries.css';
 @import './animations.css';
+@import './mobile-responsive-enhanced.css';
 
 @tailwind base;
 @tailwind components;

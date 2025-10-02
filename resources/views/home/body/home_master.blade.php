@@ -41,8 +41,6 @@
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/aos.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
   
-  <!-- Mobile Responsive Enhanced - Expérience optimale -->
-  <link rel="stylesheet" href="{{ asset('css/mobile-responsive-enhanced.css') }}">
 
   <!-- Mobile Touch Optimizations -->
   <link rel="stylesheet" href="{{ asset('css/mobile-touch-optimizations.css') }}">
