@@ -249,35 +249,32 @@
     </div>
   </div>
 
-  <!-- Mobile Menu Overlay -->
-  <div 
-    id="mobile-menu-overlay" 
-    class="lg:hidden fixed inset-0 bg-black bg-opacity-70 opacity-0 invisible transition-all duration-300 z-40"
-    onclick="toggleMobileMenu()"
-  ></div>
 </header>
 
 <script>
-// Update mobile menu toggle to include overlay
+// Mobile menu toggle - Simple and reliable
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
-  const overlay = document.getElementById('mobile-menu-overlay');
   const hamburger = document.getElementById('hamburger-btn');
-  
-  if (mobileMenu.classList.contains('translate-x-full')) {
-    mobileMenu.classList.remove('translate-x-full');
-    overlay.classList.remove('opacity-0', 'invisible');
-    hamburger.innerHTML = `
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    `;
-  } else {
+
+  if (!mobileMenu || !hamburger) return;
+
+  const isOpen = !mobileMenu.classList.contains('translate-x-full');
+
+  if (isOpen) {
+    // Close menu
     mobileMenu.classList.add('translate-x-full');
-    overlay.classList.add('opacity-0', 'invisible');
     hamburger.innerHTML = `
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    `;
+  } else {
+    // Open menu
+    mobileMenu.classList.remove('translate-x-full');
+    hamburger.innerHTML = `
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     `;
   }
@@ -287,20 +284,25 @@ function toggleMobileMenu() {
 function toggleMobileSubmenu(submenuId) {
   const submenu = document.getElementById(submenuId);
   const arrow = document.getElementById(submenuId.replace('-submenu', '-arrow'));
-  
+
+  if (!submenu || !arrow) return;
+
   if (submenu.classList.contains('hidden')) {
-    // Show submenu
     submenu.classList.remove('hidden');
     arrow.style.transform = 'rotate(180deg)';
   } else {
-    // Hide submenu
     submenu.classList.add('hidden');
     arrow.style.transform = 'rotate(0deg)';
   }
 }
 
-// Initialize mobile menu button
-document.getElementById('hamburger-btn').addEventListener('click', toggleMobileMenu);
+// Initialize mobile menu button when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+  }
+});
 </script>
 
 <style>
