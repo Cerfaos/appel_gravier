@@ -89,7 +89,7 @@
   </div>
 
   <!-- Menu Mobile Responsive - Largeur adaptative -->
-  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-slate-50 to-stone-100 transform translate-x-full transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600">
+  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-slate-50 to-stone-100 transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600" style="transform: translateX(100%);">
     
     <!-- Header Menu Mobile Responsive -->
     <div class="bg-gradient-to-r from-slate-800 to-stone-800 px-4 sm:px-6 py-4 border-b-2 border-amber-500">
@@ -253,32 +253,44 @@
 </header>
 
 <script>
-// Mobile menu toggle - Simple and reliable
+// Mobile menu toggle - Using inline styles for reliability
 function toggleMobileMenu() {
+  console.log('🔧 toggleMobileMenu called');
+
   const mobileMenu = document.getElementById('mobile-menu');
   const hamburger = document.getElementById('hamburger-btn');
 
-  if (!mobileMenu || !hamburger) return;
+  if (!mobileMenu || !hamburger) {
+    console.error('❌ Menu or hamburger not found!');
+    return;
+  }
 
-  const isOpen = !mobileMenu.classList.contains('translate-x-full');
+  // Check current state via transform style
+  const currentTransform = mobileMenu.style.transform;
+  const isOpen = currentTransform === 'translateX(0px)' || currentTransform === 'translateX(0)';
+  console.log('Menu is currently:', isOpen ? 'OPEN' : 'CLOSED', 'transform:', currentTransform);
 
   if (isOpen) {
     // Close menu
-    mobileMenu.classList.add('translate-x-full');
+    console.log('➡️ Closing menu...');
+    mobileMenu.style.transform = 'translateX(100%)';
     hamburger.innerHTML = `
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     `;
   } else {
     // Open menu
-    mobileMenu.classList.remove('translate-x-full');
+    console.log('⬅️ Opening menu...');
+    mobileMenu.style.transform = 'translateX(0)';
     hamburger.innerHTML = `
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     `;
   }
+
+  console.log('Final transform:', mobileMenu.style.transform);
 }
 
 // Toggle mobile submenus
