@@ -88,8 +88,8 @@
     </div>
   </div>
 
-  <!-- Menu Mobile Responsive - Largeur adaptative -->
-  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-slate-50 to-stone-100 transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600" style="transform: translateX(100%);">
+  <!-- Menu Mobile Responsive - Largeur adaptative optimisée -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-full sm:max-w-sm bg-gradient-to-br from-slate-50 to-stone-100 transition-all duration-400 ease-out z-50 shadow-2xl border-l-4 border-amber-600" style="transform: translateX(100%); max-width: min(384px, 90vw);">
     
     <!-- Header Menu Mobile Responsive -->
     <div class="bg-gradient-to-r from-slate-800 to-stone-800 px-4 sm:px-6 py-4 border-b-2 border-amber-500">

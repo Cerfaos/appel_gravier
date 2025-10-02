@@ -62,8 +62,8 @@
         @endif
     </div>
 
-    {{-- Contenu de la carte avec plus de punch --}}
-    <div class="p-4 md:p-6 lg:p-8 relative z-10">
+    {{-- Contenu de la carte optimisé mobile --}}
+    <div class="p-3 md:p-5 lg:p-8 relative z-10">
         {{-- Titre et description --}}
         <div class="mb-6">
             <div class="flex items-start justify-between mb-3">
@@ -85,12 +85,12 @@
 
         {{-- Statistiques impactantes --}}
         @if($sortie->distance_km || $sortie->elevation_gain_m || $sortie->estimated_duration_minutes)
-        <div class="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4 mb-4 md:mb-6">
+        <div class="grid grid-cols-3 gap-3 md:gap-4 lg:gap-4 mb-4 md:mb-6">
             @if($sortie->distance_km)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-olive-400 to-outdoor-olive-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-olive-500 to-outdoor-olive-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-olive-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-olive-500 to-outdoor-olive-600 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-olive-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-base md:text-lg lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             {{ number_format($sortie->distance_km, 1) }}
                         </div>
                         <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">KM</div>
@@ -107,8 +107,8 @@
             @if($sortie->elevation_gain_m)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-earth-400 to-outdoor-earth-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-earth-500 to-outdoor-earth-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-earth-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-earth-500 to-outdoor-earth-600 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-earth-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-base md:text-lg lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             +{{ $sortie->elevation_gain_m }}
                         </div>
                         <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">D+</div>
@@ -116,8 +116,8 @@
                     </div>
                 </div>
             @else
-                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
-                    <div class="text-lg md:text-xl lg:text-2xl font-black text-outdoor-forest-300">-</div>
+                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
+                    <div class="text-base md:text-lg lg:text-2xl font-black text-outdoor-forest-300">-</div>
                     <div class="text-xs font-bold tracking-widest uppercase text-outdoor-forest-400">M</div>
                 </div>
             @endif
@@ -125,8 +125,8 @@
             @if($sortie->estimated_duration_minutes)
                 <div class="group/stat relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-outdoor-ochre-400 to-outdoor-ochre-600 rounded-2xl blur-sm opacity-50"></div>
-                    <div class="relative bg-gradient-to-br from-outdoor-ochre-500 to-outdoor-ochre-600 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-ochre-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
-                        <div class="text-lg md:text-xl lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
+                    <div class="relative bg-gradient-to-br from-outdoor-ochre-500 to-outdoor-ochre-600 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-4 text-center shadow-lg md:shadow-xl border border-outdoor-ochre-400 lg:transform lg:group-hover/stat:scale-105 transition-all duration-300">
+                        <div class="text-base md:text-lg lg:text-2xl font-black tracking-tighter text-outdoor-cream-50">
                             {{ floor($sortie->estimated_duration_minutes / 60) }}h{{ $sortie->estimated_duration_minutes % 60 > 0 ? sprintf('%02d', $sortie->estimated_duration_minutes % 60) : '' }}
                         </div>
                         <div class="text-xs font-bold tracking-widest uppercase text-outdoor-cream-100/90">DURÉE</div>
@@ -134,8 +134,8 @@
                     </div>
                 </div>
             @else
-                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-2 md:p-3 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
-                    <div class="text-lg md:text-xl lg:text-2xl font-black text-outdoor-forest-300">-</div>
+                <div class="bg-outdoor-cream-100 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-4 text-center border-2 border-dashed border-outdoor-cream-300 opacity-60">
+                    <div class="text-base md:text-lg lg:text-2xl font-black text-outdoor-forest-300">-</div>
                     <div class="text-xs font-bold tracking-widest uppercase text-outdoor-forest-400">H</div>
                 </div>
             @endif
@@ -173,10 +173,11 @@
         <div class="flex gap-4">
             <div class="flex-1 relative group/btn">
                 <div class="absolute inset-0 bg-gradient-to-r from-outdoor-forest-600 to-outdoor-forest-800 rounded-2xl blur-sm group-hover/btn:blur-md transition-all duration-300"></div>
-                <a href="{{ route('sorties.show', $sortie->slug) }}" 
-                   class="relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-outdoor-forest-700 to-outdoor-forest-900 hover:from-outdoor-forest-800 hover:to-black text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 border-2 border-outdoor-forest-600 group-hover/btn:border-outdoor-forest-400">
-                    <span class="mr-2">🚀</span>
-                    <span>DÉCOUVRIR</span>
+                <a href="{{ route('sorties.show', $sortie->slug) }}"
+                   class="relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-outdoor-forest-700 to-outdoor-forest-900 hover:from-outdoor-forest-800 hover:to-black text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 border-2 border-outdoor-forest-600 group-hover/btn:border-outdoor-forest-400 min-h-[48px]">
+                    <span class="mr-2 hidden sm:inline">🚀</span>
+                    <span class="hidden sm:inline">DÉCOUVRIR</span>
+                    <span class="sm:hidden">VOIR</span>
                     <svg class="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>

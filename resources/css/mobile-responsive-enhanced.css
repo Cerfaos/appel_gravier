@@ -9,17 +9,17 @@
 /* ===== ANIMATIONS MOBILES ÉQUILIBRÉES ===== */
 @media (max-width: 768px) {
 
-  /* Désactiver les animations lourdes mais garder les micro-interactions */
+  /* Animations équilibrées pour mobile - ni trop rapides ni trop lentes */
   [data-aos] {
-    animation-duration: 0.3s !important;
-    transition-duration: 0.3s !important;
+    animation-duration: 0.4s !important;
+    transition-duration: 0.4s !important;
   }
 
-  /* Animations entrantes simplifiées */
+  /* Animations entrantes avec timing naturel */
   .animate-fade-in-up,
   .animate-elegant-title,
   .animate-elegant-desc {
-    animation-duration: 0.4s !important;
+    animation-duration: 0.5s !important;
     animation-timing-function: ease-out !important;
   }
 
@@ -212,11 +212,14 @@
 /* ===== FORMULAIRES MOBILE ===== */
 @media (max-width: 640px) {
 
-  /* Inputs pleine largeur */
-  input, textarea, select {
+  /* Inputs pleine largeur et hauteur tactile */
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
     width: 100% !important;
     font-size: 16px !important; /* Évite le zoom iOS */
     padding: 0.75rem !important;
+    min-height: 48px !important; /* Touch target WCAG */
   }
 
   /* Labels clairs */
@@ -267,10 +270,20 @@
 @media (max-width: 640px) {
 
   /* Grilles forcées en 1 colonne sur très petits écrans */
-  .grid-cols-2,
-  .grid-cols-3,
-  .grid-cols-4 {
+  /* SAUF si elles ont la classe .grid-preserve-X */
+  .grid-cols-2:not(.grid-preserve-2),
+  .grid-cols-3:not(.grid-preserve-3),
+  .grid-cols-4:not(.grid-preserve-2):not(.grid-preserve-3) {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Classes d'exception pour préserver certaines grilles */
+  .grid-preserve-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid-preserve-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   /* Espacement réduit */

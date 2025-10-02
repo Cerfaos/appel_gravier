@@ -18,12 +18,12 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center lg:items-start lg:justify-start z-20">
         <!-- Mobile : layout centré -->
         <div class="block lg:hidden text-center px-4">
-            <div class="space-y-4 md:space-y-6">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
+            <div class="space-y-3 md:space-y-4">
+                <h1 style="font-size: clamp(1.875rem, 5vw, 2.5rem);" class="font-bold leading-tight tracking-tight text-white drop-shadow-lg">
                     {{ $slider->title ?? 'Découvrez l\'aventure qui vous attend' }}
                 </h1>
-                <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-95 leading-relaxed font-light text-white drop-shadow-md">
-                    {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts pour vos aventures outdoor.' }}
+                <p style="font-size: clamp(0.875rem, 2.5vw, 1.125rem);" class="max-w-xl mx-auto opacity-95 leading-relaxed font-light text-white drop-shadow-md">
+                    {{ $slider->description ?? 'Explorez des itinéraires uniques, rejoignez nos sorties en groupe, et enrichissez-vous de nos conseils d\'experts.' }}
                 </p>
             </div>
         </div>
@@ -72,9 +72,9 @@
             </script>
         </div>
 
-        <!-- CTA mobile centré -->
-        <div class="flex lg:hidden absolute bottom-16 left-0 right-0 justify-center z-30">
-            <a href="#main-content" class="scroll-link inline-flex items-center px-6 py-3 bg-outdoor-olive-600/90 hover:bg-outdoor-olive-700 backdrop-blur-sm text-white rounded-full font-semibold shadow-xl transition-all duration-200 active:scale-95">
+        <!-- CTA mobile centré avec safe-area -->
+        <div class="flex lg:hidden absolute left-0 right-0 justify-center z-30" style="bottom: calc(4rem + env(safe-area-inset-bottom, 0px));">
+            <a href="#main-content" class="scroll-link inline-flex items-center px-6 py-3 bg-outdoor-olive-600/90 hover:bg-outdoor-olive-700 backdrop-blur-sm text-white rounded-full font-semibold shadow-xl transition-all duration-200 active:scale-95 min-h-[48px]">
                 <span class="text-base md:text-lg">Découvrir</span>
                 <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>

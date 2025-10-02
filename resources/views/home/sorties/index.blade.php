@@ -34,15 +34,14 @@
                 </div>
 
                 <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-8 leading-tight">
-                        
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 md:mb-8 leading-tight">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-outdoor-ochre-400 to-outdoor-ochre-200">
                             Nos Sorties & Expéditions
                         </span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-outdoor-cream-100 leading-relaxed mb-12 max-w-4xl mx-auto">
-                        Découvrez nos sorties organisées et expéditions d'aventure. 
-                        Des treks multi-jours aux expéditions exceptionnelles, trouvez votre prochaine aventure collective avec tous les détails pratiques.
+                    <p class="text-base md:text-lg lg:text-xl text-outdoor-cream-100 leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto px-4">
+                        Découvrez nos sorties organisées et expéditions d'aventure.
+                        Des treks multi-jours aux expéditions exceptionnelles, trouvez votre prochaine aventure collective.
                     </p>
                 </div>
 
@@ -277,8 +276,8 @@
                                     </div>
                                 </div>
 
-                                {{-- Tableau compact --}}
-                                <div class="overflow-x-auto">
+                                {{-- Tableau compact - Desktop uniquement --}}
+                                <div class="hidden md:block overflow-x-auto">
                                     <table class="w-full">
                                         <thead class="bg-outdoor-olive-100 text-outdoor-olive-800">
                                             <tr>
@@ -435,6 +434,161 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                </div>
+
+                                {{-- Cartes Mobile - Affichage optimisé pour petits écrans --}}
+                                <div class="md:hidden space-y-4">
+                                    @foreach($sorties as $sortie)
+                                        <div class="bg-white border border-outdoor-cream-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-200">
+                                            {{-- Image et titre --}}
+                                            <div class="flex items-start p-4 space-x-3 border-b border-outdoor-cream-100">
+                                                <div class="flex-shrink-0">
+                                                    @if($sortie->featuredImage)
+                                                        <img src="{{ $sortie->featuredImage->medium_image }}"
+                                                             alt="{{ $sortie->title }}"
+                                                             class="w-16 h-16 rounded-xl object-cover">
+                                                    @else
+                                                        <div class="w-16 h-16 bg-outdoor-olive-100 rounded-xl flex items-center justify-center">
+                                                            <span class="text-2xl">🏕️</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="flex-1 min-w-0">
+                                                    <h3 class="font-bold text-outdoor-forest-700 text-base leading-tight mb-1">
+                                                        {{ $sortie->title }}
+                                                    </h3>
+                                                    @if($sortie->description)
+                                                        <p class="text-xs text-outdoor-forest-500 line-clamp-2">
+                                                            {{ Str::limit($sortie->description, 60) }}
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            {{-- Statistiques en grille --}}
+                                            <div class="grid grid-cols-3 gap-2 p-3 bg-outdoor-cream-50">
+                                                {{-- Distance --}}
+                                                <div class="text-center">
+                                                    <div class="text-xl font-black text-outdoor-olive-600">
+                                                        {{ $sortie->distance_km ? number_format($sortie->distance_km, 1) : '-' }}
+                                                    </div>
+                                                    <div class="text-xs text-outdoor-forest-500 font-medium">km</div>
+                                                </div>
+
+                                                {{-- Durée --}}
+                                                <div class="text-center">
+                                                    @if($sortie->actual_duration_minutes)
+                                                        @php
+                                                            $hours = floor($sortie->actual_duration_minutes / 60);
+                                                            $minutes = $sortie->actual_duration_minutes % 60;
+                                                        @endphp
+                                                        <div class="text-xl font-black text-outdoor-ochre-600">
+                                                            @if($hours > 0){{ $hours }}h@endif{{ $minutes }}
+                                                        </div>
+                                                        <div class="text-xs text-outdoor-forest-500 font-medium">
+                                                            @if($hours > 0)min@else minutes@endif
+                                                        </div>
+                                                    @else
+                                                        <div class="text-xl font-black text-outdoor-forest-400">-</div>
+                                                        <div class="text-xs text-outdoor-forest-400">durée</div>
+                                                    @endif
+                                                </div>
+
+                                                {{-- Dénivelé --}}
+                                                <div class="text-center">
+                                                    <div class="text-xl font-black text-outdoor-earth-600">
+                                                        {{ $sortie->elevation_gain_m ? number_format($sortie->elevation_gain_m) : '-' }}
+                                                    </div>
+                                                    <div class="text-xs text-outdoor-forest-500 font-medium">D+ (m)</div>
+                                                </div>
+                                            </div>
+
+                                            {{-- Informations détaillées --}}
+                                            <div class="p-4 space-y-3">
+                                                {{-- Difficulté et Météo --}}
+                                                <div class="flex items-center justify-between">
+                                                    {{-- Niveau --}}
+                                                    <div>
+                                                        @if($sortie->difficulty_level === 'facile')
+                                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                                                🟢 Facile
+                                                            </span>
+                                                        @elseif($sortie->difficulty_level === 'moyen')
+                                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">
+                                                                🟡 Moyen
+                                                            </span>
+                                                        @elseif($sortie->difficulty_level === 'difficile')
+                                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
+                                                                🔴 Difficile
+                                                            </span>
+                                                        @endif
+                                                    </div>
+
+                                                    {{-- Météo --}}
+                                                    @if($sortie->weather_conditions && count($sortie->weather_conditions) > 0)
+                                                        <div class="flex gap-1">
+                                                            @php
+                                                                $weatherIcons = [
+                                                                    'ensoleille' => '☀️',
+                                                                    'nuageux' => '☁️',
+                                                                    'pluie' => '🌧️',
+                                                                    'vent' => '💨',
+                                                                    'brouillard' => '🌫️',
+                                                                    'neige' => '❄️',
+                                                                    'orage' => '⛈️',
+                                                                    'chaud' => '🥵',
+                                                                    'froid' => '🥶'
+                                                                ];
+                                                            @endphp
+                                                            @foreach(array_slice($sortie->weather_conditions, 0, 3) as $weather)
+                                                                @if(isset($weatherIcons[$weather]))
+                                                                    <span class="text-lg">{{ $weatherIcons[$weather] }}</span>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </div>
+
+                                                {{-- Lieu et Date --}}
+                                                <div class="flex items-center justify-between text-xs text-outdoor-forest-600">
+                                                    <div class="flex items-center space-x-1">
+                                                        <span>📍</span>
+                                                        <span class="font-medium">
+                                                            @if($sortie->departement)
+                                                                {{ $sortie->departement }}
+                                                            @elseif($sortie->pays)
+                                                                {{ $sortie->pays }}
+                                                            @else
+                                                                -
+                                                            @endif
+                                                        </span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-1">
+                                                        <span>📅</span>
+                                                        <span class="font-medium">
+                                                            @if($sortie->sortie_date)
+                                                                {{ $sortie->sortie_date->format('d/m/Y') }}
+                                                            @elseif($sortie->published_at)
+                                                                {{ $sortie->published_at->format('d/m/Y') }}
+                                                            @else
+                                                                -
+                                                            @endif
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Bouton Voir --}}
+                                                <a href="{{ route('sorties.show', $sortie->slug) }}"
+                                                   class="block w-full bg-outdoor-olive-500 hover:bg-outdoor-olive-600 text-white text-center font-semibold py-3 rounded-xl transition-colors duration-200 min-h-[48px] flex items-center justify-center">
+                                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                    </svg>
+                                                    Voir la sortie
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 {{-- Pagination compacte --}}
