@@ -1,5 +1,5 @@
 <!-- GRAND HERO VISUEL - Style Outdoor Cohérent avec Parallax -->
-<section class="relative min-h-screen text-white overflow-hidden">
+<section class="fullpage-section relative min-h-screen text-white overflow-hidden">
     <!-- Image de fond du slider avec effet parallax - Optimisé pour images paysage 874×490 -->
     @if($slider && $slider->image)
         <div id="parallax-bg" class="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"

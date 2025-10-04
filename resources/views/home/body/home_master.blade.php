@@ -44,6 +44,9 @@
 
   <!-- Mobile Touch Optimizations -->
   <link rel="stylesheet" href="{{ asset('css/mobile-touch-optimizations.css') }}">
+
+  <!-- Fullpage Scroll Snap -->
+  <link rel="stylesheet" href="{{ asset('css/fullpage-scroll.css') }}">
 </head>
 
 <body class="antialiased">
@@ -99,6 +102,9 @@
   <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
   <script src="{{ asset('js/mobile-touch-gestures.js') }}"></script>
   <script src="{{ asset('js/mobile-performance-optimizations.js') }}"></script>
+
+  <!-- Fullpage Scroll Script -->
+  <script src="{{ asset('js/fullpage-scroll.js') }}"></script>
   <!-- Script animations optimizer désactivé - remplacé par CSS no-animations -->
   <!-- <script src="{{ asset('js/mobile-animations-optimizer.js') }}"></script> -->
   

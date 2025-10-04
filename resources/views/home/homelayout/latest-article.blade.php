@@ -3,7 +3,7 @@
 @php
     $latestArticle = $latestBlogPosts->first();
 @endphp
-<section class="relative min-h-[80vh] md:min-h-screen text-white overflow-hidden">
+<section class="fullpage-section relative min-h-screen text-white overflow-hidden">
     <!-- Image de fond de l'article -->
     @if($latestArticle->image)
         <div class="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"
@@ -18,7 +18,7 @@
     <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
 
     <!-- Contenu -->
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[80vh] md:min-h-screen flex items-center">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen flex items-center">
         <div class="max-w-2xl">
             <!-- Badge catégorie -->
             @if($latestArticle->blogCategory)
