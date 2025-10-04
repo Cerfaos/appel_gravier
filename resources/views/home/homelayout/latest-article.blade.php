@@ -5,9 +5,9 @@
 @endphp
 <section class="relative min-h-[60vh] md:min-h-[70vh] text-white overflow-hidden">
     <!-- Image de fond de l'article -->
-    @if($latestArticle->post_image)
+    @if($latestArticle->image)
         <div class="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"
-             style="background-image: url('{{ asset($latestArticle->post_image) }}');
+             style="background-image: url('{{ asset($latestArticle->image) }}');
                     background-size: cover;
                     background-position: center center;
                     background-attachment: scroll;">
