@@ -1,18 +1,19 @@
-<!-- GRAND HERO VISUEL - Style Outdoor Cohérent -->
+<!-- GRAND HERO VISUEL - Style Outdoor Cohérent avec Parallax -->
 <section class="relative min-h-screen text-white overflow-hidden">
-    <!-- Image de fond du slider - Optimisé pour images paysage 874×490 -->
+    <!-- Image de fond du slider avec effet parallax - Optimisé pour images paysage 874×490 -->
     @if($slider && $slider->image)
-        <div class="absolute inset-0 w-full h-full bg-no-repeat"
+        <div id="parallax-bg" class="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"
              style="background-image: url('{{ asset($slider->image) }}');
                     background-size: cover;
                     background-position: center center;
                     background-attachment: scroll;
-                    min-height: 100vh;">
+                    min-height: 100vh;
+                    transform: translate3d(0, 0, 0);">
         </div>
     @endif
 
-    <!-- Overlay gradient outdoor par-dessus l'image -->
-    <div class="absolute inset-0 bg-black/20"></div>
+    <!-- Overlay gradient outdoor par-dessus l'image avec effet parallax -->
+    <div id="parallax-overlay" class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
 
     <!-- Particules d'animation -->
     <div class="absolute inset-0">
@@ -260,10 +261,74 @@
         .scroll-link { cursor: pointer; }
     </style>
 
-    <!-- JavaScript - Smooth scroll -->
+    <!-- JavaScript - Smooth scroll + Parallax Effect -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll pour le hero
+            // ===== EFFET PARALLAX =====
+            const parallaxBg = document.getElementById('parallax-bg');
+            const parallaxOverlay = document.getElementById('parallax-overlay');
+            const heroSection = document.querySelector('section');
+
+            // Détection mobile/desktop
+            const isMobile = window.innerWidth <= 1024;
+
+            function applyParallax() {
+                const scrolled = window.pageYOffset;
+                const heroHeight = heroSection.offsetHeight;
+
+                // Ne pas appliquer le parallax si on a scrollé au-delà du hero
+                if (scrolled > heroHeight) return;
+
+                if (isMobile) {
+                    // MOBILE: Effet parallax léger et optimisé
+                    // Déplacement subtil (30% de la vitesse de scroll)
+                    const translateY = scrolled * 0.3;
+
+                    if (parallaxBg) {
+                        parallaxBg.style.transform = `translate3d(0, ${translateY}px, 0)`;
+                    }
+
+                    // Overlay qui s'assombrit légèrement au scroll
+                    if (parallaxOverlay) {
+                        const opacity = Math.min(0.6, 0.3 + (scrolled / heroHeight) * 0.3);
+                        parallaxOverlay.style.background = `linear-gradient(to bottom, rgba(0,0,0,${opacity}), rgba(0,0,0,${opacity * 0.7}), rgba(0,0,0,${opacity * 1.2}))`;
+                    }
+                } else {
+                    // DESKTOP: Effet parallax plus prononcé
+                    // Déplacement moyen (50% de la vitesse de scroll)
+                    const translateY = scrolled * 0.5;
+
+                    // Zoom léger progressif
+                    const scale = 1 + (scrolled / heroHeight) * 0.1; // Zoom jusqu'à 1.1x
+
+                    if (parallaxBg) {
+                        parallaxBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+                    }
+
+                    // Overlay qui s'intensifie progressivement
+                    if (parallaxOverlay) {
+                        const opacity = Math.min(0.7, 0.3 + (scrolled / heroHeight) * 0.4);
+                        parallaxOverlay.style.background = `linear-gradient(to bottom, rgba(0,0,0,${opacity}), rgba(0,0,0,${opacity * 0.7}), rgba(0,0,0,${opacity * 1.3}))`;
+                    }
+                }
+            }
+
+            // Utiliser requestAnimationFrame pour des performances optimales
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        applyParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initialiser au chargement
+            applyParallax();
+
+            // ===== SMOOTH SCROLL =====
             document.querySelectorAll('.scroll-link').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
