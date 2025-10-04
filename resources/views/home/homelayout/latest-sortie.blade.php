@@ -3,7 +3,7 @@
 @php
     $latestSortie = $latestSorties->first();
 @endphp
-<section class="relative min-h-[60vh] md:min-h-[70vh] text-white overflow-hidden">
+<section class="relative min-h-[80vh] md:min-h-screen text-white overflow-hidden">
     <!-- Image de fond de la sortie -->
     @if($latestSortie->featuredImage && $latestSortie->featuredImage->image_path)
         <div class="absolute inset-0 w-full h-full bg-no-repeat will-change-transform"
@@ -26,7 +26,7 @@
     <div class="absolute inset-0 bg-gradient-to-l from-black/70 via-black/50 to-black/30"></div>
 
     <!-- Contenu aligné à droite -->
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[60vh] md:min-h-[70vh] flex items-center justify-end">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[80vh] md:min-h-screen flex items-center justify-end">
         <div class="max-w-2xl text-right">
             <!-- Badge difficulté -->
             @if($latestSortie->difficulty_level)
